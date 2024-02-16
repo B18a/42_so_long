@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
+/*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/02/16 16:41:00 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/02/16 20:28:13 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,22 @@ int	main(void)
 		x++;
 		mlx_put_pixel(image, x, 100, 0xFF00F0FF);
 	}
+
+	//This part here is to display a picture on the scree
+	int x_pos_player = 100;
+	int y_pos_player = 100;
+	mlx_texture_t* link;
+	link = mlx_load_png("./assets/Link.png");
+
+	mlx_image_t* link_img;
+	link_img = mlx_texture_to_image(window, link);
+
+	mlx_image_to_window(window, link_img, x_pos_player, y_pos_player);
+	//*******************************************************
+	
 	mlx_loop_hook(window, ft_hook, window);
+
+	
 	mlx_loop(window);
 	// mlx_terminate(window);
 
