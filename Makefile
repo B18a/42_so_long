@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/02/16 15:17:49 by ajehle           ###   ########.fr        #
+#    Updated: 2024/02/16 15:34:12 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,6 @@ MLX42_DIR	= ./MLX42
 CFLAGS		= -Wall -Werror -Wextra -I $(INC_DIR)
 LIBXFLAGS	=  -framework Cocoa -framework OpenGL -framework IOKit
 MLX_INCLUDE	= MLX42/build/libmlx42.a -Iinclude -lglfw
-# LIBXFLAGS	=
-
 
 # looking for files in subdirectories
 vpath %.c $(SRC_DIR)
@@ -46,8 +44,6 @@ $(OBJ_DIR) :
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-window : $(NAME)
-
 mlx_clone :
 	@if [ -d "MLX42" ]; then \
 		echo "MLX42 directory already exists. Skipping cloning."; \
@@ -63,8 +59,7 @@ clean :
 
 fclean : clean
 	$(REMOVE) $(NAME)
-	$(REMOVE) $(OBJ_DIR)
 
 re : fclean all
 
-.PHONY : all, mlx_clone, clean, fclean, re
+.PHONY : all mlx_clone clean fclean re
