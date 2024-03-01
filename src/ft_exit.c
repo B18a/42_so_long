@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 22:36:37 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 23:12:21 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@ int	ft_exit_pos(t_pos *pos)
 }
 
 int	ft_exit_asset(t_game *game, t_player *asset)
+{
+	if (asset)
+	{
+		if (asset->pos)
+			ft_exit_pos(asset->pos);
+		if (asset->texture)
+			mlx_delete_texture(asset->texture);
+		if (asset->image && game->game_window)
+			mlx_delete_image(game->game_window, asset->image);
+		free(asset);
+	}
+	return (1);
+}
+int	ft_exit_asset2(t_game *game, t_assets *asset)
 {
 	if (asset)
 	{
@@ -49,10 +63,10 @@ void ft_exit_assets(t_game *game)
 	i = 0;
 	if(game->assets)
 	{
-		while(i < game->amount_assets)
+		while(i < AMOUNT_ASSETS)
 		{
 			if(game->assets[i])
-				free(game->assets[i]);
+				ft_exit_asset2(game, game->assets[i]);
 			i++;
 		}
 		free(game->assets);

@@ -6,14 +6,13 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 22:33:50 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 23:31:29 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-
-t_assets **ft_initialize_assets(int amount)
+t_assets **ft_initialize_assets(void)
 {
 	int i;
 	int j;
@@ -21,10 +20,10 @@ t_assets **ft_initialize_assets(int amount)
 
 	i = 0;
 	j = 0;
-	assets = malloc(sizeof(t_assets*) * amount);
+	assets = malloc(sizeof(t_assets*) * AMOUNT_ASSETS);
 	if(assets)
 	{
-		while(i < amount)
+		while(i < AMOUNT_ASSETS)
 		{
 			assets[i] = malloc(sizeof(t_assets));
 			if(!assets[i])
@@ -40,7 +39,6 @@ t_assets **ft_initialize_assets(int amount)
 			i++;
 		}
 	}
-
 	return(assets);
 }
 
@@ -73,18 +71,30 @@ t_player	*ft_initialize_player(void)
 
 t_game	*ft_initialize_game(void)
 {
+	int i;
 	t_game	*game;
 
+	i = 0;
 	game = NULL;
 	game = malloc(sizeof(t_game));
 	if (game)
 		{
-			game->amount_assets = 5;
 			game->assets = NULL;
-			game->assets = ft_initialize_assets(game->amount_assets);
-			game->player = NULL;
+			game->assets = ft_initialize_assets();
+			if(game->assets)
+			{
+				while(i < AMOUNT_ASSETS)
+				{
+					game->assets[i]->pos = NULL;
+					game->assets[i]->pos = ft_initialize_pos();
+					i++;
+				}
+			}
+
 			game->game_window = NULL;
 			game->game_image = NULL;
+
+			game->player = NULL;
 			game->player = ft_initialize_player();
 			game->enemy = NULL;
 			game->enemy = ft_initialize_player();

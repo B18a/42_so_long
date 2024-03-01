@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 22:33:39 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 23:37:56 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,15 @@ int	main(void)
 {
 	atexit(check_leaks);
 	t_game	*game;
+const char *paths_assets[] = {PATH_PLAYER, PATH_ENEMY};
+
 
 	game = NULL;
 	game = ft_initialize_game();
 	if (!ft_check_initialize(game))
 		return (call_exit(game), 0);
 
-	
+
 	game->player->pos->x = 0;
 	game->player->pos->y = 0;
 
@@ -50,26 +52,47 @@ int	main(void)
 	game->enemy->pos->y = 250;
 
 	game->game_window = mlx_init(WIDTH, HEIGHT, NAME_WINDOW, false);
-	game->player->texture = mlx_load_png(PATH_PLAYER);
-	game->enemy->texture = mlx_load_png(PATH_ENEMY);
+	// game->player->texture = mlx_load_png(PATH_PLAYER);
+	// game->enemy->texture = mlx_load_png(PATH_ENEMY);
+
+	// ft_load_textures(game, paths_assets);
+
+	// game->player->image = mlx_texture_to_image(game->game_window, game->player->texture);
+	// game->enemy->image = mlx_texture_to_image(game->game_window, game->enemy->texture);
 
 
-	game->player->image = mlx_texture_to_image(game->game_window, game->player->texture);
-	game->enemy->image = mlx_texture_to_image(game->game_window, game->enemy->texture);
-
-
-	if(!game->game_window || !game->player->texture || !game->player->image)
-		return (call_exit(game), 0);
+	// if(!game->game_window || !game->player->texture || !game->player->image)
+	// 	return (call_exit(game), 0);
 
 	// ft_show_address(game);
 
+		int i;
+
+		i = 0;
+		while(i < AMOUNT_ASSETS)
+		{
+			printf("%s\n",paths_assets[i]);
+			game->assets[i]->texture = mlx_load_png(paths_assets[i]);
+			game->assets[i]->image = mlx_texture_to_image(game->game_window, game->assets[i]->texture);
+			game->assets[i]->pos->x = 100;
+			game->assets[i]->pos->y = 100;
+			if(!game->assets[i]->image)
+				return (call_exit(game), 0);
+			if(mlx_image_to_window(game->game_window, game->assets[i]->image, game->assets[i]->pos->x, game->assets[i]->pos->y))
+				return (call_exit(game), 0);
+			i++;
+		}
+
 	if(game)
 	{
-		if(mlx_image_to_window(game->game_window, game->player->image, game->player->pos->x, game->player->pos->y) < 0)
-			return (call_exit(game), 0);
 
-		if(mlx_image_to_window(game->game_window, game->enemy->image, game->enemy->pos->x, game->enemy->pos->y) < 0)
-			return (call_exit(game), 0);
+
+
+		// if(mlx_image_to_window(game->game_window, game->player->image, game->player->pos->x, game->player->pos->y) < 0)
+		// 	return (call_exit(game), 0);
+
+		// if(mlx_image_to_window(game->game_window, game->enemy->image, game->enemy->pos->x, game->enemy->pos->y) < 0)
+		// 	return (call_exit(game), 0);
 
 		mlx_key_hook(game->game_window, &my_keyhook, game);
 		mlx_loop(game->game_window);
