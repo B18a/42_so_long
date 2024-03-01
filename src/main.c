@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 23:37:56 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 23:50:31 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	main(void)
 {
 	atexit(check_leaks);
 	t_game	*game;
-const char *paths_assets[] = {PATH_PLAYER, PATH_ENEMY};
+	const char *paths_assets[] = {PATHS};
+	// const char *paths_assets[] = {PATH_PLAYER, PATH_ENEMY};
 
 
 	game = NULL;
@@ -66,22 +67,8 @@ const char *paths_assets[] = {PATH_PLAYER, PATH_ENEMY};
 
 	// ft_show_address(game);
 
-		int i;
 
-		i = 0;
-		while(i < AMOUNT_ASSETS)
-		{
-			printf("%s\n",paths_assets[i]);
-			game->assets[i]->texture = mlx_load_png(paths_assets[i]);
-			game->assets[i]->image = mlx_texture_to_image(game->game_window, game->assets[i]->texture);
-			game->assets[i]->pos->x = 100;
-			game->assets[i]->pos->y = 100;
-			if(!game->assets[i]->image)
-				return (call_exit(game), 0);
-			if(mlx_image_to_window(game->game_window, game->assets[i]->image, game->assets[i]->pos->x, game->assets[i]->pos->y))
-				return (call_exit(game), 0);
-			i++;
-		}
+	ft_load_textures(game, paths_assets);
 
 	if(game)
 	{

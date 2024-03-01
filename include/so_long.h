@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 23:40:36 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 23:45:37 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define NAME_WINDOW	"TEST"
 # define PATH_PLAYER	"./assets/Link.png"
 # define PATH_ENEMY		"./assets/patrol.png"
+# define PATHS			PATH_PLAYER, PATH_ENEMY
 # define AMOUNT_ASSETS	2
 
 # include "../MLX42/include/MLX42/MLX42.h"
@@ -71,7 +72,7 @@ int			ft_check_initialize(t_game *game);
 t_assets	**ft_initialize_assets(void);
 
 // load textures
-void		ft_load_textures(t_game *game, const char *paths[]);
+int		ft_load_textures(t_game *game, const char *paths[]);
 
 // hook function
 void		my_keyhook(mlx_key_data_t keydata, void *param);
