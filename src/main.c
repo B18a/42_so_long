@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 23:50:31 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 23:51:48 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_show_address(t_game *game)
 }
 
 
-
+//  SEGFAULT, when characters overlap wenn exiting!!!!!!!!!!!!!
 
 int	main(void)
 {
