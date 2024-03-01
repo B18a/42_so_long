@@ -6,14 +6,13 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 20:00:18 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 21:31:46 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
 
-// printf lib
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
@@ -43,6 +42,7 @@ typedef struct s_game
 	mlx_t		*game_window;
 	mlx_image_t	*game_image;
 	t_player	*player;
+	t_player	*enemy;
 }				t_game;
 
 // exit functions to free all memory properly
@@ -54,9 +54,9 @@ int			ft_exit_player(t_game *game, t_player *player);
 t_player	*ft_initialize_player(void);
 t_game		*ft_initialize_game(void);
 t_pos		*ft_initialize_pos(void);
+int			ft_check_initialize(t_game *game);
 
 // hook function
-void		ft_hook(void *param);
 void my_keyhook(mlx_key_data_t keydata, void *param);
 
 

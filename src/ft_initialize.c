@@ -6,12 +6,11 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 19:33:20 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 21:27:36 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
 
 t_pos	*ft_initialize_pos(void)
 {
@@ -29,6 +28,13 @@ t_player	*ft_initialize_player(void)
 
 	player = NULL;
 	player = malloc(sizeof(t_player));
+	if(player)
+	{
+		player->texture = NULL;
+		player->image = NULL;
+		player->pos = NULL;
+		player->pos = ft_initialize_pos();
+	}
 	return (player);
 }
 
@@ -38,5 +44,14 @@ t_game	*ft_initialize_game(void)
 
 	game = NULL;
 	game = malloc(sizeof(t_game));
+	if (game)
+		{
+			game->player = NULL;
+			game->game_window = NULL;
+			game->game_image = NULL;
+			game->player = ft_initialize_player();
+			game->enemy = NULL;
+			game->enemy = ft_initialize_player();
+		}
 	return (game);
 }
