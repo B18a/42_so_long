@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/02/17 10:09:23 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 09:56:05 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 #include"../MLX42/include/MLX42/MLX42.h"
 
+#define WIDTH	500
+#define HEIGHT	500
 
 typedef struct	s_player
 {
@@ -38,7 +40,17 @@ typedef struct	s_game
 }				t_game;
 
 
+// exit functions to free all memory properly
+void	call_exit(t_game *game);
+int		ft_exit_game(t_game *game);
+int		ft_exit_player(t_player *player);
 
+// initialization functions
+t_player *ft_initialize_player();
+t_game	*ft_initialize_game();
+
+// hook function
+void ft_hook(void* param);
 
 
 #endif
