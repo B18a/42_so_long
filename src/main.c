@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 20:00:23 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 20:06:49 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,17 @@ int	main(void)
 	game->player->texture = mlx_load_png("./assets/Link.png");
 	game->player->image = mlx_texture_to_image(game->game_window, game->player->texture);
 
-
 	if(!game->game_window || !game->player->texture || !game->player->image)
 		return (ft_exit_game(game), 0);
 
-
-
 	// ft_show_address(game);
-
 
 	if(game)
 	{
-		mlx_image_to_window(game->game_window, game->player->image, game->player->pos->x, game->player->pos->y);
-		mlx_loop_hook(game->game_window, ft_hook, game);
+		if(mlx_image_to_window(game->game_window, game->player->image, game->player->pos->x, game->player->pos->y) < 0)
+			return (ft_exit_game(game), 0);
 
+		mlx_loop_hook(game->game_window, ft_hook, game);
 
 		mlx_key_hook(game->game_window, &my_keyhook, game);
 
@@ -85,7 +82,6 @@ int	main(void)
 	}
 
 	call_exit(game);
-
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 20:01:31 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 20:09:59 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,18 @@ void my_keyhook(mlx_key_data_t keydata, void *param)
 	game = param;
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
 	{
-		game->player->pos->y -= 5;
-		mlx_image_to_window(game->game_window, game->player->image, game->player->pos->x, game->player->pos->y);
+		game->player->image->instances[0].y -= 5;
 	}
 	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
 	{
-		game->player->pos->y += 5;
-		mlx_image_to_window(game->game_window, game->player->image, game->player->pos->x, game->player->pos->y);
+		game->player->image->instances[0].y += 5;
 	}
 	if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
 	{
-		game->player->pos->x -= 5;
-		mlx_image_to_window(game->game_window, game->player->image, game->player->pos->x, game->player->pos->y);
+		game->player->image->instances[0].x -= 5;
 	}
 	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
 	{
-		game->player->pos->x += 5;
-		mlx_image_to_window(game->game_window, game->player->image, game->player->pos->x, game->player->pos->y);
+		game->player->image->instances[0].x += 5;
 	}
 }
