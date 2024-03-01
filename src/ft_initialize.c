@@ -6,11 +6,11 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 14:49:26 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 19:33:20 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/header.h"
+#include "../include/so_long.h"
 
 
 t_pos	*ft_initialize_pos(void)

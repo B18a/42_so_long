@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 15:16:17 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 20:00:18 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_game
 // exit functions to free all memory properly
 void		call_exit(t_game *game);
 int			ft_exit_game(t_game *game);
-int	ft_exit_player(t_player *player);
+int			ft_exit_player(t_game *game, t_player *player);
 
 // initialization functions
 t_player	*ft_initialize_player(void);
@@ -57,5 +57,8 @@ t_pos		*ft_initialize_pos(void);
 
 // hook function
 void		ft_hook(void *param);
+void my_keyhook(mlx_key_data_t keydata, void *param);
+
+
 
 #endif
