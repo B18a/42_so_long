@@ -3,6 +3,7 @@
 		"header.h": "c",
 		"time.h": "c",
 		"so_long.h": "c",
-		"mlx42.h": "c"
+		"mlx42.h": "c",
+		"unistd.h": "c"
 	}
 }

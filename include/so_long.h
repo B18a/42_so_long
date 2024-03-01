@@ -6,12 +6,12 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 23:37:52 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 23:40:36 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -62,7 +62,6 @@ void		call_exit(t_game *game);
 int			ft_exit_game(t_game *game);
 int			ft_exit_asset(t_game *game, t_player *player);
 void		ft_exit_assets(t_game *game);
-
 
 // initialization functions
 t_player	*ft_initialize_player(void);
