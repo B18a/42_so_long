@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 22:26:33 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 22:33:50 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,29 @@
 t_assets **ft_initialize_assets(int amount)
 {
 	int i;
+	int j;
 	t_assets **assets;
 
 	i = 0;
-	assets = NULL;
-	while(i < amount)
+	j = 0;
+	assets = malloc(sizeof(t_assets*) * amount);
+	if(assets)
 	{
-		
-		i++;
+		while(i < amount)
+		{
+			assets[i] = malloc(sizeof(t_assets));
+			if(!assets[i])
+			{
+				while(j < i)
+				{
+					free(assets[j]);
+					j++;
+				}
+				free(assets);
+				return (NULL);
+			}
+			i++;
+		}
 	}
 
 	return(assets);
@@ -64,6 +79,9 @@ t_game	*ft_initialize_game(void)
 	game = malloc(sizeof(t_game));
 	if (game)
 		{
+			game->amount_assets = 5;
+			game->assets = NULL;
+			game->assets = ft_initialize_assets(game->amount_assets);
 			game->player = NULL;
 			game->game_window = NULL;
 			game->game_image = NULL;

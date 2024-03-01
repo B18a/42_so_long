@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 22:26:05 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 22:36:55 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_game
 {
 	mlx_t		*game_window;
 	mlx_image_t	*game_image;
+	int			amount_assets;
 	t_assets	**assets;
 	t_player	*player;
 	t_player	*enemy;
@@ -60,6 +61,8 @@ typedef struct s_game
 void		call_exit(t_game *game);
 int			ft_exit_game(t_game *game);
 int			ft_exit_asset(t_game *game, t_player *player);
+void		ft_exit_assets(t_game *game);
+
 
 // initialization functions
 t_player	*ft_initialize_player(void);
