@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 10:18:36 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 14:33:54 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int			ft_exit_player(t_player *player);
 // initialization functions
 t_player	*ft_initialize_player(void);
 t_game		*ft_initialize_game(void);
+t_pos		*ft_initialize_pos(void);
 
 // hook function
 void		ft_hook(void *param);
