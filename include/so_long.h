@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 21:53:49 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 22:22:36 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,18 @@ typedef struct s_player
 	t_pos			*pos;
 }				t_player;
 
+// typedef struct s_assets
+// {
+// 	mlx_texture_t	*texture;
+// 	mlx_image_t		*image;
+// 	t_pos			*pos;
+// }				t_assets;
+
 typedef struct s_game
 {
 	mlx_t		*game_window;
 	mlx_image_t	*game_image;
-	t_player	**assets;
+	// t_assets	**assets;
 	t_player	*player;
 	t_player	*enemy;
 }				t_game;
