@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 22:22:36 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 22:26:05 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,18 @@ typedef struct s_player
 	t_pos			*pos;
 }				t_player;
 
-// typedef struct s_assets
-// {
-// 	mlx_texture_t	*texture;
-// 	mlx_image_t		*image;
-// 	t_pos			*pos;
-// }				t_assets;
+typedef struct s_assets
+{
+	mlx_texture_t	*texture;
+	mlx_image_t		*image;
+	t_pos			*pos;
+}				t_assets;
 
 typedef struct s_game
 {
 	mlx_t		*game_window;
 	mlx_image_t	*game_image;
-	// t_assets	**assets;
+	t_assets	**assets;
 	t_player	*player;
 	t_player	*enemy;
 }				t_game;
@@ -66,6 +66,7 @@ t_player	*ft_initialize_player(void);
 t_game		*ft_initialize_game(void);
 t_pos		*ft_initialize_pos(void);
 int			ft_check_initialize(t_game *game);
+t_assets	**ft_initialize_assets(int amount);
 
 // hook function
 void my_keyhook(mlx_key_data_t keydata, void *param);

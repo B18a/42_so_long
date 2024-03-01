@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 22:22:53 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 22:25:05 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int	main(void)
 
 	game = NULL;
 	game = ft_initialize_game();
-	// if (!ft_check_initialize(game))
-	// 	return (call_exit(game), 0);
+	if (!ft_check_initialize(game))
+		return (call_exit(game), 0);
 
-
+	game->assets = ft_initialize_assets(5);
 
 	game->player->pos->x = 0;
 	game->player->pos->y = 0;

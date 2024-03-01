@@ -6,11 +6,29 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 22:22:48 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 22:26:33 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+
+t_assets **ft_initialize_assets(int amount)
+{
+	int i;
+	t_assets **assets;
+
+	i = 0;
+	assets = NULL;
+	while(i < amount)
+	{
+		
+		i++;
+	}
+
+	return(assets);
+}
+
 
 t_pos	*ft_initialize_pos(void)
 {
@@ -56,9 +74,9 @@ t_game	*ft_initialize_game(void)
 	return (game);
 }
 
-// int	ft_check_initialize(t_game *game)
-// {
-// 	if (!game || !game->player || !game->player->pos || !game->enemy || !game->enemy->pos)
-// 		return(0);
-// 	return(1);
-// }
+int	ft_check_initialize(t_game *game)
+{
+	if (!game || !game->player || !game->player->pos || !game->enemy || !game->enemy->pos)
+		return(0);
+	return(1);
+}
