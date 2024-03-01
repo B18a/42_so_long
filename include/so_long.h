@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 21:31:46 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 21:53:49 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,15 @@
 # define WIDTH	500
 # define HEIGHT	500
 
+# define NAME_WINDOW	"TEST"
+# define PATH_PLAYER	"./assets/Link.png"
+# define PATH_ENEMY		"./assets/patrol.png"
+
 typedef struct s_pos
 {
 	int			x;
 	int			y;
 }				t_pos;
-
 
 typedef struct s_player
 {
@@ -41,6 +44,7 @@ typedef struct s_game
 {
 	mlx_t		*game_window;
 	mlx_image_t	*game_image;
+	t_player	**assets;
 	t_player	*player;
 	t_player	*enemy;
 }				t_game;
@@ -48,7 +52,7 @@ typedef struct s_game
 // exit functions to free all memory properly
 void		call_exit(t_game *game);
 int			ft_exit_game(t_game *game);
-int			ft_exit_player(t_game *game, t_player *player);
+int			ft_exit_asset(t_game *game, t_player *player);
 
 // initialization functions
 t_player	*ft_initialize_player(void);
@@ -58,7 +62,5 @@ int			ft_check_initialize(t_game *game);
 
 // hook function
 void my_keyhook(mlx_key_data_t keydata, void *param);
-
-
 
 #endif

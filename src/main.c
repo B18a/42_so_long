@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 21:30:55 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 21:52:51 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ int	main(void)
 	game = NULL;
 	game = ft_initialize_game();
 	if (!ft_check_initialize(game))
-		return (ft_exit_game(game), 0);
+		return (call_exit(game), 0);
+
+
 
 	game->player->pos->x = 0;
 	game->player->pos->y = 0;
@@ -48,25 +50,27 @@ int	main(void)
 	game->enemy->pos->x = 250;
 	game->enemy->pos->y = 250;
 
-	game->game_window = mlx_init(WIDTH, HEIGHT, "test", false);
-	game->player->texture = mlx_load_png("./assets/Link.png");
+	game->game_window = mlx_init(WIDTH, HEIGHT, NAME_WINDOW, false);
+	game->player->texture = mlx_load_png(PATH_PLAYER);
+	game->enemy->texture = mlx_load_png(PATH_ENEMY);
+
+	
 	game->player->image = mlx_texture_to_image(game->game_window, game->player->texture);
-	game->enemy->texture = mlx_load_png("./assets/patrol.png");
 	game->enemy->image = mlx_texture_to_image(game->game_window, game->enemy->texture);
 
 
 	if(!game->game_window || !game->player->texture || !game->player->image)
-		return (ft_exit_game(game), 0);
+		return (call_exit(game), 0);
 
 	// ft_show_address(game);
 
 	if(game)
 	{
 		if(mlx_image_to_window(game->game_window, game->player->image, game->player->pos->x, game->player->pos->y) < 0)
-			return (ft_exit_game(game), 0);
-		if(mlx_image_to_window(game->game_window, game->enemy->image, game->enemy->pos->x, game->enemy->pos->y) < 0)
-			return (ft_exit_game(game), 0);
+			return (call_exit(game), 0);
 
+		if(mlx_image_to_window(game->game_window, game->enemy->image, game->enemy->pos->x, game->enemy->pos->y) < 0)
+			return (call_exit(game), 0);
 
 		mlx_key_hook(game->game_window, &my_keyhook, game);
 		mlx_loop(game->game_window);
