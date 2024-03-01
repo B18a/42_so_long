@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 13:10:23 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/01 14:27:44 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ t_game	*ft_initialize_game(void)
 	// if (!game->game_window)
 	// 	return (ft_exit_game(game), NULL);
 	game->game_window = mlx_init(WIDTH, HEIGHT, "test", false);
-	if (!game->game_window)
-		return (call_exit(game), NULL);
+	// if (!game->game_window)
+	// 	return (call_exit(game), NULL);
 	// game->game_image = malloc(sizeof(mlx_image_t));
 	// if (!game->game_image)
 	// 	return (ft_exit_game(game), NULL);
