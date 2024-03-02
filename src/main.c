@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/02 11:38:19 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/02 11:56:11 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void check_leaks(void)
 {
-	system("leaks window");
+	system("leaks so_long");
 }
 
 void	ft_show_address(t_game *game)

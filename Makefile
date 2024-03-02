@@ -6,11 +6,11 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/02 10:40:11 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/02 11:55:23 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= window
+NAME		= so_long
 CC			= cc
 REMOVE		= rm -rf
 OBJ_DIR		= ./obj
