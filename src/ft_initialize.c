@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/01 23:31:29 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/02 10:44:46 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,24 @@ t_assets **ft_initialize_assets(void)
 
 	i = 0;
 	j = 0;
-	assets = malloc(sizeof(t_assets*) * AMOUNT_ASSETS);
+	assets = ft_calloc(sizeof(t_assets*) , AMOUNT_ASSETS);
+	// assets = malloc(sizeof(t_assets*) * AMOUNT_ASSETS);
 	if(assets)
 	{
 		while(i < AMOUNT_ASSETS)
 		{
-			assets[i] = malloc(sizeof(t_assets));
+			// assets[i] = malloc(sizeof(t_assets));
+			assets[i] = ft_calloc(sizeof(t_assets), 1);
 			if(!assets[i])
 			{
 				while(j < i)
 				{
-					free(assets[j]);
+					if(assets[j])
+						free(assets[j]);
 					j++;
 				}
-				free(assets);
+				if(assets)
+					free(assets);
 				return (NULL);
 			}
 			i++;
@@ -48,7 +52,8 @@ t_pos	*ft_initialize_pos(void)
 	t_pos	*pos;
 
 	pos = NULL;
-	pos = malloc(sizeof(t_pos));
+	pos = ft_calloc(sizeof(t_pos), 1);
+	// pos = malloc(sizeof(t_pos));
 	return(pos);
 }
 
@@ -58,7 +63,8 @@ t_player	*ft_initialize_player(void)
 	t_player	*player;
 
 	player = NULL;
-	player = malloc(sizeof(t_player));
+	player = ft_calloc(sizeof(t_player), 1);
+	// player = malloc(sizeof(t_player));
 	if(player)
 	{
 		player->texture = NULL;
@@ -76,7 +82,8 @@ t_game	*ft_initialize_game(void)
 
 	i = 0;
 	game = NULL;
-	game = malloc(sizeof(t_game));
+	game = ft_calloc(sizeof(t_game), 1);
+	// game = malloc(sizeof(t_game));
 	if (game)
 		{
 			game->assets = NULL;
