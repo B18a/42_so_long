@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/02 10:58:32 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/02 11:18:48 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,6 @@ typedef struct s_pos
 	int			y;
 }				t_pos;
 
-typedef struct s_player
-{
-	mlx_texture_t	*texture;
-	mlx_image_t		*image;
-	t_pos			*pos;
-}				t_player;
-
 typedef struct s_assets
 {
 	mlx_texture_t	*texture;
@@ -54,27 +47,19 @@ typedef struct s_game
 	mlx_t		*game_window;
 	mlx_image_t	*game_image;
 	t_assets	**assets;
-	t_player	*player;
-	t_player	*enemy;
 }				t_game;
 
-
 // libft
-
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
 
-
 // exit functions to free all memory properly
 void		call_exit(t_game *game);
 int			ft_exit_game(t_game *game);
-// int			ft_exit_asset(t_game *game, t_player *player);
-int			ft_exit_asset(t_player *player);
 void		ft_exit_assets(t_game *game);
 
 // initialization functions
-t_player	*ft_initialize_player(void);
 t_game		*ft_initialize_game(void);
 t_pos		*ft_initialize_pos(void);
 int			ft_check_initialize(t_game *game);

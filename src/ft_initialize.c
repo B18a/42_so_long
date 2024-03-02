@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/02 10:44:46 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/02 11:31:45 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ t_assets **ft_initialize_assets(void)
 	i = 0;
 	j = 0;
 	assets = ft_calloc(sizeof(t_assets*) , AMOUNT_ASSETS);
-	// assets = malloc(sizeof(t_assets*) * AMOUNT_ASSETS);
 	if(assets)
 	{
 		while(i < AMOUNT_ASSETS)
 		{
-			// assets[i] = malloc(sizeof(t_assets));
 			assets[i] = ft_calloc(sizeof(t_assets), 1);
 			if(!assets[i])
 			{
@@ -53,26 +51,7 @@ t_pos	*ft_initialize_pos(void)
 
 	pos = NULL;
 	pos = ft_calloc(sizeof(t_pos), 1);
-	// pos = malloc(sizeof(t_pos));
 	return(pos);
-}
-
-
-t_player	*ft_initialize_player(void)
-{
-	t_player	*player;
-
-	player = NULL;
-	player = ft_calloc(sizeof(t_player), 1);
-	// player = malloc(sizeof(t_player));
-	if(player)
-	{
-		player->texture = NULL;
-		player->image = NULL;
-		player->pos = NULL;
-		player->pos = ft_initialize_pos();
-	}
-	return (player);
 }
 
 t_game	*ft_initialize_game(void)
@@ -83,7 +62,6 @@ t_game	*ft_initialize_game(void)
 	i = 0;
 	game = NULL;
 	game = ft_calloc(sizeof(t_game), 1);
-	// game = malloc(sizeof(t_game));
 	if (game)
 		{
 			game->assets = NULL;
@@ -97,21 +75,16 @@ t_game	*ft_initialize_game(void)
 					i++;
 				}
 			}
-
 			game->game_window = NULL;
 			game->game_image = NULL;
-
-			game->player = NULL;
-			game->player = ft_initialize_player();
-			game->enemy = NULL;
-			game->enemy = ft_initialize_player();
 		}
 	return (game);
 }
 
 int	ft_check_initialize(t_game *game)
 {
-	if (!game || !game->player || !game->player->pos || !game->enemy || !game->enemy->pos)
+	if (!game)
 		return(0);
+
 	return(1);
 }
