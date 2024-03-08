@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/08 12:29:56 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/08 21:17:47 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ mlx_clone :
 clean :
 	$(REMOVE) $(OBJECTS)
 	$(REMOVE) $(OBJ_DIR)
-	$(REMOVE) $(MLX42_DIR)
+#	$(REMOVE) $(MLX42_DIR)
 
 fclean : clean
 	$(REMOVE) $(NAME)

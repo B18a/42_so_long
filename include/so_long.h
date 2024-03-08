@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 21:08:12 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 21:19:15 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct s_game
 	mlx_image_t	*game_image;
 	t_player	*player;
 	t_asset		**enemy;
-	t_asset		*item;
+	t_asset		**item;
 }				t_game;
 
 // libft
@@ -97,12 +97,10 @@ void		ft_exit_enemy(t_game *game);
 t_game		*ft_initialize_game(void);
 t_pos		*ft_initialize_pos(void);
 int			ft_check_initialize(t_game *game);
-t_asset		**ft_initialize_enemy(void);
+t_asset **ft_initialize_asset(int amount);
 t_player	*ft_initialize_player(void);
 void		start_game(t_game *game);
-void	update_display_moves(t_game *game);
-
-
+void		update_display_moves(t_game *game);
 
 // load textures
 int	ft_load_textures_enemy(t_game *game, const char* paths_asset[]);

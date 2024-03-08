@@ -6,13 +6,13 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 21:01:12 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 21:19:50 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_asset **ft_initialize_enemy(void)
+t_asset **ft_initialize_asset(int amount)
 {
 	int i;
 	int j;
@@ -20,10 +20,10 @@ t_asset **ft_initialize_enemy(void)
 
 	i = 0;
 	j = 0;
-	asset = ft_calloc(sizeof(t_asset*) , AMOUNT_ENEMY);
+	asset = ft_calloc(sizeof(t_asset*) , amount);
 	if(asset)
 	{
-		while(i < AMOUNT_ENEMY)
+		while(i < amount)
 		{
 			asset[i] = ft_calloc(sizeof(t_asset), 1);
 			if(!asset[i])
@@ -49,6 +49,12 @@ t_player *ft_initialize_player(void)
 	t_player *player;
 
 	player = ft_calloc(sizeof(t_player), 1);
+	if(player)
+			{
+				player->pos = NULL;
+				player->pos = ft_initialize_pos();
+				player->moves = 0;
+			}
 	return (player);
 }
 
@@ -74,21 +80,28 @@ t_game	*ft_initialize_game(void)
 /**************************************************************/
 			game->player = NULL;
 			game->player = ft_initialize_player();
-			if(game->player)
-			{
-				game->player->pos = NULL;
-				game->player->pos = ft_initialize_pos();
-				game->player->moves = 0;
-			}
+
 /**************************************************************/
 			game->enemy = NULL;
-			game->enemy = ft_initialize_enemy();
+			game->enemy = ft_initialize_asset(AMOUNT_ENEMY);
 			if(game->enemy)
 			{
 				while(i < AMOUNT_ENEMY)
 				{
 					game->enemy[i]->pos = NULL;
 					game->enemy[i]->pos = ft_initialize_pos();
+					i++;
+				}
+			}
+/**************************************************************/
+			game->item = NULL;
+			game->item = ft_initialize_asset(AMOUNT_ITEM);
+			if(game->item)
+			{
+				while(i < AMOUNT_ITEM)
+				{
+					game->item[i]->pos = NULL;
+					game->item[i]->pos = ft_initialize_pos();
 					i++;
 				}
 			}
