@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 12:29:28 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 15:42:45 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 # define WIDTH	500
 # define HEIGHT	500
+
+# define PLAYER_STEP 10
 
 # define NAME_WINDOW	"TEST"
 # define PATH_PLAYER	"./assets/Link.png"
@@ -44,6 +46,8 @@ typedef struct s_assets
 {
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
+	mlx_image_t		*coordinates_x;
+	mlx_image_t		*coordinates_y;
 	t_pos			*pos;
 }				t_assets;
 
@@ -51,7 +55,10 @@ typedef struct s_player
 {
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
-	mlx_image_t		*coordinates;
+	mlx_image_t		*coordinates_x;
+	mlx_image_t		*coordinates_y;
+	mlx_image_t		*width;
+	mlx_image_t		*height;
 	t_pos			*pos;
 	// mlx_texture_t	*texture_up;
 	// mlx_image_t		*image_up;

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 22:43:28 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 12:12:07 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 13:36:29 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_load_textures_player(t_game *game)
 		// game->player->texture_down = mlx_load_png(PATH_PLAYER_DOWN);
 		// game->player->image_up = mlx_texture_to_image(game->game_window, game->player->texture_up);
 		// game->player->image_down = mlx_texture_to_image(game->game_window, game->player->texture_down);
-		game->player->pos->x = 0;
+		game->player->pos->x = 50;
 		game->player->pos->y = 0;
 		if(!game->player->image)
 			return (call_exit(game), 0);
