@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
+/*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 16:46:09 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 19:30:43 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,25 +99,25 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 		mlx_close_window(game->game_window);
 	}
 	// if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS) // One Step per Press
-	if (keydata.key == MLX_KEY_UP)
+	if (keydata.key == MLX_KEY_W)
 	{
 		if (game->player->image->instances[0].y - PLAYER_STEP >= 0)
 			game->player->image->instances[0].y -= PLAYER_STEP;
 	}
 	// if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
-	if (keydata.key == MLX_KEY_DOWN)
+	if (keydata.key == MLX_KEY_S)
 	{
 		if (game->player->image->instances[0].y + PLAYER_STEP <= (int)(HEIGHT - game->player->image->height))
 			game->player->image->instances[0].y += PLAYER_STEP;
 	}
 	// if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
-	if (keydata.key == MLX_KEY_LEFT)
+	if (keydata.key == MLX_KEY_A)
 	{
 		if( game->player->image->instances[0].x - PLAYER_STEP >= 0)
 			game->player->image->instances[0].x -= PLAYER_STEP;
 	}
 	// if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
-	if (keydata.key == MLX_KEY_RIGHT)
+	if (keydata.key == MLX_KEY_D)
 	{
 		if (game->player->image->instances[0].x + PLAYER_STEP <= (int)(WIDTH - game->player->image->width))
 			game->player->image->instances[0].x += PLAYER_STEP;
