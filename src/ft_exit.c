@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/02 11:17:31 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 11:27:51 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ int	ft_exit_pos(t_pos *pos)
 
 
 
+void ft_exit_player(t_game *game)
+{
+	if (game->player->pos)
+		ft_exit_pos(game->player->pos);
+	if (game->player->texture)
+		mlx_delete_texture(game->player->texture);
+	free(game->player);
+}
 void ft_exit_assets(t_game *game)
 {
 	int i;
@@ -56,6 +64,7 @@ int	ft_exit_game(t_game *game)
 
 void	call_exit(t_game *game)
 {
+	ft_exit_player(game);
 	ft_exit_assets(game);
 	ft_exit_game(game);
 }

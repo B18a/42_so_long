@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/02 11:31:45 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 11:20:38 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ t_assets **ft_initialize_assets(void)
 	return(assets);
 }
 
+t_player *ft_initialize_player(void)
+{
+	t_player *player;
+
+	player = ft_calloc(sizeof(t_player), 1);
+	return (player);
+}
 
 t_pos	*ft_initialize_pos(void)
 {
@@ -64,6 +71,15 @@ t_game	*ft_initialize_game(void)
 	game = ft_calloc(sizeof(t_game), 1);
 	if (game)
 		{
+/**************************************************************/
+			game->player = NULL;
+			game->player = ft_initialize_player();
+			if(game->player)
+			{
+				game->player->pos = NULL;
+				game->player->pos = ft_initialize_pos();
+			}
+/**************************************************************/
 			game->assets = NULL;
 			game->assets = ft_initialize_assets();
 			if(game->assets)
@@ -75,6 +91,7 @@ t_game	*ft_initialize_game(void)
 					i++;
 				}
 			}
+/**************************************************************/
 			game->game_window = NULL;
 			game->game_image = NULL;
 		}

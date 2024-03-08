@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/02 11:18:48 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 11:37:39 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@
 
 # define NAME_WINDOW	"TEST"
 # define PATH_PLAYER	"./assets/Link.png"
-# define PATH_ENEMY		"./assets/patrol.png"
-# define PATHS			PATH_PLAYER, PATH_ENEMY
-# define AMOUNT_ASSETS	2
+# define PATH_ENEMY1	"./assets/patrol.png"
+# define PATH_ENEMY2	"./assets/patrol.png"
+# define PATH_ENEMY3	"./assets/patrol.png"
+# define PATH_ENEMY4	"./assets/patrol.png"
+# define PATHS			PATH_ENEMY1, PATH_ENEMY2, PATH_ENEMY3, PATH_ENEMY4
+# define AMOUNT_ASSETS	4
 
 # include "../MLX42/include/MLX42/MLX42.h"
 
@@ -42,10 +45,18 @@ typedef struct s_assets
 	t_pos			*pos;
 }				t_assets;
 
+typedef struct s_player
+{
+	mlx_texture_t	*texture;
+	mlx_image_t		*image;
+	t_pos			*pos;
+}				t_player;
+
 typedef struct s_game
 {
 	mlx_t		*game_window;
 	mlx_image_t	*game_image;
+	t_player	*player;
 	t_assets	**assets;
 }				t_game;
 
