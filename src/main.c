@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 20:18:20 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 20:47:39 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	ft_show_address(t_game *game)
 	printf("game		%p\n",(void*)&game);
 	printf("game.image	%p\n",(void*)&game->game_image);
 	printf("game.window	%p\n",(void*)&game->game_window);
-	printf("game->player->coordinates_x		%p\n",(void*)&game->player->coordinates_x);
-	printf("game->player->coordinates_y		%p\n",(void*)&game->player->coordinates_y);
 }
 
 void start_game(t_game *game)
@@ -43,7 +41,7 @@ int	main(void)
 	atexit(check_leaks);
 
 	t_game	*game;
-	const char *paths_enemy[] = {PATHS};
+	const char *paths_asset[] = {PATHS};
 
 	game = NULL;
 	game = ft_initialize_game();
@@ -56,7 +54,7 @@ int	main(void)
 	// ft_show_address(game);
 
 	ft_load_textures_player(game);
-	ft_load_textures_enemy(game, paths_enemy);
+	ft_load_textures_asset(game, paths_asset);
 
 
 	// mlx_image_t *pos_player;

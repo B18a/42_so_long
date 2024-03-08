@@ -6,42 +6,42 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 20:21:33 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 20:49:06 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_enemy **ft_initialize_enemy(void)
+t_asset **ft_initialize_asset(void)
 {
 	int i;
 	int j;
-	t_enemy **enemy;
+	t_asset **asset;
 
 	i = 0;
 	j = 0;
-	enemy = ft_calloc(sizeof(t_enemy*) , AMOUNT_ENEMY);
-	if(enemy)
+	asset = ft_calloc(sizeof(t_asset*) , AMOUNT_ENEMY);
+	if(asset)
 	{
 		while(i < AMOUNT_ENEMY)
 		{
-			enemy[i] = ft_calloc(sizeof(t_enemy), 1);
-			if(!enemy[i])
+			asset[i] = ft_calloc(sizeof(t_asset), 1);
+			if(!asset[i])
 			{
 				while(j < i)
 				{
-					if(enemy[j])
-						free(enemy[j]);
+					if(asset[j])
+						free(asset[j]);
 					j++;
 				}
-				if(enemy)
-					free(enemy);
+				if(asset)
+					free(asset);
 				return (NULL);
 			}
 			i++;
 		}
 	}
-	return(enemy);
+	return(asset);
 }
 
 t_player *ft_initialize_player(void)
@@ -81,14 +81,14 @@ t_game	*ft_initialize_game(void)
 				game->player->moves = 0;
 			}
 /**************************************************************/
-			game->enemy = NULL;
-			game->enemy = ft_initialize_enemy();
-			if(game->enemy)
+			game->asset = NULL;
+			game->asset = ft_initialize_asset();
+			if(game->asset)
 			{
 				while(i < AMOUNT_ENEMY)
 				{
-					game->enemy[i]->pos = NULL;
-					game->enemy[i]->pos = ft_initialize_pos();
+					game->asset[i]->pos = NULL;
+					game->asset[i]->pos = ft_initialize_pos();
 					i++;
 				}
 			}

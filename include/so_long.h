@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 20:39:16 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 20:49:17 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,18 @@ typedef struct s_pos
 	int			y;
 }				t_pos;
 
-typedef struct s_enemy
+typedef struct s_asset
 {
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
-	mlx_image_t		*coordinates_x;
-	mlx_image_t		*coordinates_y;
 	t_pos			*pos;
-}				t_enemy;
+}				t_asset;
 
 typedef struct s_player
 {
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
-	mlx_image_t		*coordinates_x;
-	mlx_image_t		*coordinates_y;
+
 	mlx_image_t		*width;
 	mlx_image_t		*height;
 	t_pos			*pos;
@@ -74,7 +71,7 @@ typedef struct s_game
 	mlx_t		*game_window;
 	mlx_image_t	*game_image;
 	t_player	*player;
-	t_enemy		**enemy;
+	t_asset		**asset;
 }				t_game;
 
 // libft
@@ -94,13 +91,13 @@ void		ft_exit_enemy(t_game *game);
 t_game		*ft_initialize_game(void);
 t_pos		*ft_initialize_pos(void);
 int			ft_check_initialize(t_game *game);
-t_enemy		**ft_initialize_enemy(void);
+t_asset		**ft_initialize_asset(void);
 t_player	*ft_initialize_player(void);
 void start_game(t_game *game);
 
 
 // load textures
-int	ft_load_textures_enemy(t_game *game, const char* paths_enemy[]);
+int	ft_load_textures_asset(t_game *game, const char* paths_asset[]);
 int	ft_load_textures_player(t_game *game);
 
 // hook function
