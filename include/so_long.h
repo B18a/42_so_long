@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 21:03:52 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 21:08:12 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,16 @@
 # define PATH_PLAYER_DOWN	"./assets/Link_Up.png"
 # define PATH_ENEMY1	"./assets/enemy.png"
 # define PATH_ENEMY2	"./assets/patrol.png"
-# define PATH_ENEMY3	"./assets/enemy.png"
-# define PATH_ENEMY4	"./assets/patrol.png"
 # define PATH_FLOOR		"./assets/Grass.png"
-# define PATHS			PATH_ENEMY1, PATH_ENEMY2, PATH_ENEMY3, PATH_ENEMY4
-# define AMOUNT_ENEMY	4
+# define PATHS_ENEMY	PATH_ENEMY1, PATH_ENEMY2
+# define PATH_ITEM1		"./assets/bottle_navy.png"
+# define PATH_ITEM2		"./assets/key.png"
+# define PATH_ITEM3		"./assets/compass.png"
+# define PATH_ITEM4		"./assets/map.png"
+# define PATH_ITEM5		"./assets/heart.png"
+# define PATHS_ITEM		PATH_ITEM1, PATH_ITEM2, PATH_ITEM3, PATH_ITEM4, PATH_ITEM5
+# define AMOUNT_ENEMY	2
+# define AMOUNT_ITEM	5
 
 # include "../MLX42/include/MLX42/MLX42.h"
 
@@ -72,6 +77,7 @@ typedef struct s_game
 	mlx_image_t	*game_image;
 	t_player	*player;
 	t_asset		**enemy;
+	t_asset		*item;
 }				t_game;
 
 // libft

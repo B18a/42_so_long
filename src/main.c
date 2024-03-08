@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 21:03:41 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 21:06:05 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(void)
 	atexit(check_leaks);
 
 	t_game	*game;
-	const char *paths_asset[] = {PATHS};
+	const char *paths_enem[] = {PATHS_ENEMY};
 
 	game = NULL;
 	game = ft_initialize_game();
@@ -55,7 +55,7 @@ int	main(void)
 	// ft_show_address(game);
 
 	ft_load_textures_player(game);
-	ft_load_textures_enemy(game, paths_asset);
+	ft_load_textures_enemy(game, paths_enem);
 
 
 	// mlx_image_t *pos_player;
