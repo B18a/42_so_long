@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 14:06:52 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 16:20:11 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,8 @@ void	ft_show_address(t_game *game)
 	printf("game		%p\n",(void*)&game);
 	printf("game.image	%p\n",(void*)&game->game_image);
 	printf("game.window	%p\n",(void*)&game->game_window);
-	// printf("asset[0].texture	%p\n",(void*)&game->assets[0]->texture);
-	// printf("asset[0].image		%p\n",(void*)&game->assets[0]->image);
-	// printf("asset[0].pos		%p\n",(void*)&game->assets[0]->pos);
-	// printf("asset[1].texture	%p\n",(void*)&game->assets[1]->texture);
-	// printf("asset[1].image	%p\n",(void*)&game->assets[1]->image);
-	// printf("asset[1].pos		%p\n",(void*)&game->assets[1]->pos);
-	// printf("asset				%p\n",(void*)&game->assets);
 	printf("game->player->coordinates_x		%p\n",(void*)&game->player->coordinates_x);
 	printf("game->player->coordinates_y		%p\n",(void*)&game->player->coordinates_y);
-
 }
 
 
@@ -41,7 +33,7 @@ int	main(void)
 	atexit(check_leaks);
 
 	t_game	*game;
-	const char *paths_assets[] = {PATHS};
+	const char *paths_enemy[] = {PATHS};
 
 	game = NULL;
 	game = ft_initialize_game();
@@ -54,7 +46,7 @@ int	main(void)
 	// ft_show_address(game);
 
 	ft_load_textures_player(game);
-	ft_load_textures_assets(game, paths_assets);
+	ft_load_textures_enemy(game, paths_enemy);
 
 
 	// mlx_image_t *pos_player;

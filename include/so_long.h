@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 15:42:45 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 16:19:38 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define PATH_ENEMY3	"./assets/patrol.png"
 # define PATH_ENEMY4	"./assets/patrol.png"
 # define PATHS			PATH_ENEMY1, PATH_ENEMY2, PATH_ENEMY3, PATH_ENEMY4
-# define AMOUNT_ASSETS	4
+# define AMOUNT_ENEMY	4
 
 # include "../MLX42/include/MLX42/MLX42.h"
 
@@ -42,14 +42,14 @@ typedef struct s_pos
 	int			y;
 }				t_pos;
 
-typedef struct s_assets
+typedef struct s_enemy
 {
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
 	mlx_image_t		*coordinates_x;
 	mlx_image_t		*coordinates_y;
 	t_pos			*pos;
-}				t_assets;
+}				t_enemy;
 
 typedef struct s_player
 {
@@ -71,7 +71,7 @@ typedef struct s_game
 	mlx_t		*game_window;
 	mlx_image_t	*game_image;
 	t_player	*player;
-	t_assets	**assets;
+	t_enemy		**enemy;
 }				t_game;
 
 // libft
@@ -82,22 +82,21 @@ int		ft_atoi(const char *str);
 int		ft_isdigit(int c);
 char	*ft_itoa(int n);
 
-
 // exit functions to free all memory properly
 void		call_exit(t_game *game);
 int			ft_exit_game(t_game *game);
-void		ft_exit_assets(t_game *game);
+void		ft_exit_enemy(t_game *game);
 
 // initialization functions
 t_game		*ft_initialize_game(void);
 t_pos		*ft_initialize_pos(void);
 int			ft_check_initialize(t_game *game);
-t_assets	**ft_initialize_assets(void);
-t_player *ft_initialize_player(void);
+t_enemy		**ft_initialize_enemy(void);
+t_player	*ft_initialize_player(void);
 
 
 // load textures
-int	ft_load_textures_assets(t_game *game, const char* paths_assets[]);
+int	ft_load_textures_enemy(t_game *game, const char* paths_enemy[]);
 int	ft_load_textures_player(t_game *game);
 
 // hook function

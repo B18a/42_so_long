@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 14:07:23 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 16:17:44 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,23 @@ void ft_exit_player(t_game *game)
 	free(game->player);
 
 }
-void ft_exit_assets(t_game *game)
+void ft_exit_enemy(t_game *game)
 {
 	int i;
 
 	i = 0;
-	while(i < AMOUNT_ASSETS)
+	while(i < AMOUNT_ENEMY)
 	{
 
-			if (game->assets[i]->pos)
-				ft_exit_pos(game->assets[i]->pos);
-			if (game->assets[i]->texture)
-				mlx_delete_texture(game->assets[i]->texture);
+			if (game->enemy[i]->pos)
+				ft_exit_pos(game->enemy[i]->pos);
+			if (game->enemy[i]->texture)
+				mlx_delete_texture(game->enemy[i]->texture);
 
-			free(game->assets[i]);
+			free(game->enemy[i]);
 		i++;
 	}
-	free(game->assets);
+	free(game->enemy);
 }
 
 
@@ -60,6 +60,6 @@ int	ft_exit_game(t_game *game)
 void	call_exit(t_game *game)
 {
 	ft_exit_player(game);
-	ft_exit_assets(game);
+	ft_exit_enemy(game);
 	ft_exit_game(game);
 }

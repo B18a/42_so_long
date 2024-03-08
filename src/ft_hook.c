@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 15:42:58 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 16:16:39 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,15 @@ void check_collision(t_game *game)
 	amaxX = game->player->image->instances[0].x + game->player->image->width;
 	aminY = game->player->image->instances[0].y;
 	amaxY = game->player->image->instances[0].y + game->player->image->height;
-
-	while(i < AMOUNT_ASSETS)
+	while(i < AMOUNT_ENEMY)
 	{
-		bminX = game->assets[i]->image->instances[0].x;
-		bmaxX = game->assets[i]->image->instances[0].x + game->assets[0]->image->width;
-		bminY = game->assets[i]->image->instances[0].y;
-		bmaxY = game->assets[i]->image->instances[0].y + game->assets[0]->image->height;
-
+		bminX = game->enemy[i]->image->instances[0].x;
+		bmaxX = game->enemy[i]->image->instances[0].x + game->enemy[0]->image->width;
+		bminY = game->enemy[i]->image->instances[0].y;
+		bmaxY = game->enemy[i]->image->instances[0].y + game->enemy[0]->image->height;
 		if((amaxX >= bminX) && (aminX <= bmaxX) && (amaxY >= bminY) && (aminY <= bmaxY))
 			printf("Collision\n");
+		// What to do with collision?
 		else
 			printf("OK\n");
 		i++;
@@ -106,8 +105,7 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	// if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
 	if (keydata.key == MLX_KEY_DOWN)
 	{
-		// if (game->player->image->instances[0].y + PLAYER_STEP <= (HEIGHT - game->player->image->height))
-		if (game->player->image->instances[0].y + PLAYER_STEP <= 450)
+		if (game->player->image->instances[0].y + PLAYER_STEP <= (int)(HEIGHT - game->player->image->height))
 			game->player->image->instances[0].y += PLAYER_STEP;
 	}
 	// if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
@@ -119,8 +117,7 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	// if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
 	if (keydata.key == MLX_KEY_RIGHT)
 	{
-		// if (game->player->image->instances[0].x + PLAYER_STEP <= (WIDTH - game->player->image->width))
-		if (game->player->image->instances[0].x + PLAYER_STEP <= 450)
+		if (game->player->image->instances[0].x + PLAYER_STEP <= (int)(WIDTH - game->player->image->width))
 			game->player->image->instances[0].x += PLAYER_STEP;
 	}
 	check_collision(game);
