@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 NAME		= so_long
+NAME2		= so_long2
 CC			= cc
 REMOVE		= rm -rf
 OBJ_DIR		= ./obj
@@ -20,6 +21,8 @@ MLX42_DIR	= ./MLX42
 CFLAGS		= -Wall -Werror -Wextra -I $(INC_DIR)
 LIBXFLAGS	=  -framework Cocoa -framework OpenGL -framework IOKit
 MLX_INCLUDE	= MLX42/build/libmlx42.a -Iinclude -lglfw
+MLX_LINUX	= MLX42/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
+
 
 # looking for files in subdirectories
 vpath %.c $(SRC_DIR)
@@ -42,6 +45,12 @@ FUNCTIONS	=	$(SRC_DIR)/main.c \
 OBJECTS		= $(addprefix $(OBJ_DIR)/, $(notdir $(FUNCTIONS:.c=.o)))
 
 all : mlx_clone $(NAME)
+
+linux : mlx_clone $(NAME2)
+
+# LINUX RULE
+$(NAME2) : $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) $(MLX_LINUX) -o $(NAME)
 
 # INTERNAL RULE
 $(NAME) : $(OBJECTS)
@@ -72,4 +81,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all mlx_clone clean fclean re
+.PHONY : all mlx_clone linux clean fclean re
