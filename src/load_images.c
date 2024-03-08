@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 22:43:28 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 20:49:46 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 21:00:13 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_load_textures_player(t_game *game)
 }
 
 
-int	ft_load_textures_asset(t_game *game, const char* paths_asset[])
+int	ft_load_textures_enemy(t_game *game, const char* paths_enemy[])
 {
 		int i;
 
@@ -39,13 +39,13 @@ int	ft_load_textures_asset(t_game *game, const char* paths_asset[])
 
 		while(i < AMOUNT_ENEMY)
 		{
-			game->asset[i]->texture = mlx_load_png(paths_asset[i]);
-			game->asset[i]->image = mlx_texture_to_image(game->game_window, game->asset[i]->texture);
-			game->asset[i]->pos->x = 100 + i * 100;
-			game->asset[i]->pos->y = 100 + i * 100;
-			if(!game->asset[i]->image)
+			game->enemy[i]->texture = mlx_load_png(paths_enemy[i]);
+			game->enemy[i]->image = mlx_texture_to_image(game->game_window, game->enemy[i]->texture);
+			game->enemy[i]->pos->x = 100 + i * 100;
+			game->enemy[i]->pos->y = 100 + i * 100;
+			if(!game->enemy[i]->image)
 				return (call_exit(game), 0);
-			if(mlx_image_to_window(game->game_window, game->asset[i]->image, game->asset[i]->pos->x, game->asset[i]->pos->y))
+			if(mlx_image_to_window(game->game_window, game->enemy[i]->image, game->enemy[i]->pos->x, game->enemy[i]->pos->y))
 				return (call_exit(game), 0);
 			i++;
 		}

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 20:49:32 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 21:03:10 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ void check_collision(t_game *game)
 	amaxY = game->player->image->instances[0].y + game->player->image->height;
 	while(i < AMOUNT_ENEMY)
 	{
-		bminX = game->asset[i]->image->instances[0].x;
-		bmaxX = game->asset[i]->image->instances[0].x + game->asset[0]->image->width;
-		bminY = game->asset[i]->image->instances[0].y;
-		bmaxY = game->asset[i]->image->instances[0].y + game->asset[0]->image->height;
+		bminX = game->enemy[i]->image->instances[0].x;
+		bmaxX = game->enemy[i]->image->instances[0].x + game->enemy[0]->image->width;
+		bminY = game->enemy[i]->image->instances[0].y;
+		bmaxY = game->enemy[i]->image->instances[0].y + game->enemy[0]->image->height;
 		if((amaxX >= bminX) && (aminX <= bmaxX) && (amaxY >= bminY) && (aminY <= bmaxY))
 			mlx_close_window(game->game_window);
 		i++;
@@ -98,8 +98,6 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	t_game	*game;
 
 	game = param;
-	if(keydata.action == MLX_PRESS)
-		game->player->moves += 1;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
 		// delete_temp_images(game);
@@ -107,21 +105,25 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	}
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS) // One Step per Press
 	{
+		game->player->moves += 1;
 		if (game->player->image->instances[0].y - PLAYER_STEP >= 0)
 			game->player->image->instances[0].y -= PLAYER_STEP;
 	}
 	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
 	{
+		game->player->moves += 1;
 		if (game->player->image->instances[0].y + PLAYER_STEP <= (int)(HEIGHT - game->player->image->height))
 			game->player->image->instances[0].y += PLAYER_STEP;
 	}
 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
 	{
+		game->player->moves += 1;
 		if( game->player->image->instances[0].x - PLAYER_STEP >= 0)
 			game->player->image->instances[0].x -= PLAYER_STEP;
 	}
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 	{
+		game->player->moves += 1;
 		if (game->player->image->instances[0].x + PLAYER_STEP <= (int)(WIDTH - game->player->image->width))
 			game->player->image->instances[0].x += PLAYER_STEP;
 	}

@@ -6,13 +6,13 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 20:49:06 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 21:01:12 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_asset **ft_initialize_asset(void)
+t_asset **ft_initialize_enemy(void)
 {
 	int i;
 	int j;
@@ -81,14 +81,14 @@ t_game	*ft_initialize_game(void)
 				game->player->moves = 0;
 			}
 /**************************************************************/
-			game->asset = NULL;
-			game->asset = ft_initialize_asset();
-			if(game->asset)
+			game->enemy = NULL;
+			game->enemy = ft_initialize_enemy();
+			if(game->enemy)
 			{
 				while(i < AMOUNT_ENEMY)
 				{
-					game->asset[i]->pos = NULL;
-					game->asset[i]->pos = ft_initialize_pos();
+					game->enemy[i]->pos = NULL;
+					game->enemy[i]->pos = ft_initialize_pos();
 					i++;
 				}
 			}
