@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 11:27:51 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 12:34:52 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void ft_exit_player(t_game *game)
 		ft_exit_pos(game->player->pos);
 	if (game->player->texture)
 		mlx_delete_texture(game->player->texture);
+	// if (game->player->coordinates)
+		// free(game->player->coordinates);
 	free(game->player);
+
 }
 void ft_exit_assets(t_game *game)
 {

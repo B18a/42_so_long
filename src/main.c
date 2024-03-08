@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/02 11:56:11 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 12:20:24 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,13 @@ int	main(void)
 
 	// ft_show_address(game);
 
-	ft_load_textures(game, paths_assets);
+	ft_load_textures_player(game);
+	ft_load_textures_assets(game, paths_assets);
+
+
+	mlx_image_t *pos_player;
+	pos_player = mlx_put_string(game->game_window,"TEST", 200, 100);
+	mlx_delete_image(game->game_window, pos_player);
 
 	if(game)
 	{

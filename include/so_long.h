@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 11:37:39 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 12:29:28 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 
 # define NAME_WINDOW	"TEST"
 # define PATH_PLAYER	"./assets/Link.png"
+# define PATH_PLAYER_UP		"./assets/Link_Down.png"
+# define PATH_PLAYER_DOWN	"./assets/Link_Up.png"
 # define PATH_ENEMY1	"./assets/patrol.png"
 # define PATH_ENEMY2	"./assets/patrol.png"
 # define PATH_ENEMY3	"./assets/patrol.png"
@@ -49,7 +51,12 @@ typedef struct s_player
 {
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
+	mlx_image_t		*coordinates;
 	t_pos			*pos;
+	// mlx_texture_t	*texture_up;
+	// mlx_image_t		*image_up;
+	// mlx_texture_t	*texture_down;
+	// mlx_image_t		*image_down;
 }				t_player;
 
 typedef struct s_game
@@ -64,6 +71,10 @@ typedef struct s_game
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
+int		ft_atoi(const char *str);
+int		ft_isdigit(int c);
+char	*ft_itoa(int n);
+
 
 // exit functions to free all memory properly
 void		call_exit(t_game *game);
@@ -75,9 +86,12 @@ t_game		*ft_initialize_game(void);
 t_pos		*ft_initialize_pos(void);
 int			ft_check_initialize(t_game *game);
 t_assets	**ft_initialize_assets(void);
+t_player *ft_initialize_player(void);
+
 
 // load textures
-int		ft_load_textures(t_game *game, const char *paths[]);
+int	ft_load_textures_assets(t_game *game, const char* paths_assets[]);
+int	ft_load_textures_player(t_game *game);
 
 // hook function
 void		my_keyhook(mlx_key_data_t keydata, void *param);

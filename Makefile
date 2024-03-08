@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/02 11:55:23 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/08 12:29:56 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,9 @@ FUNCTIONS	=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_bzero.c \
 				$(SRC_DIR)/ft_calloc.c \
 				$(SRC_DIR)/ft_memset.c \
+				$(SRC_DIR)/ft_atoi.c \
+				$(SRC_DIR)/ft_isdigit.c \
+				$(SRC_DIR)/ft_itoa.c \
 
 # INTERNAL OBJECT
 OBJECTS		= $(addprefix $(OBJ_DIR)/, $(notdir $(FUNCTIONS:.c=.o)))
