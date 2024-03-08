@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 16:21:15 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 16:28:19 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ void	ft_show_address(t_game *game)
 	printf("game->player->coordinates_y		%p\n",(void*)&game->player->coordinates_y);
 }
 
+void start_game(t_game *game)
+{
+	if(game)
+	{
+		mlx_set_setting(MLX_STRETCH_IMAGE, 1);
+		mlx_key_hook(game->game_window, &my_keyhook, game);
+		mlx_loop(game->game_window);
+		mlx_terminate(game->game_window);
+	}
+}
 
 
 int	main(void)
@@ -53,14 +63,8 @@ int	main(void)
 	// pos_player = mlx_put_string(game->game_window,"TEST", 200, 100);
 	// mlx_delete_image(game->game_window, pos_player);
 
+	start_game(game);
 
-	if(game)
-	{
-		mlx_set_setting(MLX_STRETCH_IMAGE, 1);
-		mlx_key_hook(game->game_window, &my_keyhook, game);
-		mlx_loop(game->game_window);
-		mlx_terminate(game->game_window);
-	}
 	call_exit(game);
 
 	return (0);

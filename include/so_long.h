@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 16:23:09 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 16:38:49 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@
 # define PATH_PLAYER	"./assets/Link.png"
 # define PATH_PLAYER_UP		"./assets/Link_Down.png"
 # define PATH_PLAYER_DOWN	"./assets/Link_Up.png"
-# define PATH_ENEMY1	"./assets/patrol.png"
+# define PATH_ENEMY1	"./assets/enemy.png"
 # define PATH_ENEMY2	"./assets/patrol.png"
-# define PATH_ENEMY3	"./assets/patrol.png"
+# define PATH_ENEMY3	"./assets/enemy.png"
 # define PATH_ENEMY4	"./assets/patrol.png"
+# define PATH_FLOOR		"./assets/Grass.png"
 # define PATHS			PATH_ENEMY1, PATH_ENEMY2, PATH_ENEMY3, PATH_ENEMY4
 # define AMOUNT_ENEMY	4
 
@@ -93,6 +94,7 @@ t_pos		*ft_initialize_pos(void);
 int			ft_check_initialize(t_game *game);
 t_enemy		**ft_initialize_enemy(void);
 t_player	*ft_initialize_player(void);
+void start_game(t_game *game);
 
 
 // load textures

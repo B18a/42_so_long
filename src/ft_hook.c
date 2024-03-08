@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 16:16:39 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 16:46:09 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,10 @@ void check_collision(t_game *game)
 		bminY = game->enemy[i]->image->instances[0].y;
 		bmaxY = game->enemy[i]->image->instances[0].y + game->enemy[0]->image->height;
 		if((amaxX >= bminX) && (aminX <= bmaxX) && (amaxY >= bminY) && (aminY <= bmaxY))
+		{
 			printf("Collision\n");
-		// What to do with collision?
+			mlx_close_window(game->game_window);
+		}
 		else
 			printf("OK\n");
 		i++;
