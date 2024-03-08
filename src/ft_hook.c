@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
+/*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 19:30:43 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/08 20:34:40 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,22 +77,38 @@ void check_collision(t_game *game)
 		bminY = game->enemy[i]->image->instances[0].y;
 		bmaxY = game->enemy[i]->image->instances[0].y + game->enemy[0]->image->height;
 		if((amaxX >= bminX) && (aminX <= bmaxX) && (amaxY >= bminY) && (aminY <= bmaxY))
-		{
-			printf("Collision\n");
 			mlx_close_window(game->game_window);
-		}
-		else
-			printf("OK\n");
 		i++;
 	}
 }
 
+void	update_display_moves(t_game *game)
+{
+	char *str_moves;
+
+	str_moves = ft_itoa(game->player->moves);
+	mlx_delete_image(game->game_window, game->player->move_image);
+	game->player->move_image = mlx_put_string(game->game_window,str_moves, 400, 100);
+	if(str_moves)
+		free(str_moves);
+
+	char *string_x;
+
+	string_x = ft_itoa(game->player->image->instances[0].x);
+	mlx_delete_image(game->game_window, game->player->coordinates_x);
+	game->player->coordinates_x = mlx_put_string(game->game_window,string_x,100,0);
+	if(string_x)
+		free(string_x);
+}
 
 void	my_keyhook(mlx_key_data_t keydata, void *param)
 {
 	t_game	*game;
 
 	game = param;
+	if(keydata.action == MLX_PRESS)
+		game->player->moves += 1;
+	update_display_moves(game);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
 		// delete_temp_images(game);

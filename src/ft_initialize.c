@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 16:22:34 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 20:21:33 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ t_game	*ft_initialize_game(void)
 			{
 				game->player->pos = NULL;
 				game->player->pos = ft_initialize_pos();
+				game->player->moves = 0;
 			}
 /**************************************************************/
 			game->enemy = NULL;
