@@ -6,42 +6,42 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 13:59:21 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 16:22:34 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_assets **ft_initialize_assets(void)
+t_enemy **ft_initialize_enemy(void)
 {
 	int i;
 	int j;
-	t_assets **assets;
+	t_enemy **enemy;
 
 	i = 0;
 	j = 0;
-	assets = ft_calloc(sizeof(t_assets*) , AMOUNT_ASSETS);
-	if(assets)
+	enemy = ft_calloc(sizeof(t_enemy*) , AMOUNT_ENEMY);
+	if(enemy)
 	{
-		while(i < AMOUNT_ASSETS)
+		while(i < AMOUNT_ENEMY)
 		{
-			assets[i] = ft_calloc(sizeof(t_assets), 1);
-			if(!assets[i])
+			enemy[i] = ft_calloc(sizeof(t_enemy), 1);
+			if(!enemy[i])
 			{
 				while(j < i)
 				{
-					if(assets[j])
-						free(assets[j]);
+					if(enemy[j])
+						free(enemy[j]);
 					j++;
 				}
-				if(assets)
-					free(assets);
+				if(enemy)
+					free(enemy);
 				return (NULL);
 			}
 			i++;
 		}
 	}
-	return(assets);
+	return(enemy);
 }
 
 t_player *ft_initialize_player(void)
@@ -80,14 +80,14 @@ t_game	*ft_initialize_game(void)
 				game->player->pos = ft_initialize_pos();
 			}
 /**************************************************************/
-			game->assets = NULL;
-			game->assets = ft_initialize_assets();
-			if(game->assets)
+			game->enemy = NULL;
+			game->enemy = ft_initialize_enemy();
+			if(game->enemy)
 			{
-				while(i < AMOUNT_ASSETS)
+				while(i < AMOUNT_ENEMY)
 				{
-					game->assets[i]->pos = NULL;
-					game->assets[i]->pos = ft_initialize_pos();
+					game->enemy[i]->pos = NULL;
+					game->enemy[i]->pos = ft_initialize_pos();
 					i++;
 				}
 			}

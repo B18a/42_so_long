@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 16:20:11 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 16:21:15 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(void)
 	// mlx_image_t *pos_player;
 	// pos_player = mlx_put_string(game->game_window,"TEST", 200, 100);
 	// mlx_delete_image(game->game_window, pos_player);
+
 
 	if(game)
 	{
