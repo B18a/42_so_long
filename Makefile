@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/08 21:17:47 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/08 22:02:34 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ FUNCTIONS	=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_initialize.c \
 				$(SRC_DIR)/ft_hook.c \
 				$(SRC_DIR)/load_images.c \
+				$(SRC_DIR)/ft_collect_collision.c \
 				$(SRC_DIR)/ft_bzero.c \
 				$(SRC_DIR)/ft_calloc.c \
 				$(SRC_DIR)/ft_memset.c \

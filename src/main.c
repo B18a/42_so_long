@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 21:06:05 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 22:01:45 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,25 @@ int	main(void)
 
 	t_game	*game;
 	const char *paths_enem[] = {PATHS_ENEMY};
+	const char *paths_item[] = {PATHS_ITEM};
 
 	game = NULL;
 	game = ft_initialize_game();
-	if (!ft_check_initialize(game))
-		return (call_exit(game), 0);
+	if(!game)
+		return(0);
+
+	ft_init_pos_asset(game, game->enemy , AMOUNT_ENEMY);
+	ft_init_pos_asset(game, game->item , AMOUNT_ITEM);
+
 	game->game_window = mlx_init(WIDTH, HEIGHT, NAME_WINDOW, true);
 	if(!game->game_window)
 		return (call_exit(game), 0);
 
 	// ft_show_address(game);
 
-	ft_load_textures_player(game);
-	ft_load_textures_enemy(game, paths_enem);
+	ft_load_textures_player(game, 0, 0);
+	ft_load_textures_asset(game, game->enemy, paths_enem, AMOUNT_ENEMY);
+	ft_load_textures_asset(game, game->item, paths_item, AMOUNT_ITEM);
 
 
 	// mlx_image_t *pos_player;

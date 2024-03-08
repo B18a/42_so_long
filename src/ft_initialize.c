@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 21:19:50 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 21:57:14 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,28 @@ t_pos	*ft_initialize_pos(void)
 	return(pos);
 }
 
-t_game	*ft_initialize_game(void)
+void ft_init_pos_asset(t_game *game, t_asset **asset, int amount)
 {
 	int i;
-	t_game	*game;
 
 	i = 0;
+	if(asset)
+	{
+		while(i < amount)
+		{
+			asset[i]->pos = NULL;
+			asset[i]->pos = ft_initialize_pos();
+			if(!asset[i]->pos)
+				call_exit(game);
+			i++;
+		}
+	}
+}
+
+t_game	*ft_initialize_game(void)
+{
+	t_game	*game;
+
 	game = NULL;
 	game = ft_calloc(sizeof(t_game), 1);
 	if (game)
@@ -84,38 +100,16 @@ t_game	*ft_initialize_game(void)
 /**************************************************************/
 			game->enemy = NULL;
 			game->enemy = ft_initialize_asset(AMOUNT_ENEMY);
-			if(game->enemy)
-			{
-				while(i < AMOUNT_ENEMY)
-				{
-					game->enemy[i]->pos = NULL;
-					game->enemy[i]->pos = ft_initialize_pos();
-					i++;
-				}
-			}
+			// return value must be checked?
+			// ft_init_pos_asset(game, game->enemy , AMOUNT_ENEMY); // switched to main because position needs to be read from input
 /**************************************************************/
 			game->item = NULL;
 			game->item = ft_initialize_asset(AMOUNT_ITEM);
-			if(game->item)
-			{
-				while(i < AMOUNT_ITEM)
-				{
-					game->item[i]->pos = NULL;
-					game->item[i]->pos = ft_initialize_pos();
-					i++;
-				}
-			}
+			// return value must be checked?
+			// ft_init_pos_asset(game, game->item , AMOUNT_ITEM); // switched to main because position needs to be read from input
 /**************************************************************/
 			game->game_window = NULL;
 			game->game_image = NULL;
 		}
 	return (game);
-}
-
-int	ft_check_initialize(t_game *game)
-{
-	if (!game)
-		return(0);
-
-	return(1);
 }

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 21:03:10 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 22:05:52 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,34 +53,6 @@
 // 		free(string_height);
 // }
 
-void check_collision(t_game *game)
-{
-	int aminX;
-	int amaxX;
-	int aminY;
-	int amaxY;
-	int bminX;
-	int bmaxX;
-	int bminY;
-	int bmaxY;
-	int i;
-
-	i = 0;
-	aminX = game->player->image->instances[0].x;
-	amaxX = game->player->image->instances[0].x + game->player->image->width;
-	aminY = game->player->image->instances[0].y;
-	amaxY = game->player->image->instances[0].y + game->player->image->height;
-	while(i < AMOUNT_ENEMY)
-	{
-		bminX = game->enemy[i]->image->instances[0].x;
-		bmaxX = game->enemy[i]->image->instances[0].x + game->enemy[0]->image->width;
-		bminY = game->enemy[i]->image->instances[0].y;
-		bmaxY = game->enemy[i]->image->instances[0].y + game->enemy[0]->image->height;
-		if((amaxX >= bminX) && (aminX <= bmaxX) && (amaxY >= bminY) && (aminY <= bmaxY))
-			mlx_close_window(game->game_window);
-		i++;
-	}
-}
 
 void	update_display_moves(t_game *game)
 {
@@ -105,28 +77,37 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	}
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS) // One Step per Press
 	{
-		game->player->moves += 1;
 		if (game->player->image->instances[0].y - PLAYER_STEP >= 0)
+		{
 			game->player->image->instances[0].y -= PLAYER_STEP;
+			game->player->moves += 1;
+		}
 	}
 	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
 	{
-		game->player->moves += 1;
 		if (game->player->image->instances[0].y + PLAYER_STEP <= (int)(HEIGHT - game->player->image->height))
+		{
 			game->player->image->instances[0].y += PLAYER_STEP;
+			game->player->moves += 1;
+		}
 	}
 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
 	{
-		game->player->moves += 1;
 		if( game->player->image->instances[0].x - PLAYER_STEP >= 0)
+		{
 			game->player->image->instances[0].x -= PLAYER_STEP;
+			game->player->moves += 1;
+		}
 	}
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 	{
-		game->player->moves += 1;
 		if (game->player->image->instances[0].x + PLAYER_STEP <= (int)(WIDTH - game->player->image->width))
+		{
 			game->player->image->instances[0].x += PLAYER_STEP;
+			game->player->moves += 1;
+		}
 	}
 	check_collision(game);
+	check_collect(game);
 	update_display_moves(game);
 }
