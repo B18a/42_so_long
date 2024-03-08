@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 22:43:28 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 22:33:01 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 23:56:53 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,19 @@ int	ft_load_textures_player(t_game *game, int posX, int posY)
 		if(mlx_image_to_window(game->game_window, game->player->image, game->player->pos->x, game->player->pos->y))
 			return (call_exit(game), 0);
 		return(0);
+}
+
+int	ft_load_textures_exit(t_game *game, t_asset *exit, const char* path, t_pos pos)
+{
+	exit->texture = mlx_load_png(path);
+	exit->image = mlx_texture_to_image(game->game_window, exit->texture);
+	exit->pos->x = pos.x;
+	exit->pos->y = pos.y;
+	// if(!exit->image)
+	// 	return (call_exit(game), 0);
+	// if(mlx_image_to_window(game->game_window, exit->image, exit->pos->x, exit->pos->y))
+	// 	return (call_exit(game), 0);
+	return(0);
 }
 
 int	ft_load_textures_asset(t_game *game, t_asset **asset, const char* path[], int amount, t_pos pos)
@@ -54,7 +67,7 @@ int	ft_load_textures_enemy(t_game *game, const char* paths_enemy[])
 
 		i = 0;
 
-		while(i < AMOUNT_ENEMY)
+		while(i < game->enemy_total)
 		{
 			game->enemy[i]->texture = mlx_load_png(paths_enemy[i]);
 			game->enemy[i]->image = mlx_texture_to_image(game->game_window, game->enemy[i]->texture);

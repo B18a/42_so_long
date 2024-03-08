@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 22:36:32 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 23:51:12 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define PATHS_ITEM		PATH_ITEM1, PATH_ITEM2, PATH_ITEM3, PATH_ITEM4, PATH_ITEM5
 # define AMOUNT_ENEMY	2
 # define AMOUNT_ITEM	1
+# define PATH_EXIT		"./assets/heart.png"
 
 # include "../MLX42/include/MLX42/MLX42.h"
 
@@ -77,8 +78,10 @@ typedef struct s_game
 {
 	mlx_t		*game_window;
 	mlx_image_t	*game_image;
+	t_asset		*exit;
 	t_player	*player;
 	t_asset		**enemy;
+	int			enemy_total;
 	t_asset		**item;
 	int			item_total;
 }				t_game;
@@ -95,6 +98,8 @@ char		*ft_itoa(int n);
 void		call_exit(t_game *game);
 int			ft_exit_game(t_game *game);
 void		ft_exit_asset(t_asset **asset, int amount);
+void		ft_exit_exit(t_asset *exit);
+int			ft_exit_pos(t_pos *pos);
 
 // initialization functions
 t_game		*ft_initialize_game(void);
@@ -110,7 +115,8 @@ void		ft_init_pos_asset(t_game *game, t_asset **asset, int amount);
 // load textures
 int			ft_load_textures_enemy(t_game *game, const char* paths_asset[]);
 int			ft_load_textures_player(t_game *game, int posX, int posY);
-int	ft_load_textures_asset(t_game *game, t_asset **asset, const char* path[], int amount, t_pos pos);
+int			ft_load_textures_asset(t_game *game, t_asset **asset, const char* path[], int amount, t_pos pos);
+int			ft_load_textures_exit(t_game *game, t_asset *exit, const char* path, t_pos pos);
 
 // hook function
 void		my_keyhook(mlx_key_data_t keydata, void *param);
@@ -118,6 +124,7 @@ void		my_keyhook(mlx_key_data_t keydata, void *param);
 // ????
 void		check_collision(t_game *game);
 void		check_collect(t_game *game);
+void		check_exit(t_game *game);
 
 
 #endif

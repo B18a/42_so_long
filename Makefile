@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/08 22:02:34 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/08 23:53:09 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ OBJ_DIR		= ./obj
 SRC_DIR		= src
 INC_DIR		= include
 MLX42_DIR	= ./MLX42
-CFLAGS		= -Wall -Werror -Wextra -I $(INC_DIR)
+CFLAGS		=
+#CFLAGS		= -Wall -Werror -Wextra -I $(INC_DIR)
 LIBXFLAGS	=  -framework Cocoa -framework OpenGL -framework IOKit
 MLX_INCLUDE	= MLX42/build/libmlx42.a -Iinclude -lglfw
 MLX_LINUX	= MLX42/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
@@ -34,7 +35,7 @@ FUNCTIONS	=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_initialize.c \
 				$(SRC_DIR)/ft_hook.c \
 				$(SRC_DIR)/load_images.c \
-				$(SRC_DIR)/ft_collect_collision.c \
+				$(SRC_DIR)/ft_check.c \
 				$(SRC_DIR)/ft_bzero.c \
 				$(SRC_DIR)/ft_calloc.c \
 				$(SRC_DIR)/ft_memset.c \

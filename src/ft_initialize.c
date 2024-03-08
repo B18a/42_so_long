@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 22:11:16 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 23:50:40 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,20 @@ void ft_init_pos_asset(t_game *game, t_asset **asset, int amount)
 	}
 }
 
+t_asset *ft_initialize_exit(void)
+{
+	t_asset *exit;
+
+	exit = ft_calloc(sizeof(t_asset), 1);
+	if(exit)
+	{
+		exit->pos = NULL;
+		exit->pos = ft_initialize_pos();
+	}
+	return(exit);
+
+}
+
 t_game	*ft_initialize_game(void)
 {
 	t_game	*game;
@@ -94,20 +108,25 @@ t_game	*ft_initialize_game(void)
 	game = ft_calloc(sizeof(t_game), 1);
 	if (game)
 		{
+			game->item_total = AMOUNT_ITEM;
+			game->enemy_total = AMOUNT_ENEMY;
 /**************************************************************/
 			game->player = NULL;
 			game->player = ft_initialize_player();
 
 /**************************************************************/
 			game->enemy = NULL;
-			game->enemy = ft_initialize_asset(AMOUNT_ENEMY);
+			game->enemy = ft_initialize_asset(game->enemy_total);
 			// return value must be checked?
-			// ft_init_pos_asset(game, game->enemy , AMOUNT_ENEMY); // switched to main because position needs to be read from input
+			// ft_init_pos_asset(game, game->enemy , game->enemy_total); // switched to main because position needs to be read from input
 /**************************************************************/
 			game->item = NULL;
-			game->item = ft_initialize_asset(AMOUNT_ITEM);
+			game->item = ft_initialize_asset(game->item_total);
 			// return value must be checked?
-			// ft_init_pos_asset(game, game->item , AMOUNT_ITEM); // switched to main because position needs to be read from input
+			// ft_init_pos_asset(game, game->item , game->item_total); // switched to main because position needs to be read from input
+/**************************************************************/
+			game->exit = NULL;
+			game->exit = ft_initialize_exit();
 /**************************************************************/
 			game->game_window = NULL;
 			game->game_image = NULL;

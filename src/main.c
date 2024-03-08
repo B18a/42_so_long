@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 22:36:54 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 23:57:43 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,16 @@ int	main(void)
 	if(!game)
 		return(0);
 
-	game->item_total = AMOUNT_ITEM;
 
-	ft_init_pos_asset(game, game->enemy , AMOUNT_ENEMY);
-	ft_init_pos_asset(game, game->item , AMOUNT_ITEM);
 
+
+	ft_init_pos_asset(game, game->enemy , game->enemy_total);
+	ft_init_pos_asset(game, game->item , game->item_total);
+	/**************************************/
+
+	// if(ft_load_textures_exit(game, game->exit, PATH_EXIT, (t_pos){0, 400}))
+	// 	call_exit(game);
+	/**************************************/
 	game->game_window = mlx_init(WIDTH, HEIGHT, NAME_WINDOW, true);
 	if(!game->game_window)
 		return (call_exit(game), 0);
@@ -63,9 +68,9 @@ int	main(void)
 	// ft_show_address(game);
 
 	ft_load_textures_player(game, 0, 0);
-	if(ft_load_textures_asset(game, game->enemy, paths_enem, AMOUNT_ENEMY, (t_pos){100, 100}))
+	if(ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100}))
 		call_exit(game);
-	if(ft_load_textures_asset(game, game->item, paths_item, AMOUNT_ITEM,(t_pos){400, 400}))
+	if(ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){0, 10}))
 		call_exit(game);
 
 

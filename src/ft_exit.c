@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 21:23:55 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 23:50:11 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,19 @@ int	ft_exit_game(t_game *game)
 	return (1);
 }
 
+void	ft_exit_exit(t_asset *exit)
+{
+	if(exit->pos)
+		free(exit->pos);
+	if(exit)
+		free(exit);
+}
+
 void	call_exit(t_game *game)
 {
 	ft_exit_player(game);
-	ft_exit_asset(game->enemy, AMOUNT_ENEMY);
-	ft_exit_asset(game->item, AMOUNT_ITEM);
+	ft_exit_asset(game->enemy, game->enemy_total);
+	ft_exit_asset(game->item, game->item_total);
+	ft_exit_exit(game->exit);
 	ft_exit_game(game);
 }
