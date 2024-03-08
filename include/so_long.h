@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 20:32:32 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 20:39:16 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define WIDTH	500
 # define HEIGHT	500
 
-# define PLAYER_STEP 10
+# define PLAYER_STEP 64
 
 # define NAME_WINDOW	"TEST"
 # define PATH_PLAYER	"./assets/Link.png"
