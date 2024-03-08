@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 22:01:45 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 22:36:54 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void start_game(t_game *game)
 	{
 		mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 		mlx_key_hook(game->game_window, &my_keyhook, game);
-		update_display_moves(game);
+		update_display_moves(game, 300, 100);
+		update_display_item(game, 400, 100);
 		mlx_loop(game->game_window);
 		mlx_terminate(game->game_window);
 	}
@@ -50,6 +51,8 @@ int	main(void)
 	if(!game)
 		return(0);
 
+	game->item_total = AMOUNT_ITEM;
+
 	ft_init_pos_asset(game, game->enemy , AMOUNT_ENEMY);
 	ft_init_pos_asset(game, game->item , AMOUNT_ITEM);
 
@@ -60,8 +63,10 @@ int	main(void)
 	// ft_show_address(game);
 
 	ft_load_textures_player(game, 0, 0);
-	ft_load_textures_asset(game, game->enemy, paths_enem, AMOUNT_ENEMY);
-	ft_load_textures_asset(game, game->item, paths_item, AMOUNT_ITEM);
+	if(ft_load_textures_asset(game, game->enemy, paths_enem, AMOUNT_ENEMY, (t_pos){100, 100}))
+		call_exit(game);
+	if(ft_load_textures_asset(game, game->item, paths_item, AMOUNT_ITEM,(t_pos){400, 400}))
+		call_exit(game);
 
 
 	// mlx_image_t *pos_player;

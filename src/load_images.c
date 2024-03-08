@@ -6,12 +6,11 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 22:43:28 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 22:00:42 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 22:33:01 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
 
 int	ft_load_textures_player(t_game *game, int posX, int posY)
 {
@@ -30,9 +29,7 @@ int	ft_load_textures_player(t_game *game, int posX, int posY)
 		return(0);
 }
 
-
-// int	ft_load_textures_asset(t_game *game, t_asset **asset, const char* path[], int amount, int posX, int posY)
-int	ft_load_textures_asset(t_game *game, t_asset **asset, const char* path[], int amount)
+int	ft_load_textures_asset(t_game *game, t_asset **asset, const char* path[], int amount, t_pos pos)
 {
 		int i;
 
@@ -41,8 +38,8 @@ int	ft_load_textures_asset(t_game *game, t_asset **asset, const char* path[], in
 		{
 			asset[i]->texture = mlx_load_png(path[i]);
 			asset[i]->image = mlx_texture_to_image(game->game_window, asset[i]->texture);
-			asset[i]->pos->x = 100 + i * 100;
-			asset[i]->pos->y = 100 + i * 100;
+			asset[i]->pos->x = pos.x + i * 100;
+			asset[i]->pos->y = pos.y + i * 100;
 			if(!asset[i]->image)
 				return (call_exit(game), 0);
 			if(mlx_image_to_window(game->game_window, asset[i]->image, asset[i]->pos->x, asset[i]->pos->y))

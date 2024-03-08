@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 22:04:16 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 22:36:32 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define PATH_ITEM5		"./assets/heart.png"
 # define PATHS_ITEM		PATH_ITEM1, PATH_ITEM2, PATH_ITEM3, PATH_ITEM4, PATH_ITEM5
 # define AMOUNT_ENEMY	2
-# define AMOUNT_ITEM	5
+# define AMOUNT_ITEM	1
 
 # include "../MLX42/include/MLX42/MLX42.h"
 
@@ -65,7 +65,8 @@ typedef struct s_player
 	t_pos			*pos;
 	mlx_image_t		*move_image;
 	int				moves;
-	int				collect;
+	mlx_image_t		*item_image;
+	int				item;
 	// mlx_texture_t	*texture_up;
 	// mlx_image_t		*image_up;
 	// mlx_texture_t	*texture_down;
@@ -79,20 +80,21 @@ typedef struct s_game
 	t_player	*player;
 	t_asset		**enemy;
 	t_asset		**item;
+	int			item_total;
 }				t_game;
 
 // libft
-void	*ft_calloc(size_t count, size_t size);
-void	ft_bzero(void *s, size_t n);
-void	*ft_memset(void *b, int c, size_t len);
-int		ft_atoi(const char *str);
-int		ft_isdigit(int c);
-char	*ft_itoa(int n);
+void		*ft_calloc(size_t count, size_t size);
+void		ft_bzero(void *s, size_t n);
+void		*ft_memset(void *b, int c, size_t len);
+int			ft_atoi(const char *str);
+int			ft_isdigit(int c);
+char		*ft_itoa(int n);
 
 // exit functions to free all memory properly
 void		call_exit(t_game *game);
 int			ft_exit_game(t_game *game);
-void	ft_exit_asset(t_asset **asset, int amount);
+void		ft_exit_asset(t_asset **asset, int amount);
 
 // initialization functions
 t_game		*ft_initialize_game(void);
@@ -100,21 +102,22 @@ t_pos		*ft_initialize_pos(void);
 t_asset 	**ft_initialize_asset(int amount);
 t_player	*ft_initialize_player(void);
 void		start_game(t_game *game);
-void		update_display_moves(t_game *game);
+void		update_display_moves(t_game *game, int32_t posX, int32_t posY);
+void		update_display_item(t_game *game, int32_t posX, int32_t posY);
 void		ft_init_pos_asset(t_game *game, t_asset **asset, int amount);
 
 
 // load textures
-int	ft_load_textures_enemy(t_game *game, const char* paths_asset[]);
-int	ft_load_textures_player(t_game *game, int posX, int posY);
-int	ft_load_textures_asset(t_game *game, t_asset **asset, const char* path[], int amount);
+int			ft_load_textures_enemy(t_game *game, const char* paths_asset[]);
+int			ft_load_textures_player(t_game *game, int posX, int posY);
+int	ft_load_textures_asset(t_game *game, t_asset **asset, const char* path[], int amount, t_pos pos);
 
 // hook function
 void		my_keyhook(mlx_key_data_t keydata, void *param);
 
 // ????
-void check_collision(t_game *game);
-void check_collect(t_game *game);
+void		check_collision(t_game *game);
+void		check_collect(t_game *game);
 
 
 #endif

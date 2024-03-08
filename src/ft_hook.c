@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 22:05:52 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/08 22:26:07 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,45 +24,26 @@
 // 		mlx_delete_image(game->game_window, game->player->height);
 // }
 
-// static void	ft_show_pos_player(t_game *game)
-// {
-// 	char *string_x;
-// 	char *string_y;
-// 	char *string_width;
-// 	char *string_height;
 
-// 	string_x = ft_itoa(game->player->image->instances[0].x);
-// 	string_y = ft_itoa(game->player->image->instances[0].y);
-// 	string_width = ft_itoa(game->player->image->width);
-// 	string_height = ft_itoa(game->player->image->height);
-// 	mlx_delete_image(game->game_window, game->player->coordinates_x);
-// 	mlx_delete_image(game->game_window, game->player->coordinates_y);
-// 	mlx_delete_image(game->game_window, game->player->width);
-// 	mlx_delete_image(game->game_window, game->player->height);
-// 	game->player->coordinates_x = mlx_put_string(game->game_window,string_x,100,0);
-// 	game->player->coordinates_y = mlx_put_string(game->game_window,string_y,200,0);
-// 	game->player->width = mlx_put_string(game->game_window,string_width,300,0);
-// 	game->player->height = mlx_put_string(game->game_window,string_height,400,0);
-// 	if(string_x)
-// 		free(string_x);
-// 	if(string_y)
-// 		free(string_y);
-// 	if(string_width)
-// 		free(string_width);
-// 	if(string_height)
-// 		free(string_height);
-// }
-
-
-void	update_display_moves(t_game *game)
+void	update_display_item(t_game *game, int32_t posX, int32_t posY)
 {
-	char *str_moves;
+	char *str;
 
-	str_moves = ft_itoa(game->player->moves);
+	str = ft_itoa(game->player->item);
+	mlx_delete_image(game->game_window, game->player->item_image);
+	game->player->item_image = mlx_put_string(game->game_window,str, posX, posY);
+	if(str)
+		free(str);
+}
+void	update_display_moves(t_game *game, int32_t posX, int32_t posY)
+{
+	char *str;
+
+	str = ft_itoa(game->player->moves);
 	mlx_delete_image(game->game_window, game->player->move_image);
-	game->player->move_image = mlx_put_string(game->game_window,str_moves, 400, 100);
-	if(str_moves)
-		free(str_moves);
+	game->player->move_image = mlx_put_string(game->game_window,str, posX, posY);
+	if(str)
+		free(str);
 }
 
 void	my_keyhook(mlx_key_data_t keydata, void *param)
@@ -109,5 +90,7 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	}
 	check_collision(game);
 	check_collect(game);
-	update_display_moves(game);
+	update_display_moves(game, 300, 100);
+	update_display_item(game, 400, 100);
+
 }
