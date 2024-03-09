@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 22:43:28 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 23:56:53 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 11:14:23 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ int	ft_load_textures_player(t_game *game, int posX, int posY)
 		return(0);
 }
 
-int	ft_load_textures_exit(t_game *game, t_asset *exit, const char* path, t_pos pos)
+int	ft_load_textures_exit(t_game *game, const char* path, t_pos pos)
 {
-	exit->texture = mlx_load_png(path);
-	exit->image = mlx_texture_to_image(game->game_window, exit->texture);
-	exit->pos->x = pos.x;
-	exit->pos->y = pos.y;
-	// if(!exit->image)
-	// 	return (call_exit(game), 0);
-	// if(mlx_image_to_window(game->game_window, exit->image, exit->pos->x, exit->pos->y))
-	// 	return (call_exit(game), 0);
+	game->exit->texture = mlx_load_png(path);
+	game->exit->image = mlx_texture_to_image(game->game_window, game->exit->texture);
+	game->exit->pos->x = pos.x;
+	game->exit->pos->y = pos.y;
+	if(!game->exit->image)
+		return (call_exit(game), 0);
+	if(mlx_image_to_window(game->game_window, game->exit->image, game->exit->pos->x, game->exit->pos->y))
+		return (call_exit(game), 0);
 	return(0);
 }
 

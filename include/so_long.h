@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 23:51:12 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 11:10:40 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void		ft_init_pos_asset(t_game *game, t_asset **asset, int amount);
 int			ft_load_textures_enemy(t_game *game, const char* paths_asset[]);
 int			ft_load_textures_player(t_game *game, int posX, int posY);
 int			ft_load_textures_asset(t_game *game, t_asset **asset, const char* path[], int amount, t_pos pos);
-int			ft_load_textures_exit(t_game *game, t_asset *exit, const char* path, t_pos pos);
+int			ft_load_textures_exit(t_game *game, const char* path, t_pos pos);
 
 // hook function
 void		my_keyhook(mlx_key_data_t keydata, void *param);
