@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 11:59:44 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 12:49:37 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <unistd.h>
+
+# include "../libs/ft_printf/include/ft_printf.h"
+# include "../libs/libft/include/libft.h"
 
 # define WIDTH	500
 # define HEIGHT	500
@@ -96,13 +99,13 @@ typedef struct s_game
 	int			item_total;
 }				t_game;
 
-// libft
-void		*ft_calloc(size_t count, size_t size);
-void		ft_bzero(void *s, size_t n);
-void		*ft_memset(void *b, int c, size_t len);
-int			ft_atoi(const char *str);
-int			ft_isdigit(int c);
-char		*ft_itoa(int n);
+// // libft
+// void		*ft_calloc(size_t count, size_t size);
+// void		ft_bzero(void *s, size_t n);
+// void		*ft_memset(void *b, int c, size_t len);
+// int			ft_atoi(const char *str);
+// int			ft_isdigit(int c);
+// char		*ft_itoa(int n);
 
 // exit functions to free all memory properly
 void		call_exit(t_game *game);
@@ -133,7 +136,7 @@ int			ft_load_textures_exit(t_game *game, const char* path, t_pos pos);
 // hook function
 void		my_keyhook(mlx_key_data_t keydata, void *param);
 
-// ????
+// check functions
 void		check_collision(t_game *game);
 void		check_collect(t_game *game);
 void		check_exit(t_game *game);

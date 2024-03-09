@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 22:02:40 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 11:51:14 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 12:44:24 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void check_collect(t_game *game)
 		b.maxY = game->item[i]->image->instances[0].y + game->item[0]->image->height;
 		if((a.maxX >= b.minX) && (a.minX <= b.maxX) && (a.maxY >= b.minY) && (a.minY <= b.maxY))
 		{
-			mlx_delete_image(game->game_window, game->item[i]->image);
+			game->item[i]->image->instances[0].enabled = 0;
+			// game->item[i]->image->instances[0].z = -1;
+			// mlx_delete_image(game->game_window, game->item[i]->image);
 			game->player->item += 1;
 		}
 		i++;

@@ -6,11 +6,11 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:42:24 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 12:29:13 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/02/15 12:35:06 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/libft.h"
 
 static int	count_leng(long nbr)
 {

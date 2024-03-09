@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 08:50:57 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/02 10:38:59 by ajehle           ###   ########.fr       */
+/*   Created: 2023/10/17 18:18:11 by andreasjehl       #+#    #+#             */
+/*   Updated: 2024/02/15 12:35:12 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t			counter;
-	unsigned char	*str;
-
-	counter = 0;
-	str = (unsigned char *)b;
-	while (counter < len)
+	if (new == NULL)
+		return ;
+	else
 	{
-		str[counter] = (unsigned char)c;
-		counter++;
+		new->next = lst[0];
+		lst[0] = new;
 	}
-	return (b);
 }

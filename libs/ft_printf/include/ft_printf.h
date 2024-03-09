@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 10:06:03 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 12:22:03 by ajehle           ###   ########.fr       */
+/*   Created: 2023/10/20 19:57:28 by ajehle            #+#    #+#             */
+/*   Updated: 2023/10/27 09:31:42 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
-}
+# include <stdarg.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+
+int	ft_printf(const char *str, ...);
+int	ft_putnbr_ret(int n);
+int	ft_putchar_ret(char c);
+int	ft_putstr_ret(char *s);
+int	ft_conv(size_t nbr, const char *base, size_t len_base);
+int	ft_putptr_ret(char *ptr);
+#endif

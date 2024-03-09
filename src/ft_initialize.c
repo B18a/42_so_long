@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 12:01:27 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 12:40:27 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,20 +99,6 @@ t_asset *ft_initialize_exit(void)
 	return (exit);
 }
 
-t_asset	*ft_initialize_item(t_game *game, int amount)
-{
-	int		i;
-	t_asset	*begin;
-
-	i = 0;
-	begin = NULL;
-	while (i < amount)
-	{
-
-		i++;
-	}
-	return (begin);
-}
 
 t_game	*ft_initialize_game(void)
 {
@@ -136,7 +122,7 @@ t_game	*ft_initialize_game(void)
 /**************************************************************/
 			game->item = NULL;
 			game->item = ft_initialize_asset(game->item_total);
-			game->item_begin = ft_initialize_item(game, game->item_total);
+			// game->item_begin = ft_initialize_item(game, game->item_total);
 			// return value must be checked?
 			// ft_init_pos_asset(game, game->item , game->item_total); // switched to main because position needs to be read from input
 /**************************************************************/

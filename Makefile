@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/09 11:11:41 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/09 12:14:40 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,15 +36,28 @@ FUNCTIONS	=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_hook.c \
 				$(SRC_DIR)/load_images.c \
 				$(SRC_DIR)/ft_check.c \
-				$(SRC_DIR)/ft_bzero.c \
-				$(SRC_DIR)/ft_calloc.c \
-				$(SRC_DIR)/ft_memset.c \
-				$(SRC_DIR)/ft_atoi.c \
-				$(SRC_DIR)/ft_isdigit.c \
-				$(SRC_DIR)/ft_itoa.c \
 
 # INTERNAL OBJECT
 OBJECTS		= $(addprefix $(OBJ_DIR)/, $(notdir $(FUNCTIONS:.c=.o)))
+
+# EXTERNAL LIBRARYS START
+# FT_PRINTF Resources
+FT_PRINTF_DIR	:= libs/ft_printf
+FT_PRINTF		:= $(FT_PRINTF_DIR)/libftprintf.a
+
+# FT_LIBFT Resources
+FT_LIBFT_DIR	:= libs/libft
+FT_LIBFT		:= $(FT_LIBFT_DIR)/libft.a
+
+# EXTERNAL LIBRARY
+LIB_FT_PRINTF	:= -L$(FT_PRINTF_DIR) -lftprintf
+LIB_FT_LIBFT	:= -L$(FT_LIBFT_DIR) -lft
+
+# ALL LIBS
+LIBS			:= $(LIB_FT_PRINTF) $(LIB_FT_LIBFT)
+LIBS_NAME		:= $(FT_PRINTF) $(FT_LIBFT)
+LIBS_DIR		:= $(FT_PRINTF-DIR) $(FT_LIBFT_DIR)
+# EXTERNAL LIBRARYS END
 
 all : mlx_clone $(NAME)
 
@@ -55,8 +68,14 @@ $(NAME2) : $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) $(MLX_LINUX) -o $(NAME)
 
 # INTERNAL RULE
-$(NAME) : $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(MLX_INCLUDE) $(LIBXFLAGS) -o $(NAME)
+$(NAME) : $(LIBS_NAME) $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBS) $(MLX_INCLUDE) $(LIBXFLAGS) -o $(NAME)
+
+# EXTERNAL LIBRARYS RULE (1 for each lib)
+$(FT_PRINTF) :
+	$(MAKE) -C $(FT_PRINTF_DIR)
+$(FT_LIBFT) :
+	$(MAKE) bonus -C $(FT_LIBFT_DIR)
 
 # DIRECTORY
 $(OBJ_DIR) :
@@ -74,11 +93,15 @@ mlx_clone :
 	fi
 
 clean :
+	$(MAKE) -C $(FT_LIBFT_DIR) clean
+	$(MAKE) -C $(FT_PRINTF_DIR) clean
 	$(REMOVE) $(OBJECTS)
 	$(REMOVE) $(OBJ_DIR)
 #	$(REMOVE) $(MLX42_DIR)
 
 fclean : clean
+	$(MAKE) -C $(FT_LIBFT_DIR) fclean
+	$(MAKE) -C $(FT_PRINTF_DIR) fclean
 	$(REMOVE) $(NAME)
 
 re : fclean all

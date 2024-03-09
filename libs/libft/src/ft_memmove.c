@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 09:46:59 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/02 10:39:04 by ajehle           ###   ########.fr       */
+/*   Created: 2023/10/12 08:56:27 by ajehle            #+#    #+#             */
+/*   Updated: 2024/02/15 12:35:44 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	void	*ptr;
+	unsigned char	*destin;
+	unsigned char	*source;
 
-	if ((count != 0) && ((size * count) / count != size))
+	destin = (unsigned char *)dst;
+	source = (unsigned char *)src;
+	if (!dst && !src)
 		return (NULL);
-	ptr = (void *)malloc(size * count);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, size * count);
-	return (ptr);
+	if (len == 0)
+		return (dst);
+	if (destin >= source)
+	{
+		while (len)
+		{
+			len--;
+			destin[len] = source[len];
+		}
+	}
+	else
+		ft_memcpy(dst, src, len);
+	return (dst);
 }
