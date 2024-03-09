@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 23:50:40 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 11:20:03 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ t_asset *ft_initialize_exit(void)
 		exit->pos = ft_initialize_pos();
 	}
 	return(exit);
-
 }
 
 t_game	*ft_initialize_game(void)

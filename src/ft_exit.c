@@ -6,26 +6,25 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/08 23:50:11 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 11:26:35 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	ft_exit_pos(t_pos *pos)
+void	ft_exit_pos(t_pos *pos)
 {
 	if (pos)
 		free (pos);
-	return (1);
 }
 
-void	ft_exit_player(t_game *game)
+void	ft_exit_player(t_player *player)
 {
-	if (game->player->pos)
-		ft_exit_pos(game->player->pos);
-	if (game->player->texture)
-		mlx_delete_texture(game->player->texture);
-	free(game->player);
+	if (player->pos)
+		ft_exit_pos(player->pos);
+	if (player->texture)
+		mlx_delete_texture(player->texture);
+	free(player);
 }
 
 void	ft_exit_asset(t_asset **asset, int amount)
@@ -45,24 +44,25 @@ void	ft_exit_asset(t_asset **asset, int amount)
 	free(asset);
 }
 
-int	ft_exit_game(t_game *game)
+void	ft_exit_game(t_game *game)
 {
 	if (game)
 		free (game);
-	return (1);
 }
 
 void	ft_exit_exit(t_asset *exit)
 {
 	if(exit->pos)
 		free(exit->pos);
+	if(exit->texture)
+		mlx_delete_texture(exit->texture);
 	if(exit)
 		free(exit);
 }
 
 void	call_exit(t_game *game)
 {
-	ft_exit_player(game);
+	ft_exit_player(game->player);
 	ft_exit_asset(game->enemy, game->enemy_total);
 	ft_exit_asset(game->item, game->item_total);
 	ft_exit_exit(game->exit);

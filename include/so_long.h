@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 11:10:40 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 11:46:07 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,31 @@
 # define PATH_ITEM5		"./assets/heart.png"
 # define PATHS_ITEM		PATH_ITEM1, PATH_ITEM2, PATH_ITEM3, PATH_ITEM4, PATH_ITEM5
 # define AMOUNT_ENEMY	2
-# define AMOUNT_ITEM	1
+# define AMOUNT_ITEM	2
 # define PATH_EXIT		"./assets/heart.png"
 
 # include "../MLX42/include/MLX42/MLX42.h"
 
+typedef struct s_borders
+{
+	int	minX;
+	int	maxX;
+	int	minY;
+	int	maxY;
+}		t_borders;
+
 typedef struct s_pos
 {
-	int			x;
-	int			y;
-}				t_pos;
+	int	x;
+	int	y;
+}		t_pos;
 
 typedef struct s_asset
 {
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
 	t_pos			*pos;
-}				t_asset;
+}					t_asset;
 
 typedef struct s_player
 {
@@ -72,7 +80,7 @@ typedef struct s_player
 	// mlx_image_t		*image_up;
 	// mlx_texture_t	*texture_down;
 	// mlx_image_t		*image_down;
-}				t_player;
+}					t_player;
 
 typedef struct s_game
 {
@@ -96,10 +104,12 @@ char		*ft_itoa(int n);
 
 // exit functions to free all memory properly
 void		call_exit(t_game *game);
-int			ft_exit_game(t_game *game);
+void		ft_exit_game(t_game *game);
 void		ft_exit_asset(t_asset **asset, int amount);
+void		ft_exit_pos(t_pos *pos);
+void		ft_exit_player(t_player *player);
 void		ft_exit_exit(t_asset *exit);
-int			ft_exit_pos(t_pos *pos);
+
 
 // initialization functions
 t_game		*ft_initialize_game(void);

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 11:13:41 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 11:35:43 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,34 +52,30 @@ int	main(void)
 		return(0);
 
 
-
-
 	ft_init_pos_asset(game, game->enemy , game->enemy_total);
 	ft_init_pos_asset(game, game->item , game->item_total);
 	/**************************************/
-	/**************************************/
+
 	game->game_window = mlx_init(WIDTH, HEIGHT, NAME_WINDOW, true);
 	if(!game->game_window)
 		return (call_exit(game), 0);
 
 	// ft_show_address(game);
 
-
-	if(ft_load_textures_exit(game, PATH_EXIT, (t_pos){0, 400}))
-		call_exit(game);
+	
 	ft_load_textures_player(game, 0, 0);
-	if(ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100}))
-		call_exit(game);
-	if(ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){0, 10}))
-		call_exit(game);
+	ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100});
+	ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){300, 10});
+	ft_load_textures_exit(game, PATH_EXIT, (t_pos){0, 400});
+	// if(ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100}))
+	// 	call_exit(game);
+	// if(ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){0, 10}))
+		// call_exit(game);
+	// if(ft_load_textures_exit(game, PATH_EXIT, (t_pos){0, 400}))
+	// 	call_exit(game);
 
-
-	// mlx_image_t *pos_player;
-	// pos_player = mlx_put_string(game->game_window,"TEST", 200, 100);
-	// mlx_delete_image(game->game_window, pos_player);
 
 	start_game(game);
-
 	call_exit(game);
 
 	return (0);
