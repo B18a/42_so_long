@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 22:02:40 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 11:49:19 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 11:51:14 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void check_collect(t_game *game)
 	a.maxX = game->player->image->instances[0].x + game->player->image->width;
 	a.minY = game->player->image->instances[0].y;
 	a.maxY = game->player->image->instances[0].y + game->player->image->height;
-		while(i < (game->item_total - game->player->item))
+	while(i < (game->item_total - game->player->item))
 	{
 		b.minX = game->item[i]->image->instances[0].x;
 		b.maxX = game->item[i]->image->instances[0].x + game->item[0]->image->width;
