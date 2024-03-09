@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 14:20:06 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 14:35:29 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 14:44:23 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	parse_input(char *path_map)
 {
-	int fd;
-	char *map_as_line;
+	int		fd;
+	char	*map_in_a_line;
 
 	printf("%s\n",path_map);
 	fd = open(path_map, O_RDONLY);
@@ -24,8 +24,8 @@ void	parse_input(char *path_map)
 		printf("Opening File failed\n");
 		return ;
 	}
-	map_as_line = get_next_line(fd);
-	printf("%s\n",map_as_line);
+	map_in_a_line = get_next_line(fd);
+	printf("%s\n",map_in_a_line);
 
 	close(fd);
 }
