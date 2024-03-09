@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
+/*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 14:25:27 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 16:33:53 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void		ft_exit_player(t_player *player);
 void		ft_exit_exit(t_asset *exit);
 
 // parsing
-void	parse_input(char *path_map);
+char 		**parse_input(char *path_map);
 
 
 // initialization functions
