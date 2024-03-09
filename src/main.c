@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
+/*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 14:32:16 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 16:44:36 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void start_game(t_game *game)
 
 int	main(int argc, char**argv)
 {
-	// atexit(check_leaks);
+	atexit(check_leaks);
 
 	// t_game	*game;
 	// const char *paths_enem[] = {PATHS_ENEMY};
