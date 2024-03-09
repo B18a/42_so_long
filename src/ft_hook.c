@@ -6,24 +6,11 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 11:38:24 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 12:52:37 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-// void delete_temp_images(t_game *game)
-// {
-// 	if(game->player->coordinates_x)
-// 		mlx_delete_image(game->game_window, game->player->coordinates_x);
-// 	if(game->player->coordinates_y)
-// 		mlx_delete_image(game->game_window, game->player->coordinates_y);
-// 	if(game->player->width)
-// 		mlx_delete_image(game->game_window, game->player->width);
-// 	if(game->player->height)
-// 		mlx_delete_image(game->game_window, game->player->height);
-// }
-
 
 void	update_display_item(t_game *game, int32_t posX, int32_t posY)
 {
@@ -53,7 +40,6 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	game = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		// delete_temp_images(game);
 		mlx_close_window(game->game_window);
 	}
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS) // One Step per Press
@@ -88,9 +74,9 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 			game->player->moves += 1;
 		}
 	}
-	check_collision(game);
-	check_collect(game);
-	check_exit(game);
+	// check_collision(game);
+	// check_collect(game);
+	// check_exit(game);
 	update_display_moves(game, 300, 100);
 	update_display_item(game, 400, 100);
 

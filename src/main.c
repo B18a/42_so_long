@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 11:35:43 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 13:50:43 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	main(void)
 	atexit(check_leaks);
 
 	t_game	*game;
-	const char *paths_enem[] = {PATHS_ENEMY};
-	const char *paths_item[] = {PATHS_ITEM};
+	// const char *paths_enem[] = {PATHS_ENEMY};
+	// const char *paths_item[] = {PATHS_ITEM};
 
 	game = NULL;
 	game = ft_initialize_game();
@@ -62,17 +62,11 @@ int	main(void)
 
 	// ft_show_address(game);
 
-	
+
 	ft_load_textures_player(game, 0, 0);
-	ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100});
-	ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){300, 10});
-	ft_load_textures_exit(game, PATH_EXIT, (t_pos){0, 400});
-	// if(ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100}))
-	// 	call_exit(game);
-	// if(ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){0, 10}))
-		// call_exit(game);
-	// if(ft_load_textures_exit(game, PATH_EXIT, (t_pos){0, 400}))
-	// 	call_exit(game);
+	// ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100});
+	// ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){300, 10});
+	// ft_load_textures_exit(game, PATH_EXIT, (t_pos){0, 400});
 
 
 	start_game(game);
