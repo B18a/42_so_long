@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 13:50:43 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 14:32:16 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,40 +37,46 @@ void start_game(t_game *game)
 	}
 }
 
-
-int	main(void)
+int	main(int argc, char**argv)
 {
-	atexit(check_leaks);
+	// atexit(check_leaks);
 
-	t_game	*game;
+	// t_game	*game;
 	// const char *paths_enem[] = {PATHS_ENEMY};
 	// const char *paths_item[] = {PATHS_ITEM};
 
-	game = NULL;
-	game = ft_initialize_game();
-	if(!game)
+	if(argc != 2)
+	{
+		printf("Input incorrect \n");
 		return(0);
+	}
+	parse_input(argv[1]);
+
+	// game = NULL;
+	// game = ft_initialize_game();
+	// if(!game)
+	// 	return(0);
 
 
-	ft_init_pos_asset(game, game->enemy , game->enemy_total);
-	ft_init_pos_asset(game, game->item , game->item_total);
-	/**************************************/
+	// ft_init_pos_asset(game, game->enemy , game->enemy_total);
+	// ft_init_pos_asset(game, game->item , game->item_total);
+	// /**************************************/
 
-	game->game_window = mlx_init(WIDTH, HEIGHT, NAME_WINDOW, true);
-	if(!game->game_window)
-		return (call_exit(game), 0);
+	// game->game_window = mlx_init(WIDTH, HEIGHT, NAME_WINDOW, true);
+	// if(!game->game_window)
+	// 	return (call_exit(game), 0);
 
-	// ft_show_address(game);
-
-
-	ft_load_textures_player(game, 0, 0);
-	// ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100});
-	// ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){300, 10});
-	// ft_load_textures_exit(game, PATH_EXIT, (t_pos){0, 400});
+	// // ft_show_address(game);
 
 
-	start_game(game);
-	call_exit(game);
+	// ft_load_textures_player(game, 0, 0);
+	// // ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100});
+	// // ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){300, 10});
+	// // ft_load_textures_exit(game, PATH_EXIT, (t_pos){0, 400});
+
+
+	// // start_game(game);
+	// call_exit(game);
 
 	return (0);
 }

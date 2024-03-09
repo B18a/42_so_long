@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 12:49:37 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/09 14:25:27 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <unistd.h>
+#include <fcntl.h>
 
 # include "../libs/ft_printf/include/ft_printf.h"
 # include "../libs/libft/include/libft.h"
+# include "../libs/get_next_line/get_next_line.h"
 
 # define WIDTH	500
 # define HEIGHT	500
@@ -99,14 +101,6 @@ typedef struct s_game
 	int			item_total;
 }				t_game;
 
-// // libft
-// void		*ft_calloc(size_t count, size_t size);
-// void		ft_bzero(void *s, size_t n);
-// void		*ft_memset(void *b, int c, size_t len);
-// int			ft_atoi(const char *str);
-// int			ft_isdigit(int c);
-// char		*ft_itoa(int n);
-
 // exit functions to free all memory properly
 void		call_exit(t_game *game);
 void		ft_exit_game(t_game *game);
@@ -114,6 +108,9 @@ void		ft_exit_asset(t_asset **asset, int amount);
 void		ft_exit_pos(t_pos *pos);
 void		ft_exit_player(t_player *player);
 void		ft_exit_exit(t_asset *exit);
+
+// parsing
+void	parse_input(char *path_map);
 
 
 // initialization functions

@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/09 13:50:26 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/09 14:35:39 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ vpath %.h $(INC_DIR)
 
 # INTERNAL FUNCTIONS
 FUNCTIONS	=	$(SRC_DIR)/main.c \
+				$(SRC_DIR)/parsing.c \
 				$(SRC_DIR)/ft_exit.c \
 				$(SRC_DIR)/ft_initialize.c \
 				$(SRC_DIR)/ft_hook.c \
@@ -82,6 +83,7 @@ $(FT_PRINTF) :
 $(FT_LIBFT) :
 	$(MAKE) bonus -C $(FT_LIBFT_DIR)
 $(GET_NEXT_LINE) :
+	$(MAKE) -C $(GET_NEXT_LINE_DIR)
 	$(MAKE) bonus -C $(GET_NEXT_LINE_DIR)
 
 # DIRECTORY
