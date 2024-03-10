@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
+#    By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/09 14:35:39 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/10 12:25:29 by andreasjehl      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJ_DIR		= ./obj
 SRC_DIR		= src
 INC_DIR		= include
 MLX42_DIR	= ./MLX42
-CFLAGS		= -Wall -Werror -Wextra -I $(INC_DIR)
+#CFLAGS		= -Wall -Werror -Wextra -I $(INC_DIR)
 #CFLAGS		=
 LIBXFLAGS	=  -framework Cocoa -framework OpenGL -framework IOKit
 MLX_INCLUDE	= MLX42/build/libmlx42.a -Iinclude -lglfw
@@ -102,17 +102,17 @@ mlx_clone :
 	fi
 
 clean :
-	$(MAKE) -C $(FT_LIBFT_DIR) clean
-	$(MAKE) -C $(FT_PRINTF_DIR) clean
-	$(MAKE) -C $(GET_NEXT_LINE_DIR) clean
+#	$(MAKE) -C $(FT_LIBFT_DIR) clean
+#	$(MAKE) -C $(FT_PRINTF_DIR) clean
+#	$(MAKE) -C $(GET_NEXT_LINE_DIR) clean
 	$(REMOVE) $(OBJECTS)
 	$(REMOVE) $(OBJ_DIR)
 #	$(REMOVE) $(MLX42_DIR)
 
 fclean : clean
-	$(MAKE) -C $(FT_LIBFT_DIR) fclean
-	$(MAKE) -C $(FT_PRINTF_DIR) fclean
-	$(MAKE) -C $(GET_NEXT_LINE_DIR) fclean
+#	$(MAKE) -C $(FT_LIBFT_DIR) fclean
+#	$(MAKE) -C $(FT_PRINTF_DIR) fclean
+#	$(MAKE) -C $(GET_NEXT_LINE_DIR) fclean
 	$(REMOVE) $(NAME)
 
 re : fclean all
