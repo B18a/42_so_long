@@ -6,7 +6,7 @@
 /*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/12 22:08:58 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/12 22:27:53 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,21 +81,7 @@ char	*read_map(char *map)
 	return (line_joined);
 }
 
-void	free_map_in_arr(char **map_in_arr)
-{
-	int i;
-	
-	i = 0;
-	if(map_in_arr)
-	{
-		while(map_in_arr[i])
-		{
-			free(map_in_arr[i]);
-			i++;
-		}
-		free(map_in_arr);
-	}
-}
+
 
 int	main(int argc, char**argv)
 {
@@ -115,11 +101,21 @@ int	main(int argc, char**argv)
 		return(0);
 	}
 
-	map_in_arr = parse_input(argv[1]);
+	map_in_string = map_to_string(argv[1]);
+	printf("%s\n",map_in_string);
+	if(ft_map_check_chars(map_in_string))
+	{
+		printf("Forbidden char in map\n");
+		return(0);
+	}
+	map_in_arr = ft_split(map_in_string, '\n');		
+	if(map_in_string)
+		free(map_in_string);
 	print_2d_arr(map_in_arr);
 
-	free_map_in_arr(map_in_arr);
 
+
+	free_map_in_arr(map_in_arr);
 	// game = NULL;
 	// game = ft_initialize_game();
 	// if(!game)

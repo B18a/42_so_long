@@ -6,7 +6,7 @@
 /*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/12 21:38:31 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/12 22:22:42 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,13 @@ void		ft_exit_asset(t_asset **asset, int amount);
 void		ft_exit_pos(t_pos *pos);
 void		ft_exit_player(t_player *player);
 void		ft_exit_exit(t_asset *exit);
+void		free_map_in_arr(char **map_in_arr);
+
 
 // parsing
-char 		**parse_input(char *path_map);
+char 		*map_to_string(char *path_map);
 void 		print_2d_arr(char **map_in_arr);
-
+int			ft_map_check_chars(char *map_in_string);
 
 // initialization functions
 t_game		*ft_initialize_game(void);

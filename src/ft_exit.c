@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
+/*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 11:26:35 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/12 22:10:48 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	free_map_in_arr(char **map_in_arr)
+{
+	int i;
+	
+	i = 0;
+	if(map_in_arr)
+	{
+		while(map_in_arr[i])
+		{
+			free(map_in_arr[i]);
+			i++;
+		}
+		free(map_in_arr);
+	}
+}
 
 void	ft_exit_pos(t_pos *pos)
 {
