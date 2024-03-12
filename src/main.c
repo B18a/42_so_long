@@ -6,7 +6,7 @@
 /*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 16:44:36 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/12 21:35:42 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,30 @@ void start_game(t_game *game)
 	}
 }
 
+void 	print_2d_arr(char **map_in_arr)
+{
+	int i = 0;
+	int j = 0;
+	while(map_in_arr[i])
+	{
+		printf("[%i]\n",i);
+		while(map_in_arr[i][j])
+		{
+			printf("%c",map_in_arr[i][j]);
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+}
+
+
 int	main(int argc, char**argv)
 {
-	atexit(check_leaks);
+	// atexit(check_leaks);
+
+	char	**map_in_arr;
+
 
 	// t_game	*game;
 	// const char *paths_enem[] = {PATHS_ENEMY};
@@ -50,12 +71,16 @@ int	main(int argc, char**argv)
 		printf("Input incorrect \n");
 		return(0);
 	}
-	parse_input(argv[1]);
 
+	
+	map_in_arr = parse_input(argv[1]);
+	print_2d_arr(map_in_arr);
+									// free map in arr is missing!!!
 	// game = NULL;
 	// game = ft_initialize_game();
 	// if(!game)
 	// 	return(0);
+
 
 
 	// ft_init_pos_asset(game, game->enemy , game->enemy_total);
