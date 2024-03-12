@@ -6,7 +6,7 @@
 /*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/12 21:35:42 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/12 22:08:58 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,66 @@ void 	print_2d_arr(char **map_in_arr)
 	int j = 0;
 	while(map_in_arr[i])
 	{
-		printf("[%i]\n",i);
+		printf("[%i]",i);
 		while(map_in_arr[i][j])
 		{
 			printf("%c",map_in_arr[i][j]);
 			j++;
 		}
+		printf("\n");
 		j = 0;
 		i++;
 	}
 }
 
 
+char	*read_map(char *map)
+{
+	char	*line;
+	char	*line_joined;
+	int		fd;
+
+	fd = open(map, O_RDONLY);
+	line_joined = ft_calloc(1, 1);
+	if (!line_joined)
+		return (NULL);
+	while (1)
+	{
+		line = get_next_line (fd);
+		if (line)
+		{
+			line_joined = ft_strjoin(line_joined, line);
+			free(line);
+		}
+		else
+			break ;
+	}
+	close (fd);
+	return (line_joined);
+}
+
+void	free_map_in_arr(char **map_in_arr)
+{
+	int i;
+	
+	i = 0;
+	if(map_in_arr)
+	{
+		while(map_in_arr[i])
+		{
+			free(map_in_arr[i]);
+			i++;
+		}
+		free(map_in_arr);
+	}
+}
+
 int	main(int argc, char**argv)
 {
-	// atexit(check_leaks);
+	atexit(check_leaks);
 
 	char	**map_in_arr;
+	char	*map_in_string;
 
 
 	// t_game	*game;
@@ -72,10 +115,11 @@ int	main(int argc, char**argv)
 		return(0);
 	}
 
-	
 	map_in_arr = parse_input(argv[1]);
 	print_2d_arr(map_in_arr);
-									// free map in arr is missing!!!
+
+	free_map_in_arr(map_in_arr);
+
 	// game = NULL;
 	// game = ft_initialize_game();
 	// if(!game)

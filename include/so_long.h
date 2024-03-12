@@ -6,7 +6,7 @@
 /*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 16:33:53 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/12 21:38:31 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void		ft_exit_exit(t_asset *exit);
 
 // parsing
 char 		**parse_input(char *path_map);
+void 		print_2d_arr(char **map_in_arr);
 
 
 // initialization functions
