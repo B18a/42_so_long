@@ -6,7 +6,7 @@
 /*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/13 20:52:20 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/13 21:39:13 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void 	print_2d_arr(char **map_in_arr)
 	int j = 0;
 	while(map_in_arr[i])
 	{
-		printf("[%i]",i);
+		printf("[%i]	",i);
 		while(map_in_arr[i][j])
 		{
 			printf("%c",map_in_arr[i][j]);
