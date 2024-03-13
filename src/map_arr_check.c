@@ -7,10 +7,10 @@ int	map_check_rectangle(char **map_as_arr)
 {
 	int i;
 
-	i = 1;
-	while(map_as_arr[i] && ft_strlen(map_as_arr[0]) == ft_strlen(map_as_arr[i]))
+	i = 0;
+	while(map_as_arr[i] && (ft_strlen(map_as_arr[0]) == ft_strlen(map_as_arr[i])))
 		i++;
-	if(map_as_arr[i] && ft_strlen(map_as_arr[0]) != ft_strlen(map_as_arr[i]))
+	if(map_as_arr[i] && (ft_strlen(map_as_arr[0]) != ft_strlen(map_as_arr[i])))
 		return(1);
 	return(0);
 }
@@ -51,8 +51,8 @@ int	map_arr_check(char **map_as_arr)
 	int status;
 
 	status = 0;
-	status = map_check_rectangle(map_as_arr);
-	status = map_check_wall(map_as_arr);
+	status += map_check_rectangle(map_as_arr);
+	status += map_check_wall(map_as_arr);
 
 
 	return(status);
