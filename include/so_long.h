@@ -6,7 +6,7 @@
 /*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/13 16:25:42 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/13 16:38:37 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void		free_map_in_arr(char **map_in_arr);
 char 		*map_to_string(char *path_map);
 void 		print_2d_arr(char **map_in_arr);
 int			map_char_check(char *map_in_string);
+int			map_arr_check(char **map_as_arr);
 
 // initialization functions
 t_game		*ft_initialize_game(void);

@@ -6,7 +6,7 @@
 /*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/13 16:32:04 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/13 16:54:04 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	main(int argc, char**argv)
 	}
 
 	map_as_string = map_to_string(argv[1]);
-	printf("%s\n",map_as_string);
+	// printf("%s\n",map_as_string);
 	if(map_char_check(map_as_string))
 	{
 		return(0);
@@ -111,7 +111,14 @@ int	main(int argc, char**argv)
 	if(map_as_string)
 		free(map_as_string);
 	print_2d_arr(map_as_arr);
+	
+	if(map_arr_check(map_as_arr))
+	{
+		printf("map_arr_check \n");
+		return(0);
+	}
 
+	
 	free_map_in_arr(map_as_arr);
 	// game = NULL;
 	// game = ft_initialize_game();

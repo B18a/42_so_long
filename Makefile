@@ -6,7 +6,7 @@
 #    By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/12 22:18:18 by andreasjehl      ###   ########.fr        #
+#    Updated: 2024/03/13 16:36:59 by andreasjehl      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ FUNCTIONS	=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_hook.c \
 				$(SRC_DIR)/load_images.c \
 				$(SRC_DIR)/ft_check.c \
-				$(SRC_DIR)/map_check.c \
+				$(SRC_DIR)/map_char_check.c \
+				$(SRC_DIR)/map_arr_check.c \
 
 # INTERNAL OBJECT
 OBJECTS		= $(addprefix $(OBJ_DIR)/, $(notdir $(FUNCTIONS:.c=.o)))

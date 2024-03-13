@@ -6,7 +6,7 @@
 /*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:16:20 by andreasjehl       #+#    #+#             */
-/*   Updated: 2024/03/13 16:32:34 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/13 16:35:07 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,5 @@ int map_char_check(char *map_as_string)
 	status = ft_check_unique_char(map_as_string, 'P');
 	status = ft_check_unique_char(map_as_string, 'E');
 	status = ft_check_multiple_char(map_as_string, 'C');
-	
 	return(status);
 }
