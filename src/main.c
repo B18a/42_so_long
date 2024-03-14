@@ -6,7 +6,7 @@
 /*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/13 21:39:13 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/14 13:53:41 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ void 	print_2d_arr(char **map_in_arr)
 {
 	int i = 0;
 	int j = 0;
+	printf("	[0][1][2][3][4][5][7][8][9]\n");
 	while(map_in_arr[i])
 	{
 		printf("[%i]	",i);
 		while(map_in_arr[i][j])
 		{
-			printf("%c",map_in_arr[i][j]);
+			printf(" %c ",map_in_arr[i][j]);
 			j++;
 		}
 		printf("\n");
@@ -109,7 +110,7 @@ int	main(int argc, char**argv)
 		return(0);
 	}	
 	map_as_arr = ft_split(map_as_string, '\n');		
-	print_2d_arr(map_as_arr);
+	// print_2d_arr(map_as_arr);
 	
 	if(map_arr_check(map_as_arr) > 0)
 	{

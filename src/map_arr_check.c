@@ -45,29 +45,40 @@ static int	map_check_wall(char **map_as_arr)
 	return(0);
 }
 
-static int flood_fill(char **map, t_pos size, t_pos pos, char exit)
+static int map_flood_fill(char **map, t_pos size, t_pos pos)
 {
-	int ret;
-
-	ret = 0;
-	if (pos.x < 0 || pos.x > size.x || pos.y < 0 || pos.y > size.y)
-		return(0);
-	if (map[pos.x][pos.y] == exit)
+	// printf("size.x is %i\n", size.x);
+	// printf("size.y is %i\n", size.y);
+	// printf("map pos[%i][%i], char %c  \n", pos.x, pos.y, map[pos.x][pos.y]);
+	print_2d_arr(map);
+	if (pos.x < 0 || pos.x >= size.x || pos.y < 0 || pos.y >= size.y)
+	{
+		printf("				Out of Map at [%i][%i]\n",pos.x, pos.y);
+		return(1);
+	}
+	if (map[pos.x][pos.y] == '1')
+	{
+		printf("				Wall at [%i][%i]\n",pos.x, pos.y);
 		return (1);
-	// ret += flood_fill(map, size, (t_pos){pos.x + 1, pos.y}, exit);
-	// ret += flood_fill(map, size, (t_pos){pos.x - 1, pos.y}, exit);
-	// ret += flood_fill(map, size, (t_pos){pos.x, pos.y + 1}, exit);
-	// ret += flood_fill(map, size, (t_pos){pos.x, pos.y - 1}, exit);
-	return (ret);
-}
-
-static int	map_flood_fill(char **map_as_arr, t_pos size, t_pos player)
-{
-	int status;
-
-	status = 0;
-	status += flood_fill(map_as_arr, size, player, 'E');
-	return(status);
+	}
+	if (map[pos.x][pos.y] == 'V')
+	{
+		printf("				Visited at [%i][%i]\n",pos.x, pos.y);
+		return (1);
+	}
+	if (map[pos.x][pos.y] == 'E')
+	{
+		printf("				Exit at [%i][%i]\n",pos.x, pos.y);
+		return (0);
+	}
+		printf("				Loop at [%i][%i]\n",pos.x, pos.y);
+	map[pos.x][pos.y] = 'V';
+	if(map_flood_fill(map, size, (t_pos){pos.x + 1, pos.y}) == 0
+	|| map_flood_fill(map, size, (t_pos){pos.x - 1, pos.y}) == 0
+	|| map_flood_fill(map, size, (t_pos){pos.x, pos.y + 1}) == 0
+	|| map_flood_fill(map, size, (t_pos){pos.x, pos.y - 1}) == 0)
+		return(0);
+	return (1);
 }
 
 static int	get_height(char **map_as_arr)
@@ -117,15 +128,13 @@ int	map_arr_check(char **map_as_arr)
 	status += map_check_rectangle(map_as_arr);
 	status += map_check_wall(map_as_arr);
 	status = 0;
-	size.x = ft_strlen(map_as_arr[0]);
-	printf("size.x is %i\n", size.x);
-	size.y = get_height(map_as_arr);
-	printf("size.y is %i\n", size.y);
+	size.y = ft_strlen(map_as_arr[0]);
+	// printf("size.y is %i\n", size.y);
+	size.x = get_height(map_as_arr);
+	// printf("size.x is %i\n", size.x);
 	pos_player = get_pos_player(map_as_arr);
-	printf("pos_player.x %i ,pos_player.y %i\n", pos_player.x,pos_player.y);
-	status += map_flood_fill(map_as_arr, size, pos_player);
-
-
+	// printf("pos_player.x %i ,pos_player.y %i\n", pos_player.x,pos_player.y);
+	status = map_flood_fill(map_as_arr, size, pos_player);
 	return(status);
 }
 
