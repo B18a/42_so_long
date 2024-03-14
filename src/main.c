@@ -6,7 +6,7 @@
 /*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/14 13:53:41 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/14 14:16:42 by andreasjehl      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,15 @@ char	*read_map(char *map)
 	return (line_joined);
 }
 
-
+int	check_file_type(char *str)
+{
+	while(str && *str != '.')
+		str++;
+	// printf("%s\n",str);
+	if(ft_strncmp(str,".ber",4))
+		return(1);
+	return(0);
+}
 
 int	main(int argc, char**argv)
 {
@@ -101,7 +109,11 @@ int	main(int argc, char**argv)
 		printf("Input incorrect \n");
 		return(0);
 	}
-
+	if(check_file_type(argv[1]))
+	{
+		printf("Filetype incorrect \n");
+		return(0);
+	}
 	map_as_string = map_to_string(argv[1]);
 	// printf("%s\n",map_as_string);
 	if(map_char_check(map_as_string) > 0)
