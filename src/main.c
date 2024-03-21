@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 14:28:54 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/21 15:12:44 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ int	main(int argc, char**argv)
 
 	ft_load_textures_floor(game, game->map_as_arr);
 	ft_load_textures_obstacle(game, game->map_as_arr);
-	ft_load_textures_unique(game, game->exit->image, pos_exit, PATH_EXIT);
-	// ft_load_textures_exit(game, pos_exit.x * PIXEL, pos_exit.y * PIXEL);
+	// ft_load_textures_unique(game, game->exit->image, pos_exit, PATH_EXIT);
+	ft_load_textures_exit(game, pos_exit.x * PIXEL, pos_exit.y * PIXEL);
 	ft_load_textures_player(game, pos_player.x * PIXEL, pos_player.y * PIXEL);
 
 
