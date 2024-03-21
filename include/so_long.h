@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 14:09:41 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/21 14:26:04 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,18 +132,19 @@ void		update_display_moves(t_game *game, int32_t posX, int32_t posY);
 void		update_display_item(t_game *game, int32_t posX, int32_t posY);
 void		ft_init_pos_asset(t_game *game, t_asset **asset, int amount);
 t_asset 	*ft_initialize_item(t_game *game, int amount);
+int			ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const char *path);
 
 
 
 // ????
-int	check_file_type(char *str);
-void	call_exit_prep(char *map_as_string, char **map_as_arr);
+int			check_file_type(char *str);
+void		call_exit_prep(char *map_as_string, char **map_as_arr);
 
 
 // load assets
-t_pos	get_pos_uniqe(char **map_as_arr, char c);
-void	ft_load_textures_floor(t_game *game,char **map_as_arr);
-void	ft_load_textures_obstacle(t_game *game,char **map_as_arr);
+t_pos		get_pos_unique(char **map_as_arr, char c);
+void		ft_load_textures_floor(t_game *game,char **map_as_arr);
+void		ft_load_textures_obstacle(t_game *game,char **map_as_arr);
 
 // load textures
 int			ft_load_textures_enemy(t_game *game, const char* paths_asset[]);

@@ -6,13 +6,13 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:50:38 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 14:04:35 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/21 14:19:45 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_pos	get_pos_uniqe(char **map_as_arr, char c)
+t_pos	get_pos_unique(char **map_as_arr, char c)
 {
 	t_pos	pos;
 	int		x;
