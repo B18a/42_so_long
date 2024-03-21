@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+         #
+#    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/13 16:36:59 by andreasjehl      ###   ########.fr        #
+#    Updated: 2024/03/21 09:21:38 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,10 @@ OBJ_DIR		= ./obj
 SRC_DIR		= src
 INC_DIR		= include
 MLX42_DIR	= ./MLX42
-#CFLAGS		= -Wall -Werror -Wextra -I $(INC_DIR)
+CFLAGS		= -Wall -Werror -Wextra -I $(INC_DIR)
 LIBXFLAGS	=  -framework Cocoa -framework OpenGL -framework IOKit
 MLX_INCLUDE	= MLX42/build/libmlx42.a -Iinclude -lglfw
-MLX_LINUX	= MLX42/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
-
+#MLX_LINUX	= MLX42/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 
 # looking for files in subdirectories
 vpath %.c $(SRC_DIR)
@@ -68,11 +67,11 @@ LIBS_DIR		:= $(FT_PRINTF_DIR) $(FT_LIBFT_DIR) $(GET_NEXT_LINE_DIR)
 
 all : mlx_clone $(NAME)
 
-linux : mlx_clone $(NAME2)
+#linux : mlx_clone $(NAME2)
 
 # LINUX RULE
-$(NAME2) : $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(MLX_LINUX) -o $(NAME)
+#$(NAME2) : $(OBJECTS)
+#	$(CC) $(CFLAGS) $(OBJECTS) $(MLX_LINUX) -o $(NAME)
 
 # INTERNAL RULE
 $(NAME) : $(LIBS_NAME) $(OBJECTS)

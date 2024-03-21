@@ -124,7 +124,8 @@ int	map_arr_check(char **map_as_arr)
 	int		status;
 	t_pos	size;
 	t_pos	pos_player;
-	
+
+	status = 0;
 	status += map_check_rectangle(map_as_arr);
 	status += map_check_wall(map_as_arr);
 	status = 0;
@@ -139,7 +140,7 @@ int	map_arr_check(char **map_as_arr)
 }
 
 /*	???????
-	5x3	
+	5x3
 
 	11111
 	1PCE1

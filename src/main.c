@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
+/*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/14 14:44:59 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/21 09:22:57 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	check_file_type(char *str)
 void	call_exit_prep(char *map_as_string, char **map_as_arr)
 {
 	int i;
-	
+
 	i = 0;
 	if(map_as_string)
 		free(map_as_string);
@@ -117,10 +117,10 @@ int	main(int argc, char**argv)
 	char	**map_as_arr;
 	char	*map_as_string;
 
-
-	// t_game	*game;
-	// const char *paths_enem[] = {PATHS_ENEMY};
-	// const char *paths_item[] = {PATHS_ITEM};
+	map_as_arr = NULL;
+	t_game	*game;
+	const char *paths_enem[] = {PATHS_ENEMY};
+	const char *paths_item[] = {PATHS_ITEM};
 
 	if(argc != 2)
 	{
@@ -139,10 +139,10 @@ int	main(int argc, char**argv)
 		printf("map_char_check \n");
 		call_exit_prep(map_as_string, map_as_arr);
 		return(0);
-	}	
-	map_as_arr = ft_split(map_as_string, '\n');		
+	}
+	map_as_arr = ft_split(map_as_string, '\n');
 	// print_2d_arr(map_as_arr);
-	
+
 	if(map_arr_check(map_as_arr) > 0)
 	{
 		printf("map_arr_check \n");
@@ -150,36 +150,36 @@ int	main(int argc, char**argv)
 		return(0);
 	}
 
-	// game = NULL;
-	// game = ft_initialize_game();
-	// if(!game)
-	// {
-	// 	call_exit_prep(map_as_string, map_as_arr);
-	// 	return(0);
-	// }
+	game = NULL;
+	game = ft_initialize_game();
+	if(!game)
+	{
+		call_exit_prep(map_as_string, map_as_arr);
+		return(0);
+	}
 
 
 
-	// ft_init_pos_asset(game, game->enemy , game->enemy_total);
-	// ft_init_pos_asset(game, game->item , game->item_total);
+	ft_init_pos_asset(game, game->enemy , game->enemy_total);
+	ft_init_pos_asset(game, game->item , game->item_total);
 	/**************************************/
 
-	// game->game_window = mlx_init(WIDTH, HEIGHT, NAME_WINDOW, true);
-	// if(!game->game_window)
-	// 	return (call_exit(game), 0);
+	game->game_window = mlx_init(WIDTH, HEIGHT, NAME_WINDOW, true);
+	if(!game->game_window)
+		return (call_exit(game), 0);
 
 	// ft_show_address(game);
 
 
-	// ft_load_textures_player(game, 0, 0);
-	// ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100});
-	// ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){300, 10});
-	// ft_load_textures_exit(game, PATH_EXIT, (t_pos){0, 400});
+	ft_load_textures_player(game, 0, 0);
+	ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100});
+	ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){300, 10});
+	ft_load_textures_exit(game, PATH_EXIT, (t_pos){0, 400});
 
 
-	// start_game(game);
+	start_game(game);
 	call_exit_prep(map_as_string, map_as_arr);
-	// call_exit(game);
+	call_exit(game);
 
 	return (0);
 }
