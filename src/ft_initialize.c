@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 11:57:43 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/21 15:32:12 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,31 +107,31 @@ t_game	*ft_initialize_game(void)
 	game = NULL;
 	game = ft_calloc(sizeof(t_game), 1);
 	if (game)
-		{
-			
-			game->item_total = AMOUNT_ITEM;
-			game->enemy_total = AMOUNT_ENEMY;
+	{
+
+		game->item_total = AMOUNT_ITEM;
+		game->enemy_total = AMOUNT_ENEMY;
 /**************************************************************/
-			game->player = NULL;
-			game->player = ft_initialize_player();
+		game->player = NULL;
+		game->player = ft_initialize_player();
 
 /**************************************************************/
-			game->enemy = NULL;
-			game->enemy = ft_initialize_asset(game->enemy_total);
-			// return value must be checked?
-			// ft_init_pos_asset(game, game->enemy , game->enemy_total); // switched to main because position needs to be read from input
+		game->enemy = NULL;
+		game->enemy = ft_initialize_asset(game->enemy_total);
+		// return value must be checked?
+		// ft_init_pos_asset(game, game->enemy , game->enemy_total); // switched to main because position needs to be read from input
 /**************************************************************/
-			game->item = NULL;
-			game->item = ft_initialize_asset(game->item_total);
-			// game->item_begin = ft_initialize_item(game, game->item_total);
-			// return value must be checked?
-			// ft_init_pos_asset(game, game->item , game->item_total); // switched to main because position needs to be read from input
+		game->item = NULL;
+		game->item = ft_initialize_asset(game->item_total);
+		// game->item_begin = ft_initialize_item(game, game->item_total);
+		// return value must be checked?
+		// ft_init_pos_asset(game, game->item , game->item_total); // switched to main because position needs to be read from input
 /**************************************************************/
-			game->exit = NULL;
-			game->exit = ft_initialize_exit();
+		game->exit = NULL;
+		game->exit = ft_initialize_exit();
 /**************************************************************/
-			game->game_window = NULL;
-			game->game_image = NULL;
-		}
+		game->game_window = NULL;
+		game->game_image = NULL;
+	}
 	return (game);
 }
