@@ -81,7 +81,7 @@ static int map_flood_fill(char **map, t_pos size, t_pos pos)
 	return (1);
 }
 
-static int	get_height(char **map_as_arr)
+int	get_height(char **map_as_arr)
 {
 	int i;
 
@@ -89,34 +89,6 @@ static int	get_height(char **map_as_arr)
 	while(map_as_arr[i])
 		i++;
 	return(i);
-}
-
-static t_pos get_pos_player(char **map_as_arr)
-{
-	int		i;
-	int		j;
-	t_pos	pos_player;
-
-	i = 0;
-	j = 0;
-	pos_player.x = 0;
-	pos_player.y = 0;
-	while(map_as_arr[i])
-	{
-		while (map_as_arr[i][j])
-		{
-			if(map_as_arr[i][j] == 'P')
-			{
-				pos_player.x = j;
-				pos_player.y = i;
-				return(pos_player);
-			}
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	return(pos_player);
 }
 
 int	map_arr_check(char **map_as_arr)

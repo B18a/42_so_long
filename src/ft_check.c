@@ -6,13 +6,13 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 22:02:40 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 12:44:24 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/21 11:50:09 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void check_collision(t_game *game)
+void check_enemy(t_game *game)
 {
 	t_borders	a;
 	t_borders	b;
@@ -66,9 +66,7 @@ void		check_exit(t_game *game)
 {
 	t_borders	a;
 	t_borders	b;
-	int i;
 
-	i = 0;
 	a.minX = game->player->image->instances[0].x;
 	a.maxX = game->player->image->instances[0].x + game->player->image->width;
 	a.minY = game->player->image->instances[0].y;
@@ -86,5 +84,4 @@ void		check_exit(t_game *game)
 			printf("FINISHED\n");
 		}
 	}
-	i++;
 }

@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/21 09:21:38 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/21 10:54:17 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,8 @@ FUNCTIONS	=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_check.c \
 				$(SRC_DIR)/map_char_check.c \
 				$(SRC_DIR)/map_arr_check.c \
+				$(SRC_DIR)/load_assets.c \
+				$(SRC_DIR)/unused_at_end.c \
 
 # INTERNAL OBJECT
 OBJECTS		= $(addprefix $(OBJ_DIR)/, $(notdir $(FUNCTIONS:.c=.o)))

@@ -3,19 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
+/*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/14 14:26:08 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/21 10:55:48 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+void	call_exit_prep(char *map_as_string, char **map_as_arr)
+{
+	int i;
+
+	i = 0;
+	if(map_as_string)
+		free(map_as_string);
+	if(map_as_arr)
+	{
+	while(map_as_arr[i])
+	{
+		free(map_as_arr[i]);
+		i++;
+	}
+	free(map_as_arr);
+	}
+}
+
 void	free_map_in_arr(char **map_in_arr)
 {
 	int i;
-	
+
 	i = 0;
 	if(map_in_arr)
 	{

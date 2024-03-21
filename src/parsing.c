@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
+/*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 14:20:06 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/12 22:20:49 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/21 10:55:08 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,39 @@ char	*map_to_string(char *path_map)
 	}
 	close(fd);
 	return(map_in_line_joined);
+}
+
+char	*read_map(char *map)
+{
+	char	*line;
+	char	*line_joined;
+	int		fd;
+
+	fd = open(map, O_RDONLY);
+	line_joined = ft_calloc(1, 1);
+	if (!line_joined)
+		return (NULL);
+	while (1)
+	{
+		line = get_next_line (fd);
+		if (line)
+		{
+			line_joined = ft_strjoin(line_joined, line);
+			free(line);
+		}
+		else
+			break ;
+	}
+	close (fd);
+	return (line_joined);
+}
+
+int	check_file_type(char *str)
+{
+	while(str && *str != '.')
+		str++;
+	// printf("%s\n",str);
+	if(ft_strncmp(str,".ber",4))
+		return(1);
+	return(0);
 }
