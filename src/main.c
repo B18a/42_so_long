@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 12:29:55 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/21 14:12:24 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(int argc, char**argv)
 	}
 	map_as_arr = ft_split(map_as_string, '\n');
 
-											// print_2d_arr(map_as_arr);
+											print_2d_arr(map_as_arr);
 
 	if(map_arr_check(map_as_arr) > 0)
 	{
@@ -93,7 +93,10 @@ int	main(int argc, char**argv)
 
 
 	t_pos	pos_player;
-	pos_player = get_pos_player(game->map_as_arr);
+	pos_player = get_pos_uniqe(game->map_as_arr, 'P');
+
+	t_pos	pos_exit;
+	pos_exit = get_pos_uniqe(game->map_as_arr, 'E');
 
 	game->game_window = mlx_init(game->width, game->height, NAME_WINDOW, true);
 	if(!game->game_window)
@@ -104,9 +107,9 @@ int	main(int argc, char**argv)
 	ft_load_textures_floor(game, game->map_as_arr);
 	ft_load_textures_obstacle(game, game->map_as_arr);
 	ft_load_textures_player(game, pos_player.x * PIXEL, pos_player.y * PIXEL);
+	ft_load_textures_exit(game, pos_exit.x * PIXEL, pos_exit.y * PIXEL);
 	// ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100});
 	// ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){300, 10});
-	// ft_load_textures_exit(game, PATH_EXIT, (t_pos){0, 400});
 
 	start_game(game);
 	call_exit_prep(game->map_as_string, game->map_as_arr);

@@ -6,13 +6,13 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:50:38 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 11:24:06 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/21 14:04:35 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_pos	get_pos_player(char **map_as_arr)
+t_pos	get_pos_uniqe(char **map_as_arr, char c)
 {
 	t_pos	pos;
 	int		x;
@@ -26,7 +26,7 @@ t_pos	get_pos_player(char **map_as_arr)
 	{
 		while(map_as_arr[y][x])
 		{
-			if(map_as_arr[y][x] == 'P')
+			if(map_as_arr[y][x] == c)
 			{
 				pos.x = x;
 				pos.y = y;

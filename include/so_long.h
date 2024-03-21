@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 11:57:04 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/21 14:09:41 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define PATH_PLAYER	"./assets/knight.png"
 # define PATH_FLOOR		"./assets/floor_1.png"
 # define PATH_OBSTACLE		"./assets/wall_1.png"
+# define PATH_EXIT		"./assets/door_closed.png"
 # define PATH_PLAYER_UP		"./assets/Link_Down.png"
 # define PATH_PLAYER_DOWN	"./assets/Link_Up.png"
 # define PATH_ENEMY1	"./assets/enemy.png"
@@ -43,7 +44,6 @@
 # define PATHS_ITEM		PATH_ITEM1, PATH_ITEM2, PATH_ITEM3, PATH_ITEM4, PATH_ITEM5
 # define AMOUNT_ENEMY	2
 # define AMOUNT_ITEM	2
-# define PATH_EXIT		"./assets/heart.png"
 
 # include "../MLX42/include/MLX42/MLX42.h"
 
@@ -141,7 +141,7 @@ void	call_exit_prep(char *map_as_string, char **map_as_arr);
 
 
 // load assets
-t_pos	get_pos_player(char **map_as_arr);
+t_pos	get_pos_uniqe(char **map_as_arr, char c);
 void	ft_load_textures_floor(t_game *game,char **map_as_arr);
 void	ft_load_textures_obstacle(t_game *game,char **map_as_arr);
 
@@ -149,7 +149,7 @@ void	ft_load_textures_obstacle(t_game *game,char **map_as_arr);
 int			ft_load_textures_enemy(t_game *game, const char* paths_asset[]);
 int			ft_load_textures_player(t_game *game, int posX, int posY);
 int			ft_load_textures_asset(t_game *game, t_asset **asset, const char* path[], int amount, t_pos pos);
-int			ft_load_textures_exit(t_game *game, const char* path, t_pos pos);
+int			ft_load_textures_exit(t_game *game, int posX, int posY);
 
 // hook function
 void		my_keyhook(mlx_key_data_t keydata, void *param);

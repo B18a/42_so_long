@@ -105,7 +105,7 @@ int	map_arr_check(char **map_as_arr)
 	// printf("size.y is %i\n", size.y);
 	size.x = get_height(map_as_arr);
 	// printf("size.x is %i\n", size.x);
-	pos_player = get_pos_player(map_as_arr);
+	pos_player = get_pos_uniqe(map_as_arr, 'P');
 	// printf("pos_player.x %i ,pos_player.y %i\n", pos_player.x,pos_player.y);
 	status += map_flood_fill(map_as_arr, size, pos_player);
 	return(status);
