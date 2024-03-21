@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_char_check.c                                   :+:      :+:    :+:   */
+/*   map_string_check.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andreasjehle <andreasjehle@student.42.f    +#+  +:+       +#+        */
+/*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:16:20 by andreasjehl       #+#    #+#             */
-/*   Updated: 2024/03/13 20:52:02 by andreasjehl      ###   ########.fr       */
+/*   Updated: 2024/03/21 15:17:50 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	ft_check_multiple_char(char *map_as_string, char character)
 	return(0);
 }
 
-int map_char_check(char *map_as_string)
+int map_string_check(char *map_as_string)
 {
 	int status;
 

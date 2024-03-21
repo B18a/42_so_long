@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 14:26:04 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/21 15:17:36 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void		free_map_in_arr(char **map_in_arr);
 // parsing
 char 		*map_to_string(char *path_map);
 void 		print_2d_arr(char **map_in_arr);
-int			map_char_check(char *map_in_string);
+int			map_string_check(char *map_in_string);
 int			map_arr_check(char **map_as_arr);
 int			get_height(char **map_as_arr);
 

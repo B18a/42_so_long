@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 15:12:44 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/21 15:16:59 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ int	main(int argc, char**argv)
 	map_as_arr = NULL;
 	map_as_string = NULL;
 
-	// const char *paths_enem[] = {PATHS_ENEMY};
-	// const char *paths_item[] = {PATHS_ITEM};
-
 	if(argc != 2)
 	{
 		printf("Input incorrect \n");
@@ -56,10 +53,9 @@ int	main(int argc, char**argv)
 		return(0);
 	}
 	map_as_string = map_to_string(argv[1]);
-	// printf("%s\n",map_as_string);
-	if(map_char_check(map_as_string) > 0)
+	if(map_string_check(map_as_string) > 0)
 	{
-		printf("map_char_check \n");
+		printf("map_string_check \n");
 		call_exit_prep(map_as_string, map_as_arr);
 		return(0);
 	}
