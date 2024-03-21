@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 11:54:38 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/21 12:31:05 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,45 @@ void	update_display_moves(t_game *game, int32_t posX, int32_t posY)
 }
 
 
-// int	check_obstacle(t_game *game, int pos_y, int pos_x)
-// {
-// 	t_borders	a;
-// 	t_borders	b;
+int	check_obstacle(t_game *game)
+{
+	int	x;
+	int	y;
 
-// 	a.minX = game->player->image->instances[0].x;
-// 	a.maxX = game->player->image->instances[0].x + game->player->image->width;
-// 	a.minY = game->player->image->instances[0].y;
-// 	a.maxY = game->player->image->instances[0].y + game->player->image->height;
-// 	b.minX = pos_x;
-// 	b.maxX = pos_x + game->exit->image->width;
-// 	b.minY = pos_y;
-// 	b.maxY = pos_y + game->exit->image->height;
-// 	if((a.maxX >= b.minX) && (a.minX <= b.maxX) && (a.maxY >= b.minY) && (a.minY <= b.maxY))
-// 	{
-// 		return(1);
-// 	}
-// 	return(0);
-// }
+	t_borders	a;
+	t_borders	b;
+
+	x = 0;
+	y = 0;
+
+	a.minX = game->player->image->instances[0].x;
+	a.maxX = game->player->image->instances[0].x + game->player->image->width;
+	a.minY = game->player->image->instances[0].y;
+	a.maxY = game->player->image->instances[0].y + game->player->image->height;
+
+	while (game->map_as_arr[y])
+	{
+		while (game->map_as_arr[y][x])
+		{
+			if (game->map_as_arr[y][x] == '1')
+			{
+				b.minX = x;
+				b.maxX = x + PIXEL;
+				b.minY = y;
+				b.maxY = y + PIXEL;
+				if((a.maxX >= b.minX) && (a.minX <= b.maxX) && (a.maxY >= b.minY) && (a.minY <= b.maxY))
+				{
+					printf("[%i][%i]\n",y,x);
+					return(1);
+				}
+			}
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	return(0);
+}
 
 void	my_keyhook(mlx_key_data_t keydata, void *param)
 {
@@ -67,39 +87,48 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	{
 		if ((game->player->image->instances[0].y - PLAYER_STEP >= PIXEL) )
 		{
-			printf("%i\n",(game->player->image->instances[0].y - PLAYER_STEP));
-			// if(!check_obstacle(game, (game->player->image->instances[0].y - PLAYER_STEP),game->player->image->instances[0].x))
-			// {
+			printf("pos[%i][%i]\n",(game->player->image->instances[0].y - PLAYER_STEP),(game->player->image->instances[0].x));
+			if(!check_obstacle(game))
+			{
 				game->player->image->instances[0].y -= PLAYER_STEP;
 				game->player->moves += 1;
-			// }
+			}
 		}
 	}
 	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
 	{
 		if ((game->player->image->instances[0].y + PLAYER_STEP <= (int)(game->height - game->player->image->height) - 1))
 		{
-			printf("%i\n",(game->player->image->instances[0].y + PLAYER_STEP));
-			game->player->image->instances[0].y += PLAYER_STEP;
-			game->player->moves += 1;
+			printf("pos[%i][%i]\n",(game->player->image->instances[0].y + PLAYER_STEP),(game->player->image->instances[0].x));
+			if(!check_obstacle(game))
+			{
+				game->player->image->instances[0].y += PLAYER_STEP;
+				game->player->moves += 1;
+			}
 		}
 	}
 	if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
 	{
 		if (game->player->image->instances[0].x - PLAYER_STEP >= PIXEL)
 		{
-			printf("%i\n",(game->player->image->instances[0].x - PLAYER_STEP));
-			game->player->image->instances[0].x -= PLAYER_STEP;
-			game->player->moves += 1;
+			printf("pos[%i][%i]\n",(game->player->image->instances[0].y),(game->player->image->instances[0].x - PLAYER_STEP));
+			if(!check_obstacle(game))
+			{
+				game->player->image->instances[0].x -= PLAYER_STEP;
+				game->player->moves += 1;
+			}
 		}
 	}
 	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
 	{
 		if (game->player->image->instances[0].x + PLAYER_STEP <= (int)(game->width - game->player->image->width) - 1)
 		{
-			printf("%i\n",(game->player->image->instances[0].x + PLAYER_STEP));
-			game->player->image->instances[0].x += PLAYER_STEP;
-			game->player->moves += 1;
+			printf("pos[%i][%i]\n",(game->player->image->instances[0].y),(game->player->image->instances[0].x + PLAYER_STEP));
+			if(!check_obstacle(game))
+			{
+				game->player->image->instances[0].x += PLAYER_STEP;
+				game->player->moves += 1;
+			}
 		}
 	}
 

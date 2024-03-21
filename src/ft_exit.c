@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 10:55:48 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/21 12:00:16 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	call_exit_prep(char *map_as_string, char **map_as_arr)
 		free(map_as_string);
 	if(map_as_arr)
 	{
-	while(map_as_arr[i])
-	{
-		free(map_as_arr[i]);
-		i++;
-	}
-	free(map_as_arr);
+		while(map_as_arr[i])
+		{
+			free(map_as_arr[i]);
+			i++;
+		}
+		free(map_as_arr);
 	}
 }
 

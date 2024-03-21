@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/09 12:40:27 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/21 11:57:43 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ t_game	*ft_initialize_game(void)
 	game = ft_calloc(sizeof(t_game), 1);
 	if (game)
 		{
+			
 			game->item_total = AMOUNT_ITEM;
 			game->enemy_total = AMOUNT_ENEMY;
 /**************************************************************/

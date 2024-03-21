@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 11:44:12 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/21 11:57:04 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ typedef struct s_game
 {
 	mlx_t		*game_window;
 	mlx_image_t	*game_image;
-	char	*map_as_string;
-	char	**map_as_arr;
+	char		*map_as_string;
+	char		**map_as_arr;
 	int			width;
 	int			height;
 	t_asset		*exit;
