@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 09:47:49 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 09:54:17 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,56 @@ void	update_display_moves(t_game *game, int32_t posX, int32_t posY)
 
 
 
-int check_up(t_game *game)
+int check_move_up(t_game *game)
 {
-	if(game->map_as_arr[(game->player->image->instances[0].y) / PIXEL - 1][(game->player->image->instances[0].x) / PIXEL] != '1')
+	char c;
+
+	c = game->map_as_arr[(game->player->image->instances[0].y) / PIXEL - 1][(game->player->image->instances[0].x) / PIXEL];
+	if(c != '1')
+	{
+		game->player->image->instances[0].y -= PLAYER_STEP;
+		game->player->moves += 1;
 		return(0);
+	}
 	return(1);
 }
-int check_down(t_game *game)
+int check_move_down(t_game *game)
 {
-	if(game->map_as_arr[(game->player->image->instances[0].y) / PIXEL + 1][(game->player->image->instances[0].x) / PIXEL] != '1')
+	char c;
+
+	c = game->map_as_arr[(game->player->image->instances[0].y) / PIXEL + 1][(game->player->image->instances[0].x) / PIXEL];
+	if(c != '1')
+	{
+		game->player->image->instances[0].y += PLAYER_STEP;
+		game->player->moves += 1;
 		return(0);
+	}
 	return(1);
 }
-int check_left(t_game *game)
+int check_move_left(t_game *game)
 {
-	if(game->map_as_arr[(game->player->image->instances[0].y) / PIXEL][(game->player->image->instances[0].x) / PIXEL - 1] != '1')
+	char c;
+
+	c = game->map_as_arr[(game->player->image->instances[0].y) / PIXEL][(game->player->image->instances[0].x) / PIXEL - 1];
+	if(c != '1')
+	{
+		game->player->image->instances[0].x -= PLAYER_STEP;
+		game->player->moves += 1;
 		return(0);
+	}
 	return(1);
 }
-int check_right(t_game *game)
+int check_move_right(t_game *game)
 {
-	if(game->map_as_arr[(game->player->image->instances[0].y) / PIXEL][(game->player->image->instances[0].x) / PIXEL + 1] != '1')
+	char c;
+
+	c = game->map_as_arr[(game->player->image->instances[0].y) / PIXEL][(game->player->image->instances[0].x) / PIXEL + 1];
+	if(c != '1')
+	{
+		game->player->image->instances[0].x += PLAYER_STEP;
+		game->player->moves += 1;
 		return(0);
+	}
 	return(1);
 }
 
@@ -76,11 +104,10 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	{
 		if ((game->player->image->instances[0].y - PLAYER_STEP >= PIXEL) )
 		{
-			// printf("pos[%i][%i]\n",(game->player->image->instances[0].y - PLAYER_STEP),(game->player->image->instances[0].x));
-			if(!check_up(game))
+			if(!check_move_up(game))
 			{
-				game->player->image->instances[0].y -= PLAYER_STEP;
-				game->player->moves += 1;
+				// game->player->image->instances[0].y -= PLAYER_STEP;
+				// game->player->moves += 1;
 			}
 		}
 	}
@@ -88,11 +115,10 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	{
 		if ((game->player->image->instances[0].y + PLAYER_STEP <= (int)(game->height - game->player->image->height) - 1))
 		{
-			// printf("pos[%i][%i]\n",(game->player->image->instances[0].y + PLAYER_STEP),(game->player->image->instances[0].x));
-			if(!check_down(game))
+			if(!check_move_down(game))
 			{
-				game->player->image->instances[0].y += PLAYER_STEP;
-				game->player->moves += 1;
+				// game->player->image->instances[0].y += PLAYER_STEP;
+				// game->player->moves += 1;
 			}
 		}
 	}
@@ -100,11 +126,10 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	{
 		if (game->player->image->instances[0].x - PLAYER_STEP >= PIXEL)
 		{
-			// printf("pos[%i][%i]\n",(game->player->image->instances[0].y),(game->player->image->instances[0].x - PLAYER_STEP));
-			if(!check_left(game))
+			if(!check_move_left(game))
 			{
-				game->player->image->instances[0].x -= PLAYER_STEP;
-				game->player->moves += 1;
+				// game->player->image->instances[0].x -= PLAYER_STEP;
+				// game->player->moves += 1;
 			}
 		}
 	}
@@ -112,11 +137,10 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	{
 		if (game->player->image->instances[0].x + PLAYER_STEP <= (int)(game->width - game->player->image->width) - 1)
 		{
-			// printf("pos[%i][%i]\n",(game->player->image->instances[0].y),(game->player->image->instances[0].x + PLAYER_STEP));
-			if(!check_right(game))
+			if(!check_move_right(game))
 			{
-				game->player->image->instances[0].x += PLAYER_STEP;
-				game->player->moves += 1;
+				// game->player->image->instances[0].x += PLAYER_STEP;
+				// game->player->moves += 1;
 			}
 		}
 	}
