@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 17:05:56 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 17:36:44 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		ft_exit_item(t_game *game);
 
 
 int			get_item_total(char *map_as_string);
-
+void		ft_init_pos_items(t_game *game);
 // initialization functions
 t_game		*ft_initialize_game(t_map *map);
 t_player	*ft_initialize_player();
@@ -48,6 +48,7 @@ t_pos		*ft_initialize_pos(void);
 t_exit		*ft_initialize_exit();
 mlx_t		*ft_init_window(t_game *game);
 t_item		**ft_initialize_item(t_game *game);
+void		ft_init_pos_items(t_game *game);
 
 
 

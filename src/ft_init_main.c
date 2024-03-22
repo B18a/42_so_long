@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 17:12:30 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 18:24:32 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ t_game	*ft_initialize_game(t_map *map)
 	game->item_total = get_item_total(map->map_as_string);
 	printf("items total %i\n", game->item_total);
 	game->item = ft_initialize_item(game);
+	printf("%p\n",game->item);
+	ft_init_pos_items(game);
+
 	int i = 0;
 	while(i < game->item_total)
 	{
-		// game->item[i]->pos = get_pos_item(map->map_as_arr, 'C');
-		printf("POS %i [%i][%i]\n", i , game->item[i]->pos->x, game->item[i]->pos->y);
+		printf("POS %i [%i][%i]\n", i , game->item[i]->pos->y, game->item[i]->pos->x);
 		i++;
 	}
 

@@ -6,11 +6,50 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:11:58 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 17:12:25 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 18:26:38 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+t_pos	search_next(char **map_as_arr, int y, int x)
+{
+	while(map_as_arr[y])
+	{
+		while(map_as_arr[y][x])
+		{
+			printf("[%i][%i]\n",y,x);
+			if(map_as_arr[y][x] == 'C')
+				return((t_pos){x,y});
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	return((t_pos){0,0});
+}
+
+void	ft_init_pos_items(t_game *game)
+{
+	int 	i;
+	t_pos	temp;
+
+	i = 0;
+	printf("START POS [%i][%i]\n",game->item[i]->pos->y,game->item[i]->pos->x);
+	temp = search_next(game->map->map_as_arr, game->item[i]->pos->x, game->item[i]->pos->y);
+	game->item[i]->pos->y = temp.y;
+	game->item[i]->pos->x = temp.x;
+	i++;
+	while(i < game->item_total)
+	{
+		printf("START POS [%i][%i]\n",game->item[i - 1]->pos->y,game->item[i - 1]->pos->x + 1);
+		temp = search_next(game->map->map_as_arr, game->item[i - 1]->pos->y, game->item[i - 1]->pos->x + 1);
+		game->item[i]->pos->y = temp.y;
+		game->item[i]->pos->x = temp.x;
+		printf("FOUND POS [%i][%i]\n",game->item[i]->pos->y,game->item[i]->pos->x);
+		i++;
+	}
+}
 
 
 t_pos	*get_pos_unique(char **map_as_arr, char c)

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 17:09:56 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 17:46:17 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,16 @@ t_item	**ft_initialize_item(t_game *game)
 
 	item = NULL;
 	i = 0;
-	item = malloc(game->item_total * sizeof(t_item*));
+	item = malloc((game->item_total + 1) * sizeof(t_item *));
 	while (i < game->item_total)
 	{
 		item[i] = malloc(1 * sizeof(t_item));
 		item[i]->pos = NULL;
+		item[i]->pos = ft_calloc(1,sizeof(t_pos));
+		item[i]->pos->y = 0;
+		item[i]->pos->x = 0;
+		item[i]->texture = NULL;
+		item[i]->image = NULL;
 		i++;
 	}
 	return(item);
@@ -37,6 +42,8 @@ t_exit	*ft_initialize_exit()
 	exit = ft_calloc(sizeof(t_exit), 1);
 	if (exit)
 	{
+		exit->texture = NULL;
+		exit->image = NULL;
 		exit->pos = NULL;
 	}
 	return (exit);
@@ -51,6 +58,8 @@ t_player	*ft_initialize_player()
 	if (player)
 	{
 		player->pos = NULL;
+		player->texture = NULL;
+		player->image = NULL;
 		player->moves = 0;
 		player->item = 0;
 	}

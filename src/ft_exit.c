@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 17:09:03 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 17:40:23 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ void	ft_exit_item(t_game *game)
 	i = 0;
 	while(i < game->item_total)
 	{
-		// if(game->item[i]->pos)
-		// 	free(game->item[i]->pos);
+		if(game->item[i]->pos)
+			free(game->item[i]->pos);
 		// if(game->item[i]->texture)
 		// 	mlx_delete_texture(game->item[i]->texture);
 		free(game->item[i]);
