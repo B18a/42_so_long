@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 15:16:59 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 09:08:03 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int	main(int argc, char**argv)
 
 	t_pos	pos_player;
 	pos_player = get_pos_unique(game->map_as_arr, 'P');
-
 	t_pos	pos_exit;
 	pos_exit = get_pos_unique(game->map_as_arr, 'E');
 
@@ -102,12 +101,11 @@ int	main(int argc, char**argv)
 
 	ft_load_textures_floor(game, game->map_as_arr);
 	ft_load_textures_obstacle(game, game->map_as_arr);
-	// ft_load_textures_unique(game, game->exit->image, pos_exit, PATH_EXIT);
 	ft_load_textures_exit(game, pos_exit.x * PIXEL, pos_exit.y * PIXEL);
 	ft_load_textures_player(game, pos_player.x * PIXEL, pos_player.y * PIXEL);
 
 
-// int	ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const char *path)
+	// int	ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const char *path);
 
 	// ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100});
 	// ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){300, 10});

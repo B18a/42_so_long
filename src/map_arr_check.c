@@ -53,22 +53,22 @@ static int map_flood_fill(char **map, t_pos size, t_pos pos)
 	// print_2d_arr(map);
 	if (pos.x < 0 || pos.x >= size.x || pos.y < 0 || pos.y >= size.y)
 	{
-		// printf("				Out of Map at [%i][%i]\n",pos.x, pos.y);
+		printf("				Out of Map at [%i][%i]\n",pos.x, pos.y);
 		return(1);
 	}
 	if (map[pos.x][pos.y] == '1')
 	{
-		// printf("				Wall at [%i][%i]\n",pos.x, pos.y);
+		printf("				Wall at [%i][%i]\n",pos.x, pos.y);
 		return (1);
 	}
 	if (map[pos.x][pos.y] == 'V')
 	{
-		// printf("				Visited at [%i][%i]\n",pos.x, pos.y);
+		printf("				Visited at [%i][%i]\n",pos.x, pos.y);
 		return (1);
 	}
 	if (map[pos.x][pos.y] == 'E')
 	{
-		// printf("				Exit at [%i][%i]\n",pos.x, pos.y);
+		printf("				Exit at [%i][%i]\n",pos.x, pos.y);
 		return (0);
 	}
 		// printf("				Loop at [%i][%i]\n",pos.x, pos.y);

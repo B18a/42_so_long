@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 15:17:36 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 09:08:41 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ typedef struct s_player
 {
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
-
 	mlx_image_t		*width;
 	mlx_image_t		*height;
 	t_pos			*pos;
@@ -133,7 +132,6 @@ void		update_display_item(t_game *game, int32_t posX, int32_t posY);
 void		ft_init_pos_asset(t_game *game, t_asset **asset, int amount);
 t_asset 	*ft_initialize_item(t_game *game, int amount);
 int			ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const char *path);
-
 
 
 // ????

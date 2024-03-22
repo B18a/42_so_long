@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 12:31:05 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 09:47:49 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,45 +34,33 @@ void	update_display_moves(t_game *game, int32_t posX, int32_t posY)
 }
 
 
-int	check_obstacle(t_game *game)
+
+
+int check_up(t_game *game)
 {
-	int	x;
-	int	y;
-
-	t_borders	a;
-	t_borders	b;
-
-	x = 0;
-	y = 0;
-
-	a.minX = game->player->image->instances[0].x;
-	a.maxX = game->player->image->instances[0].x + game->player->image->width;
-	a.minY = game->player->image->instances[0].y;
-	a.maxY = game->player->image->instances[0].y + game->player->image->height;
-
-	while (game->map_as_arr[y])
-	{
-		while (game->map_as_arr[y][x])
-		{
-			if (game->map_as_arr[y][x] == '1')
-			{
-				b.minX = x;
-				b.maxX = x + PIXEL;
-				b.minY = y;
-				b.maxY = y + PIXEL;
-				if((a.maxX >= b.minX) && (a.minX <= b.maxX) && (a.maxY >= b.minY) && (a.minY <= b.maxY))
-				{
-					printf("[%i][%i]\n",y,x);
-					return(1);
-				}
-			}
-			x++;
-		}
-		x = 0;
-		y++;
-	}
-	return(0);
+	if(game->map_as_arr[(game->player->image->instances[0].y) / PIXEL - 1][(game->player->image->instances[0].x) / PIXEL] != '1')
+		return(0);
+	return(1);
 }
+int check_down(t_game *game)
+{
+	if(game->map_as_arr[(game->player->image->instances[0].y) / PIXEL + 1][(game->player->image->instances[0].x) / PIXEL] != '1')
+		return(0);
+	return(1);
+}
+int check_left(t_game *game)
+{
+	if(game->map_as_arr[(game->player->image->instances[0].y) / PIXEL][(game->player->image->instances[0].x) / PIXEL - 1] != '1')
+		return(0);
+	return(1);
+}
+int check_right(t_game *game)
+{
+	if(game->map_as_arr[(game->player->image->instances[0].y) / PIXEL][(game->player->image->instances[0].x) / PIXEL + 1] != '1')
+		return(0);
+	return(1);
+}
+
 
 void	my_keyhook(mlx_key_data_t keydata, void *param)
 {
@@ -83,12 +71,13 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	{
 		mlx_close_window(game->game_window);
 	}
+
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS) // One Step per Press
 	{
 		if ((game->player->image->instances[0].y - PLAYER_STEP >= PIXEL) )
 		{
-			printf("pos[%i][%i]\n",(game->player->image->instances[0].y - PLAYER_STEP),(game->player->image->instances[0].x));
-			if(!check_obstacle(game))
+			// printf("pos[%i][%i]\n",(game->player->image->instances[0].y - PLAYER_STEP),(game->player->image->instances[0].x));
+			if(!check_up(game))
 			{
 				game->player->image->instances[0].y -= PLAYER_STEP;
 				game->player->moves += 1;
@@ -99,8 +88,8 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	{
 		if ((game->player->image->instances[0].y + PLAYER_STEP <= (int)(game->height - game->player->image->height) - 1))
 		{
-			printf("pos[%i][%i]\n",(game->player->image->instances[0].y + PLAYER_STEP),(game->player->image->instances[0].x));
-			if(!check_obstacle(game))
+			// printf("pos[%i][%i]\n",(game->player->image->instances[0].y + PLAYER_STEP),(game->player->image->instances[0].x));
+			if(!check_down(game))
 			{
 				game->player->image->instances[0].y += PLAYER_STEP;
 				game->player->moves += 1;
@@ -111,8 +100,8 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	{
 		if (game->player->image->instances[0].x - PLAYER_STEP >= PIXEL)
 		{
-			printf("pos[%i][%i]\n",(game->player->image->instances[0].y),(game->player->image->instances[0].x - PLAYER_STEP));
-			if(!check_obstacle(game))
+			// printf("pos[%i][%i]\n",(game->player->image->instances[0].y),(game->player->image->instances[0].x - PLAYER_STEP));
+			if(!check_left(game))
 			{
 				game->player->image->instances[0].x -= PLAYER_STEP;
 				game->player->moves += 1;
@@ -123,8 +112,8 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	{
 		if (game->player->image->instances[0].x + PLAYER_STEP <= (int)(game->width - game->player->image->width) - 1)
 		{
-			printf("pos[%i][%i]\n",(game->player->image->instances[0].y),(game->player->image->instances[0].x + PLAYER_STEP));
-			if(!check_obstacle(game))
+			// printf("pos[%i][%i]\n",(game->player->image->instances[0].y),(game->player->image->instances[0].x + PLAYER_STEP));
+			if(!check_right(game))
 			{
 				game->player->image->instances[0].x += PLAYER_STEP;
 				game->player->moves += 1;
@@ -135,7 +124,7 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	// check_enemy(game);
 	// check_collect(game);
 	// check_exit(game);
-	update_display_moves(game, 300, 100);
-	update_display_item(game, 400, 100);
+	update_display_moves(game, 10, 100);
+	update_display_item(game, 50, 100);
 
 }

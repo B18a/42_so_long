@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:11:58 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 15:12:07 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 09:07:33 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,17 @@ t_pos	get_pos_unique(char **map_as_arr, char c)
 		y++;
 	}
 	return(pos);
+}
+
+int	ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const char *path)
+{
+	mlx_texture_t	*texture;
+
+	texture = mlx_load_png(path);
+	image = mlx_texture_to_image(game->game_window, texture);
+	if(!image)
+		return (call_exit(game), 0);
+	if(mlx_image_to_window(game->game_window, image, pos.x * PIXEL, pos.y * PIXEL))
+		return (call_exit(game), 0);
+	return(0);
 }
