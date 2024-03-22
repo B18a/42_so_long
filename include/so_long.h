@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 10:27:44 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 11:49:46 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,22 +88,37 @@ typedef struct s_player
 	int				item;
 }					t_player;
 
-typedef struct s_game
+typedef struct s_unique
+{
+	mlx_texture_t	*texture;
+	mlx_image_t		*image;
+	t_pos			*pos;
+}				t_unique;
+
+typedef	struct	s_map
 {
 	char		*map_as_string;
 	char		**map_as_arr;
 	int			width;
 	int			height;
+
+}				t_map;
+
+
+typedef struct s_game
+{
+	t_map		*map;
 	mlx_t		*game_window;
 	mlx_image_t	*game_image;
 	t_exit		*exit;
 	t_player	*player;
+	int			item_total;
+
 /**************************************/
 	t_asset		**enemy;
 	int			enemy_total;
 	t_asset		**item;
 	t_asset		*item_begin;
-	int			item_total;
 }				t_game;
 
 // exit functions to free all memory properly
@@ -116,19 +131,19 @@ void		ft_exit_exit(t_exit *exit);
 void		free_map_in_arr(char **map_in_arr);
 
 
-// parsing
-char 		*map_to_string(char *path_map);
-void 		print_2d_arr(char **map_in_arr);
-int			map_string_check(char *map_in_string);
-int			map_arr_check(char **map_as_arr);
-int			get_height(char **map_as_arr);
 
 
 // initialization functions
-t_game		*ft_initialize_game(void);
+t_game		*ft_initialize_game(t_map *map);
+t_player	*ft_initialize_player();
 t_pos		*ft_initialize_pos(void);
+t_exit		*ft_initialize_exit();
+mlx_t		*ft_init_window(t_game *game);
+
+
+
+
 t_asset 	**ft_initialize_asset(int amount);
-t_player	*ft_initialize_player(void);
 void		start_game(t_game *game);
 void		update_display_moves(t_game *game, int32_t posX, int32_t posY);
 void		update_display_item(t_game *game, int32_t posX, int32_t posY);
@@ -139,7 +154,7 @@ int			ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const
 
 // ????
 int			check_file_type(char *str);
-void		call_exit_prep(char *map_as_string, char **map_as_arr);
+void		call_exit_map(t_map *map);
 
 
 // load assets
@@ -160,6 +175,21 @@ void		my_keyhook(mlx_key_data_t keydata, void *param);
 void		check_collision(t_game *game);
 void		check_collect(t_game *game);
 void		check_exit(t_game *game);
+
+
+
+// start
+
+// parsing
+t_map		*parsing_input(char *map_input);
+char		*map_to_string(char *path_map);
+int			map_string_check(char *map_in_string);
+int			map_arr_check(char **map_as_arr);
+int			get_height(char **map_as_arr);
+
+
+// debug functions
+void 		print_2d_arr(char **map_in_arr);
 
 
 #endif

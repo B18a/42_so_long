@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/22 09:07:43 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/22 11:40:37 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ FUNCTIONS	=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_exit.c \
 				$(SRC_DIR)/ft_initialize.c \
 				$(SRC_DIR)/ft_hook.c \
-				$(SRC_DIR)/load_images.c \
+				$(SRC_DIR)/load_textures.c \
 				$(SRC_DIR)/ft_check.c \
 				$(SRC_DIR)/map_string_check.c \
 				$(SRC_DIR)/map_arr_check.c \

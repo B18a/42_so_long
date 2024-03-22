@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:11:58 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 10:17:02 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 11:56:04 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ t_pos	*get_pos_unique(char **map_as_arr, char c)
 	int		x;
 	int		y;
 
-	pos = ft_calloc(1,sizeof(t_pos));
+	pos = NULL;
 	x = 0;
 	y = 0;
-	pos->x = 0;
-	pos->y = 0;
+	pos = ft_calloc(1,sizeof(t_pos));
+	if(!pos)
+		return(NULL);
 	while(map_as_arr[y])
 	{
 		while(map_as_arr[y][x])
 		{
+			printf(" c:%c, map %c y:%i, x:%i\n",c,map_as_arr[y][x], y, x);
 			if(map_as_arr[y][x] == c)
 			{
 				pos->x = x;

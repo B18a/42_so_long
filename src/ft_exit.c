@@ -6,28 +6,29 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 10:23:31 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 11:31:08 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	call_exit_prep(char *map_as_string, char **map_as_arr)
+void	call_exit_map(t_map *map)
 {
 	int i;
 
 	i = 0;
-	if(map_as_string)
-		free(map_as_string);
-	if(map_as_arr)
+	if(map->map_as_string)
+		free(map->map_as_string);
+	if(map->map_as_arr)
 	{
-		while(map_as_arr[i])
+		while(map->map_as_arr[i])
 		{
-			free(map_as_arr[i]);
+			free(map->map_as_arr[i]);
 			i++;
 		}
-		free(map_as_arr);
+		free(map->map_as_arr);
 	}
+	free(map);
 }
 
 void	free_map_in_arr(char **map_in_arr)
@@ -96,9 +97,10 @@ void	ft_exit_exit(t_exit *exit)
 
 void	call_exit(t_game *game)
 {
+	call_exit_map(game->map);
 	ft_exit_player(game->player);
-	ft_exit_asset(game->enemy, game->enemy_total);
-	ft_exit_asset(game->item, game->item_total);
 	ft_exit_exit(game->exit);
+	// ft_exit_asset(game->enemy, game->enemy_total);
+	// ft_exit_asset(game->item, game->item_total);
 	ft_exit_game(game);
 }

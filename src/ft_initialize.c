@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 10:24:00 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 12:18:38 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,8 @@ t_asset	**ft_initialize_asset(int amount)
 	return (asset);
 }
 
-t_player	*ft_initialize_player(void)
-{
-	t_player	*player;
 
-	player = ft_calloc(sizeof(t_player), 1);
-	if (player)
-			{
-				player->pos = NULL;
-				player->pos = ft_initialize_pos();
-				player->moves = 0;
-				player->item = 0;
-			}
-	return (player);
-}
+
 
 t_pos	*ft_initialize_pos(void)
 {
@@ -65,6 +53,10 @@ t_pos	*ft_initialize_pos(void)
 
 	pos = NULL;
 	pos = ft_calloc(sizeof(t_pos), 1);
+	if(!pos)
+		return(NULL);
+	pos->y = 0;
+	pos->x = 0;
 	return (pos);
 }
 
@@ -86,52 +78,96 @@ void ft_init_pos_asset(t_game *game, t_asset **asset, int amount)
 	}
 }
 
-t_exit *ft_initialize_exit(void)
+
+
+t_exit *ft_initialize_exit()
 {
 	t_exit	*exit;
 
+	exit = NULL;
 	exit = ft_calloc(sizeof(t_asset), 1);
 	if (exit)
 	{
 		exit->pos = NULL;
-		exit->pos = ft_initialize_pos();
 	}
 	return (exit);
 }
 
+t_player	*ft_initialize_player()
+{
+	t_player	*player;
 
-t_game	*ft_initialize_game(void)
+	player = NULL;
+	player = ft_calloc(sizeof(t_player), 1);
+	if (player)
+	{
+		player->pos = NULL;
+		player->moves = 0;
+		player->item = 0;
+	}
+	return (player);
+}
+mlx_t	*ft_init_window(t_game *game)
+{
+	game->map->width = ft_strlen(game->map->map_as_arr[0]) * PIXEL;
+	game->map->height = get_height(game->map->map_as_arr) * PIXEL;
+	game->game_window = mlx_init(game->map->width, game->map->height, NAME_WINDOW, true);
+	if(!game->game_window)
+		return (NULL);
+	return(game->game_window);
+}
+
+t_game	*ft_initialize_game(t_map *map)
 {
 	t_game	*game;
 
 	game = NULL;
 	game = ft_calloc(sizeof(t_game), 1);
-	if (game)
-	{
+	if(!game)
+		return(NULL);
+	game->map = map;
+	game->game_window = NULL;
+	game->game_image = NULL;
 
-		game->item_total = AMOUNT_ITEM;
-		game->enemy_total = AMOUNT_ENEMY;
-/**************************************************************/
-		game->player = NULL;
-		game->player = ft_initialize_player();
+// /*******PLAYER*************************************************/
+	game->player = ft_initialize_player();
+	if(!game->player)
+		return(NULL);
+	game->player->pos = get_pos_unique(map->map_as_arr, 'P');
+	if(!game->player->pos)
+		return(NULL);
+	// printf("PLAYER [%i][%i]\n", game->player->pos->y, game->player->pos->x);
+
+// /*******EXIT***************************************************/
+	game->exit = ft_initialize_exit();
+	if(!game->exit)
+		return(NULL);
+	game->exit->pos = get_pos_unique(map->map_as_arr, 'E');
+	if(!game->exit->pos)
+		return(NULL);
+
+// /*******ITEM***************************************************/
+
+
 
 /**************************************************************/
-		game->enemy = NULL;
-		game->enemy = ft_initialize_asset(game->enemy_total);
-		// return value must be checked?
-		// ft_init_pos_asset(game, game->enemy , game->enemy_total); // switched to main because position needs to be read from input
-/**************************************************************/
-		game->item = NULL;
-		game->item = ft_initialize_asset(game->item_total);
-		// game->item_begin = ft_initialize_item(game, game->item_total);
-		// return value must be checked?
-		// ft_init_pos_asset(game, game->item , game->item_total); // switched to main because position needs to be read from input
-/**************************************************************/
-		game->exit = NULL;
-		game->exit = ft_initialize_exit();
-/**************************************************************/
-		game->game_window = NULL;
-		game->game_image = NULL;
-	}
+		// game->item_total = AMOUNT_ITEM;
+		// game->enemy_total = AMOUNT_ENEMY;
+
+// /**************************************************************/
+// 		game->enemy = NULL;
+// 		game->enemy = ft_initialize_asset(game->enemy_total);
+// 		// return value must be checked?
+// 		// ft_init_pos_asset(game, game->enemy , game->enemy_total); // switched to main because position needs to be read from input
+// /**************************************************************/
+// 		game->item = NULL;
+// 		game->item = ft_initialize_asset(game->item_total);
+// 		// game->item_begin = ft_initialize_item(game, game->item_total);
+// 		// return value must be checked?
+// 		// ft_init_pos_asset(game, game->item , game->item_total); // switched to main because position needs to be read from input
+// /**************************************************************/
+	if(!ft_init_window(game))
+		return(NULL);
+
 	return (game);
 }

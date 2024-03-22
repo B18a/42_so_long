@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 09:54:17 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 11:30:18 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int check_move_up(t_game *game)
 {
 	char c;
 
-	c = game->map_as_arr[(game->player->image->instances[0].y) / PIXEL - 1][(game->player->image->instances[0].x) / PIXEL];
+	c = game->map->map_as_arr[(game->player->image->instances[0].y) / PIXEL - 1][(game->player->image->instances[0].x) / PIXEL];
 	if(c != '1')
 	{
 		game->player->image->instances[0].y -= PLAYER_STEP;
@@ -53,7 +53,7 @@ int check_move_down(t_game *game)
 {
 	char c;
 
-	c = game->map_as_arr[(game->player->image->instances[0].y) / PIXEL + 1][(game->player->image->instances[0].x) / PIXEL];
+	c = game->map->map_as_arr[(game->player->image->instances[0].y) / PIXEL + 1][(game->player->image->instances[0].x) / PIXEL];
 	if(c != '1')
 	{
 		game->player->image->instances[0].y += PLAYER_STEP;
@@ -66,7 +66,7 @@ int check_move_left(t_game *game)
 {
 	char c;
 
-	c = game->map_as_arr[(game->player->image->instances[0].y) / PIXEL][(game->player->image->instances[0].x) / PIXEL - 1];
+	c = game->map->map_as_arr[(game->player->image->instances[0].y) / PIXEL][(game->player->image->instances[0].x) / PIXEL - 1];
 	if(c != '1')
 	{
 		game->player->image->instances[0].x -= PLAYER_STEP;
@@ -79,7 +79,7 @@ int check_move_right(t_game *game)
 {
 	char c;
 
-	c = game->map_as_arr[(game->player->image->instances[0].y) / PIXEL][(game->player->image->instances[0].x) / PIXEL + 1];
+	c = game->map->map_as_arr[(game->player->image->instances[0].y) / PIXEL][(game->player->image->instances[0].x) / PIXEL + 1];
 	if(c != '1')
 	{
 		game->player->image->instances[0].x += PLAYER_STEP;
@@ -113,7 +113,7 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	}
 	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
 	{
-		if ((game->player->image->instances[0].y + PLAYER_STEP <= (int)(game->height - game->player->image->height) - 1))
+		if ((game->player->image->instances[0].y + PLAYER_STEP <= (int)(game->map->height - game->player->image->height) - 1))
 		{
 			if(!check_move_down(game))
 			{
@@ -135,7 +135,7 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	}
 	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
 	{
-		if (game->player->image->instances[0].x + PLAYER_STEP <= (int)(game->width - game->player->image->width) - 1)
+		if (game->player->image->instances[0].x + PLAYER_STEP <= (int)(game->map->width - game->player->image->width) - 1)
 		{
 			if(!check_move_right(game))
 			{

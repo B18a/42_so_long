@@ -91,12 +91,36 @@ int	get_height(char **map_as_arr)
 	return(i);
 }
 
+char **ft_arr_cpy(char **map_as_arr)
+{
+	int i;
+	char **cpy;
+
+	i = 0;
+	cpy = NULL;
+	while(map_as_arr[i])
+		i++;
+	cpy = ft_calloc(i, sizeof(char*));
+	i = 0;
+	while(map_as_arr[i])
+	{
+
+		cpy[i] = ft_calloc(ft_strlen(map_as_arr[i]), sizeof(char));
+		ft_strlcpy(cpy[i],map_as_arr[i], ft_strlen(map_as_arr[i]));
+		i++;
+	}
+	return(cpy);
+}
+
 int	map_arr_check(char **map_as_arr)
 {
 	int		status;
 	t_pos	size;
 	t_pos	*pos_player;
+	char	**temp;
 
+	temp = ft_arr_cpy(map_as_arr);
+	print_2d_arr(temp);
 	status = 0;
 	status += map_check_rectangle(map_as_arr);
 	status += map_check_wall(map_as_arr);
@@ -106,9 +130,9 @@ int	map_arr_check(char **map_as_arr)
 	size.x = get_height(map_as_arr);
 	// printf("size.x is %i\n", size.x);
 	pos_player = get_pos_unique(map_as_arr, 'P');
-	// printf("pos_player.x %i ,pos_player.y %i\n", pos_player.x,pos_player.y);
-	status += map_flood_fill(map_as_arr, size, (t_pos){pos_player->x,pos_player->y});
+	status += map_flood_fill(temp, size, (t_pos){pos_player->x,pos_player->y});
 	free(pos_player);
+	free_map_in_arr(temp);
 	return(status);
 }
 

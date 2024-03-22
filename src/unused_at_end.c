@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:54:21 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 10:55:21 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 11:28:18 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,23 @@ void	print_2d_arr(char **map_in_arr)
 		j = 0;
 		i++;
 	}
+}
+
+t_unique	*ft_init_unique(t_map *map, char c)
+{
+	t_unique	*uni;
+
+	uni = NULL;
+	uni = ft_calloc(sizeof(t_player), 1);
+	if (uni)
+	{
+		uni->pos = NULL;
+		uni->pos = get_pos_unique(map->map_as_arr, c);
+		if(!uni->pos)
+		{
+			free(uni);
+			return(NULL);
+		}
+	}
+	return (uni);
 }

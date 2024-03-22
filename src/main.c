@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 10:29:33 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 12:11:51 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,103 +30,82 @@ void start_game(t_game *game)
 	}
 }
 
-t_game	*parsing_input(char *map_input)
+t_map	*parsing_input(char *map_input)
 {
+	t_map	*map;
 
+	map = NULL;
+	map = ft_calloc(sizeof(t_map), 1);
+	if (!map)
+		return(NULL);
+	if(check_file_type(map_input))
+	{
+		printf("Filetype incorrect \n");
+		call_exit_map(map);
+		return(NULL);
+	}
+	map->map_as_string = map_to_string(map_input);
+	if(map_string_check(map->map_as_string) > 0)
+	{
+		printf("map_string_check \n");
+		call_exit_map(map);
+		return(NULL);
+	}
+	map->map_as_arr = ft_split(map->map_as_string, '\n');
+	if(!(map->map_as_arr))
+		return(map);
+	if(map_arr_check(map->map_as_arr) > 0)
+	{
+		printf("map_arr_check \n");
+		call_exit_map(map);
+		return(NULL);
+	}
+	return(map);
+}
+
+void	load_textures(t_game *game)
+{
+	ft_load_textures_floor(game, game->map->map_as_arr);
+	ft_load_textures_obstacle(game, game->map->map_as_arr);
+	ft_load_textures_exit(game, game->exit->pos->x * PIXEL, game->exit->pos->x * PIXEL);
+	ft_load_textures_player(game, game->player->pos->x * PIXEL, game->player->pos->y * PIXEL);
 }
 
 int	main(int argc, char**argv)
 {
 	atexit(check_leaks);
 
+	t_map	*map;
 	t_game	*game;
-	char	**map_as_arr;
-	char	*map_as_string;
 
+	map = NULL;
 	game = NULL;
-	map_as_arr = NULL;
-	map_as_string = NULL;
-
 	if(argc != 2)
 	{
 		printf("Input incorrect \n");
 		return(0);
 	}
-	game = parsing_input(argv[1]);
-
-	if(check_file_type(argv[1]))
-	{
-		printf("Filetype incorrect \n");
-		return(0);
-	}
-	map_as_string = map_to_string(argv[1]);
-	if(map_string_check(map_as_string) > 0)
-	{
-		printf("map_string_check \n");
-		call_exit_prep(map_as_string, map_as_arr);
-		return(0);
-	}
-	map_as_arr = ft_split(map_as_string, '\n');
-
-											print_2d_arr(map_as_arr);
-
-	if(map_arr_check(map_as_arr) > 0)
-	{
-		printf("map_arr_check \n");
-		call_exit_prep(map_as_string, map_as_arr);
-		return(0);
-	}
-
-	game = ft_initialize_game();
+	map = parsing_input(argv[1]);
+	if(!map)
+		return(call_exit_map(map), 0);
+	game = ft_initialize_game(map);
 	if(!game)
-	{
-		call_exit_prep(map_as_string, map_as_arr);
-		return(0);
-	}
-	game->map_as_arr = map_as_arr;
-	game->map_as_string = map_as_string;
+		return(call_exit(game), 0);
+	// printf("PLAYER [%i][%i]\n", game->player->pos->y, game->player->pos->x);
 
+	load_textures(game);
+	print_2d_arr(map->map_as_arr);
 
+	// ft_init_pos_asset(game, game->enemy , game->enemy_total);
+	// ft_init_pos_asset(game, game->item , game->item_total);
+	// /**************************************/
 
-	game->width = ft_strlen(game->map_as_arr[0]) * PIXEL;
-	game->height = get_height(game->map_as_arr) * PIXEL;
+	// // int	ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const char *path);
 
-
-	// t_pos	pos_player;
-	game->player->pos = get_pos_unique(game->map_as_arr, 'P');
-	// t_pos	pos_exit;
-	game->exit->pos = get_pos_unique(game->map_as_arr, 'E');
-
-	// game->player->pos->x = pos_player.x;
-	// game->player->pos->y = pos_player.y;
-	// game->exit->pos->x = pos_exit.x;
-	// game->exit->pos->y = pos_exit.y;
-
-	// printf("PLAYER [%i][%i]\n", pos_player.y, pos_player.x);
-	printf("PLAYER [%i][%i]\n", game->player->pos->y, game->player->pos->x);
-
-	game->game_window = mlx_init(game->width, game->height, NAME_WINDOW, true);
-	if(!game->game_window)
-		return (call_exit(game), 0);
-
-	// ft_show_address(game);
-
-	ft_load_textures_floor(game, game->map_as_arr);
-	ft_load_textures_obstacle(game, game->map_as_arr);
-	ft_load_textures_exit(game, game->exit->pos->x * PIXEL, game->exit->pos->x * PIXEL);
-	ft_load_textures_player(game, game->player->pos->x * PIXEL, game->player->pos->y * PIXEL);
-
-	ft_init_pos_asset(game, game->enemy , game->enemy_total);
-	ft_init_pos_asset(game, game->item , game->item_total);
-	/**************************************/
-
-	// int	ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const char *path);
-
-	// ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100});
-	// ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){300, 10});
+	// // ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100});
+	// // ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){300, 10});
 
 	start_game(game);
-	call_exit_prep(game->map_as_string, game->map_as_arr);
 	call_exit(game);
 
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 14:20:06 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 10:55:08 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 10:56:09 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	check_file_type(char *str)
 {
 	while(str && *str != '.')
 		str++;
-	// printf("%s\n",str);
 	if(ft_strncmp(str,".ber",4))
 		return(1);
 	return(0);
