@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 09:08:03 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 10:29:33 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ void start_game(t_game *game)
 	}
 }
 
+t_game	*parsing_input(char *map_input)
+{
+
+}
+
 int	main(int argc, char**argv)
 {
 	atexit(check_leaks);
@@ -47,6 +52,8 @@ int	main(int argc, char**argv)
 		printf("Input incorrect \n");
 		return(0);
 	}
+	game = parsing_input(argv[1]);
+
 	if(check_file_type(argv[1]))
 	{
 		printf("Filetype incorrect \n");
@@ -80,18 +87,23 @@ int	main(int argc, char**argv)
 	game->map_as_string = map_as_string;
 
 
-	ft_init_pos_asset(game, game->enemy , game->enemy_total);
-	ft_init_pos_asset(game, game->item , game->item_total);
-	/**************************************/
 
 	game->width = ft_strlen(game->map_as_arr[0]) * PIXEL;
 	game->height = get_height(game->map_as_arr) * PIXEL;
 
 
-	t_pos	pos_player;
-	pos_player = get_pos_unique(game->map_as_arr, 'P');
-	t_pos	pos_exit;
-	pos_exit = get_pos_unique(game->map_as_arr, 'E');
+	// t_pos	pos_player;
+	game->player->pos = get_pos_unique(game->map_as_arr, 'P');
+	// t_pos	pos_exit;
+	game->exit->pos = get_pos_unique(game->map_as_arr, 'E');
+
+	// game->player->pos->x = pos_player.x;
+	// game->player->pos->y = pos_player.y;
+	// game->exit->pos->x = pos_exit.x;
+	// game->exit->pos->y = pos_exit.y;
+
+	// printf("PLAYER [%i][%i]\n", pos_player.y, pos_player.x);
+	printf("PLAYER [%i][%i]\n", game->player->pos->y, game->player->pos->x);
 
 	game->game_window = mlx_init(game->width, game->height, NAME_WINDOW, true);
 	if(!game->game_window)
@@ -101,9 +113,12 @@ int	main(int argc, char**argv)
 
 	ft_load_textures_floor(game, game->map_as_arr);
 	ft_load_textures_obstacle(game, game->map_as_arr);
-	ft_load_textures_exit(game, pos_exit.x * PIXEL, pos_exit.y * PIXEL);
-	ft_load_textures_player(game, pos_player.x * PIXEL, pos_player.y * PIXEL);
+	ft_load_textures_exit(game, game->exit->pos->x * PIXEL, game->exit->pos->x * PIXEL);
+	ft_load_textures_player(game, game->player->pos->x * PIXEL, game->player->pos->y * PIXEL);
 
+	ft_init_pos_asset(game, game->enemy , game->enemy_total);
+	ft_init_pos_asset(game, game->item , game->item_total);
+	/**************************************/
 
 	// int	ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const char *path);
 

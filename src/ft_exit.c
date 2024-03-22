@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 12:00:16 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 10:23:31 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	ft_exit_game(t_game *game)
 		free (game);
 }
 
-void	ft_exit_exit(t_asset *exit)
+void	ft_exit_exit(t_exit *exit)
 {
 	if(exit->pos)
 		free(exit->pos);

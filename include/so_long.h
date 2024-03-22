@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 09:08:41 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 10:27:44 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,33 +69,36 @@ typedef struct s_asset
 	struct s_asset	*next;
 }					t_asset;
 
+typedef struct s_exit
+{
+	mlx_texture_t	*texture;
+	mlx_image_t		*image;
+	t_pos			*pos;
+}				t_exit;
+
 typedef struct s_player
 {
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
-	mlx_image_t		*width;
-	mlx_image_t		*height;
 	t_pos			*pos;
+
 	mlx_image_t		*move_image;
 	int				moves;
 	mlx_image_t		*item_image;
 	int				item;
-	// mlx_texture_t	*texture_up;
-	// mlx_image_t		*image_up;
-	// mlx_texture_t	*texture_down;
-	// mlx_image_t		*image_down;
 }					t_player;
 
 typedef struct s_game
 {
-	mlx_t		*game_window;
-	mlx_image_t	*game_image;
 	char		*map_as_string;
 	char		**map_as_arr;
 	int			width;
 	int			height;
-	t_asset		*exit;
+	mlx_t		*game_window;
+	mlx_image_t	*game_image;
+	t_exit		*exit;
 	t_player	*player;
+/**************************************/
 	t_asset		**enemy;
 	int			enemy_total;
 	t_asset		**item;
@@ -109,7 +112,7 @@ void		ft_exit_game(t_game *game);
 void		ft_exit_asset(t_asset **asset, int amount);
 void		ft_exit_pos(t_pos *pos);
 void		ft_exit_player(t_player *player);
-void		ft_exit_exit(t_asset *exit);
+void		ft_exit_exit(t_exit *exit);
 void		free_map_in_arr(char **map_in_arr);
 
 
@@ -140,7 +143,7 @@ void		call_exit_prep(char *map_as_string, char **map_as_arr);
 
 
 // load assets
-t_pos		get_pos_unique(char **map_as_arr, char c);
+t_pos		*get_pos_unique(char **map_as_arr, char c);
 void		ft_load_textures_floor(t_game *game,char **map_as_arr);
 void		ft_load_textures_obstacle(t_game *game,char **map_as_arr);
 

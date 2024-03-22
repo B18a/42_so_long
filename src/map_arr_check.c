@@ -95,7 +95,7 @@ int	map_arr_check(char **map_as_arr)
 {
 	int		status;
 	t_pos	size;
-	t_pos	pos_player;
+	t_pos	*pos_player;
 
 	status = 0;
 	status += map_check_rectangle(map_as_arr);
@@ -107,7 +107,8 @@ int	map_arr_check(char **map_as_arr)
 	// printf("size.x is %i\n", size.x);
 	pos_player = get_pos_unique(map_as_arr, 'P');
 	// printf("pos_player.x %i ,pos_player.y %i\n", pos_player.x,pos_player.y);
-	status += map_flood_fill(map_as_arr, size, pos_player);
+	status += map_flood_fill(map_as_arr, size, (t_pos){pos_player->x,pos_player->y});
+	free(pos_player);
 	return(status);
 }
 

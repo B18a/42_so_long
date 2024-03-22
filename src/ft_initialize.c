@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 15:32:12 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 10:24:00 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ void ft_init_pos_asset(t_game *game, t_asset **asset, int amount)
 	}
 }
 
-t_asset *ft_initialize_exit(void)
+t_exit *ft_initialize_exit(void)
 {
-	t_asset	*exit;
+	t_exit	*exit;
 
 	exit = ft_calloc(sizeof(t_asset), 1);
 	if (exit)
