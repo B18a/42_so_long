@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 12:41:58 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 13:35:42 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,12 @@ t_map	*parsing_input(char *map_input)
 
 void	load_textures(t_game *game)
 {
+	// const char path[] = "./assets/key_silver.png";
 	ft_load_textures_floor(game, game->map->map_as_arr);
 	ft_load_textures_obstacle(game, game->map->map_as_arr);
 	ft_load_textures_player(game);
 	ft_load_textures_exit(game);
+	// ft_load_textures_asset(game, game->item,path);
 }
 
 int	main(int argc, char**argv)
@@ -100,8 +102,6 @@ int	main(int argc, char**argv)
 
 	// // int	ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const char *path);
 
-	// // ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100});
-	// // ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){300, 10});
 
 	print_2d_arr(map->map_as_arr);
 	start_game(game);

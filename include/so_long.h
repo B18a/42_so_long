@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 12:39:13 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 13:28:54 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,13 @@
 # define PATH_FLOOR		"./assets/floor_1.png"
 # define PATH_OBSTACLE		"./assets/wall_1.png"
 # define PATH_EXIT		"./assets/door_closed.png"
+# define PATH_ITEM		"./assets/key_silver.png"
+
+
+# define PATH_ENEMY	"./assets/enemy.png"
+
 # define PATH_PLAYER_UP		"./assets/Link_Down.png"
 # define PATH_PLAYER_DOWN	"./assets/Link_Up.png"
-# define PATH_ENEMY1	"./assets/enemy.png"
-# define PATH_ENEMY2	"./assets/patrol.png"
-# define PATHS_ENEMY	PATH_ENEMY1, PATH_ENEMY2
-# define PATH_ITEM1		"./assets/bottle_navy.png"
-# define PATH_ITEM2		"./assets/key.png"
-# define PATH_ITEM3		"./assets/compass.png"
-# define PATH_ITEM4		"./assets/map.png"
-# define PATH_ITEM5		"./assets/heart.png"
-# define PATHS_ITEM		PATH_ITEM1, PATH_ITEM2, PATH_ITEM3, PATH_ITEM4, PATH_ITEM5
-# define AMOUNT_ENEMY	2
-# define AMOUNT_ITEM	2
 
 # include "../MLX42/include/MLX42/MLX42.h"
 
@@ -69,6 +63,16 @@ typedef struct s_asset
 	struct s_asset	*next;
 }					t_asset;
 
+typedef	struct	s_map
+{
+	char		*map_as_string;
+	char		**map_as_arr;
+	int			width;
+	int			height;
+
+}				t_map;
+
+
 typedef struct s_exit
 {
 	mlx_texture_t	*texture;
@@ -88,22 +92,12 @@ typedef struct s_player
 	int				item;
 }					t_player;
 
-typedef struct s_unique
-{
-	mlx_texture_t	*texture;
-	mlx_image_t		*image;
-	t_pos			*pos;
-}				t_unique;
-
-typedef	struct	s_map
-{
-	char		*map_as_string;
-	char		**map_as_arr;
-	int			width;
-	int			height;
-
-}				t_map;
-
+// typedef struct s_item
+// {
+// 	mlx_texture_t	*texture;
+// 	mlx_image_t		*image;
+// 	t_pos			*pos;
+// }				t_item;
 
 typedef struct s_game
 {
@@ -113,12 +107,12 @@ typedef struct s_game
 	t_exit		*exit;
 	t_player	*player;
 	int			item_total;
+	t_asset		**item;
+	t_asset		*item_begin;
 
 /**************************************/
 	t_asset		**enemy;
 	int			enemy_total;
-	t_asset		**item;
-	t_asset		*item_begin;
 }				t_game;
 
 // exit functions to free all memory properly
@@ -155,7 +149,7 @@ int			ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const
 // ????
 int			check_file_type(char *str);
 void		call_exit_map(t_map *map);
-char **ft_arr_cpy(char **map_as_arr);
+char		**ft_arr_cpy(char **map_as_arr);
 
 
 // load assets
@@ -166,9 +160,9 @@ void		ft_load_textures_obstacle(t_game *game,char **map_as_arr);
 // load textures
 int			ft_load_textures_enemy(t_game *game, const char* paths_asset[]);
 int			ft_load_textures_player(t_game *game);
-int			ft_load_textures_asset(t_game *game, t_asset **asset, const char* path[], int amount, t_pos pos);
+int			ft_load_textures_asset(t_game *game, t_asset **asset, const char path[]);
 int			ft_load_textures_exit(t_game *game);
-
+int			ft_load_textures_item(t_game *game);
 // hook function
 void		my_keyhook(mlx_key_data_t keydata, void *param);
 

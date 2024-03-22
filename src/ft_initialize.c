@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 12:45:50 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 13:34:30 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ void ft_init_pos_asset(t_game *game, t_asset **asset, int amount)
 		}
 	}
 }
-
-
 
 t_exit *ft_initialize_exit()
 {
@@ -155,7 +153,6 @@ t_game	*ft_initialize_game(t_map *map)
 	if(!game->exit)
 		return(NULL);
 	game->exit->pos = get_pos_unique(map->map_as_arr, 'E');
-	printf("exit [%i][%i]\n", game->exit->pos->y, game->exit->pos->x);
 	if(!game->exit->pos)
 		return(NULL);
 
