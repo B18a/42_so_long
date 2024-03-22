@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 15:54:00 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 17:05:56 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void		ft_exit_pos(t_pos *pos);
 void		ft_exit_player(t_player *player);
 void		ft_exit_exit(t_exit *exit);
 void		free_map_in_arr(char **map_in_arr);
+void		ft_exit_item(t_game *game);
 
 
 int			get_item_total(char *map_as_string);
@@ -46,9 +47,7 @@ t_player	*ft_initialize_player();
 t_pos		*ft_initialize_pos(void);
 t_exit		*ft_initialize_exit();
 mlx_t		*ft_init_window(t_game *game);
-
-t_item	**ft_initialize_item(t_game *game);
-t_item	**ft_initialize_asset(int amount);
+t_item		**ft_initialize_item(t_game *game);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 16:04:33 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 17:09:03 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,25 +94,22 @@ void	ft_exit_exit(t_exit *exit)
 	if(exit)
 		free(exit);
 }
-void	ft_exit_item(t_item **item)
+
+void	ft_exit_item(t_game *game)
 {
 	int i;
 
 	i = 0;
-	if(item)
+	while(i < game->item_total)
 	{
-		while(item[i])
-		{
-			if(item[i]->pos)
-				free(item[i]->pos);
-			if(item[i]->texture)
-				mlx_delete_texture(item[i]->texture);
-			if(item[i])
-				free(item[i]);
-			i++;
-		}
-		free(item);
+		// if(game->item[i]->pos)
+		// 	free(game->item[i]->pos);
+		// if(game->item[i]->texture)
+		// 	mlx_delete_texture(game->item[i]->texture);
+		free(game->item[i]);
+		i++;
 	}
+	free(game->item);
 }
 
 void	call_exit(t_game *game)
@@ -120,7 +117,7 @@ void	call_exit(t_game *game)
 	call_exit_map(game->map);
 	ft_exit_player(game->player);
 	ft_exit_exit(game->exit);
-	ft_exit_item(game->item);
+	ft_exit_item(game);
 	// ft_exit_asset(game->enemy, game->enemy_total);
 	// ft_exit_asset(game->item, game->item_total);
 	ft_exit_game(game);

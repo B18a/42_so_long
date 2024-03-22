@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 15:26:59 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 17:04:43 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ int	main(int argc, char**argv)
 	game = ft_initialize_game(map);
 	if(!game)
 		return(call_exit(game), 0);
-
 	load_textures(game);
 
 	// ft_init_pos_asset(game, game->enemy , game->enemy_total);

@@ -6,11 +6,12 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:11:58 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 12:32:54 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 17:12:25 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
 
 t_pos	*get_pos_unique(char **map_as_arr, char c)
 {
