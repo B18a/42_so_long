@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 11:49:46 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 12:39:13 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ int			ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const
 // ????
 int			check_file_type(char *str);
 void		call_exit_map(t_map *map);
+char **ft_arr_cpy(char **map_as_arr);
 
 
 // load assets
@@ -164,9 +165,9 @@ void		ft_load_textures_obstacle(t_game *game,char **map_as_arr);
 
 // load textures
 int			ft_load_textures_enemy(t_game *game, const char* paths_asset[]);
-int			ft_load_textures_player(t_game *game, int posX, int posY);
+int			ft_load_textures_player(t_game *game);
 int			ft_load_textures_asset(t_game *game, t_asset **asset, const char* path[], int amount, t_pos pos);
-int			ft_load_textures_exit(t_game *game, int posX, int posY);
+int			ft_load_textures_exit(t_game *game);
 
 // hook function
 void		my_keyhook(mlx_key_data_t keydata, void *param);
@@ -191,5 +192,7 @@ int			get_height(char **map_as_arr);
 // debug functions
 void 		print_2d_arr(char **map_in_arr);
 
+// new libft functions
+char	**ft_arr_cpy(char **map_as_arr);
 
 #endif

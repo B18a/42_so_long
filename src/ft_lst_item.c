@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:20:19 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/21 15:14:58 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 12:53:57 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_asset	*ft_lst_asset_last(t_asset *lst)
 		return (ft_lst_asset_last(lst->next));
 }
 
-void	ft_lstadd_back(t_asset **lst, t_asset *new)
+void	ft_lstadd_back2(t_asset **lst, t_asset *new)
 {
 	if (!*lst)
 		ft_lstadd_asset_front(lst, new);

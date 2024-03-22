@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:11:58 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 11:56:04 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 12:32:54 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_pos	*get_pos_unique(char **map_as_arr, char c)
 	{
 		while(map_as_arr[y][x])
 		{
-			printf(" c:%c, map %c y:%i, x:%i\n",c,map_as_arr[y][x], y, x);
 			if(map_as_arr[y][x] == c)
 			{
 				pos->x = x;
@@ -40,7 +39,6 @@ t_pos	*get_pos_unique(char **map_as_arr, char c)
 		x = 0;
 		y++;
 	}
-	printf("%c [%i][%i] \n",c, pos->y, pos->x);
 	return(pos);
 }
 
@@ -56,3 +54,4 @@ int	ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const c
 		return (call_exit(game), 0);
 	return(0);
 }
+

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_images.c                                      :+:      :+:    :+:   */
+/*   load_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 22:43:28 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 11:37:57 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 12:40:20 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	ft_load_textures_player(t_game *game, int posX, int posY)
+int	ft_load_textures_player(t_game *game)
 {
 		game->player->texture = mlx_load_png(PATH_PLAYER);
 		game->player->image = mlx_texture_to_image(game->game_window, game->player->texture);
@@ -20,28 +20,21 @@ int	ft_load_textures_player(t_game *game, int posX, int posY)
 		// game->player->texture_down = mlx_load_png(PATH_PLAYER_DOWN);
 		// game->player->image_up = mlx_texture_to_image(game->game_window, game->player->texture_up);
 		// game->player->image_down = mlx_texture_to_image(game->game_window, game->player->texture_down);
-		game->player->pos->x = posX;
-		game->player->pos->y = posY;
 		if(!game->player->image)
 			return (call_exit(game), 0);
-		if(mlx_image_to_window(game->game_window, game->player->image, game->player->pos->x, game->player->pos->y))
+		if(mlx_image_to_window(game->game_window, game->player->image, game->player->pos->x * PIXEL, game->player->pos->y * PIXEL))
 			return (call_exit(game), 0);
 		return(0);
 }
 
 
-
-int	ft_load_textures_exit(t_game *game, int posX, int posY)
+int	ft_load_textures_exit(t_game *game)
 {
 	game->exit->texture = mlx_load_png(PATH_EXIT);
 	game->exit->image = mlx_texture_to_image(game->game_window, game->exit->texture);
-	game->exit->pos->x = posX;
-	game->exit->pos->y = posY;
 	if(!game->exit->image)
 		return (call_exit(game), 0);
-
-	// if(mlx_image_to_window(game->game_window, game->exit->image, game->exit->pos->x, game->exit->pos->y))
-	if(mlx_image_to_window(game->game_window, game->exit->image, posX, posY))
+	if(mlx_image_to_window(game->game_window, game->exit->image, game->exit->pos->x * PIXEL, game->exit->pos->y * PIXEL))
 		return (call_exit(game), 0);
 	return(0);
 }

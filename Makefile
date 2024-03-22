@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/22 11:40:37 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/22 12:41:29 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,16 +30,17 @@ vpath %.h $(INC_DIR)
 # INTERNAL FUNCTIONS
 FUNCTIONS	=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/parsing.c \
-				$(SRC_DIR)/ft_exit.c \
-				$(SRC_DIR)/ft_initialize.c \
-				$(SRC_DIR)/ft_hook.c \
-				$(SRC_DIR)/load_textures.c \
-				$(SRC_DIR)/ft_check.c \
 				$(SRC_DIR)/map_string_check.c \
 				$(SRC_DIR)/map_arr_check.c \
-				$(SRC_DIR)/load_assets.c \
+				$(SRC_DIR)/ft_exit.c \
+				$(SRC_DIR)/ft_initialize.c \
+				$(SRC_DIR)/load_textures.c \
+				$(SRC_DIR)/load_textures2.c \
+				$(SRC_DIR)/ft_hook.c \
+				$(SRC_DIR)/ft_check.c \
 				$(SRC_DIR)/unused_at_end.c \
 				$(SRC_DIR)/unique.c \
+				$(SRC_DIR)/ft_arr_cpy.c \
 
 # INTERNAL OBJECT
 OBJECTS		= $(addprefix $(OBJ_DIR)/, $(notdir $(FUNCTIONS:.c=.o)))

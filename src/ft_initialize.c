@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 12:18:38 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 12:45:50 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ t_asset	**ft_initialize_asset(int amount)
 	}
 	return (asset);
 }
-
-
 
 
 t_pos	*ft_initialize_pos(void)
@@ -116,6 +114,21 @@ mlx_t	*ft_init_window(t_game *game)
 		return (NULL);
 	return(game->game_window);
 }
+int	get_item_total(char *map_as_string)
+{
+	int i;
+	int item;
+
+	i = 0;
+	item = 0;
+	while(map_as_string[i])
+	{
+		if(map_as_string[i] == 'C')
+			item++;
+		i++;
+	}
+	return(item);
+}
 
 t_game	*ft_initialize_game(t_map *map)
 {
@@ -136,18 +149,19 @@ t_game	*ft_initialize_game(t_map *map)
 	game->player->pos = get_pos_unique(map->map_as_arr, 'P');
 	if(!game->player->pos)
 		return(NULL);
-	// printf("PLAYER [%i][%i]\n", game->player->pos->y, game->player->pos->x);
 
 // /*******EXIT***************************************************/
 	game->exit = ft_initialize_exit();
 	if(!game->exit)
 		return(NULL);
 	game->exit->pos = get_pos_unique(map->map_as_arr, 'E');
+	printf("exit [%i][%i]\n", game->exit->pos->y, game->exit->pos->x);
 	if(!game->exit->pos)
 		return(NULL);
 
 // /*******ITEM***************************************************/
-
+	game->item_total = get_item_total(map->map_as_string);
+	printf("items total %i\n", game->item_total);
 
 
 /**************************************************************/

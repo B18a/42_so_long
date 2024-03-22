@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 12:11:51 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 12:41:58 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void	load_textures(t_game *game)
 {
 	ft_load_textures_floor(game, game->map->map_as_arr);
 	ft_load_textures_obstacle(game, game->map->map_as_arr);
-	ft_load_textures_exit(game, game->exit->pos->x * PIXEL, game->exit->pos->x * PIXEL);
-	ft_load_textures_player(game, game->player->pos->x * PIXEL, game->player->pos->y * PIXEL);
+	ft_load_textures_player(game);
+	ft_load_textures_exit(game);
 }
 
 int	main(int argc, char**argv)
@@ -91,10 +91,8 @@ int	main(int argc, char**argv)
 	game = ft_initialize_game(map);
 	if(!game)
 		return(call_exit(game), 0);
-	// printf("PLAYER [%i][%i]\n", game->player->pos->y, game->player->pos->x);
 
 	load_textures(game);
-	print_2d_arr(map->map_as_arr);
 
 	// ft_init_pos_asset(game, game->enemy , game->enemy_total);
 	// ft_init_pos_asset(game, game->item , game->item_total);
@@ -105,6 +103,7 @@ int	main(int argc, char**argv)
 	// // ft_load_textures_asset(game, game->enemy, paths_enem, game->enemy_total, (t_pos){100, 100});
 	// // ft_load_textures_asset(game, game->item, paths_item, game->item_total,(t_pos){300, 10});
 
+	print_2d_arr(map->map_as_arr);
 	start_game(game);
 	call_exit(game);
 
