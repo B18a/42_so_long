@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 18:08:24 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 18:29:17 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	load_textures(t_game *game)
 	ft_load_textures_obstacle(game, game->map->map_as_arr);
 	ft_load_textures_player(game);
 	ft_load_textures_exit(game);
-	// ft_load_textures_item(game);
+	ft_load_textures_item(game);
 	// ft_load_textures_asset(game, game->item,path);
 }
 
