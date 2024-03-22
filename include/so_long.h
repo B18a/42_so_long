@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 15:27:03 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 15:54:00 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 // exit functions to free all memory properly
 void		call_exit(t_game *game);
 void		ft_exit_game(t_game *game);
-void		ft_exit_asset(t_asset **asset, int amount);
+// void		ft_exit_asset(t_asset **asset, int amount);
 void		ft_exit_pos(t_pos *pos);
 void		ft_exit_player(t_player *player);
 void		ft_exit_exit(t_exit *exit);
@@ -47,13 +47,17 @@ t_pos		*ft_initialize_pos(void);
 t_exit		*ft_initialize_exit();
 mlx_t		*ft_init_window(t_game *game);
 
+t_item	**ft_initialize_item(t_game *game);
+t_item	**ft_initialize_asset(int amount);
 
-t_asset 	**ft_initialize_asset(int amount);
+
+
+// t_asset 	**ft_initialize_asset(int amount);
 void		start_game(t_game *game);
 void		update_display_moves(t_game *game, int32_t posX, int32_t posY);
 void		update_display_item(t_game *game, int32_t posX, int32_t posY);
 // void		ft_init_pos_asset(t_game *game, t_asset **asset, int amount);
-t_asset		*ft_initialize_item(int amount);
+// t_asset		*ft_initialize_item(int amount);
 int			ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const char *path);
 
 

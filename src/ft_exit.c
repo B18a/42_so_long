@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 11:31:08 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 16:04:33 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,22 @@ void	ft_exit_player(t_player *player)
 	free(player);
 }
 
-void	ft_exit_asset(t_asset **asset, int amount)
-{
-	int	i;
+// void	ft_exit_asset(t_asset **asset, int amount)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < amount)
-	{
-		if (asset[i]->pos)
-			ft_exit_pos(asset[i]->pos);
-		if (asset[i]->texture)
-			mlx_delete_texture(asset[i]->texture);
-		free(asset[i]);
-		i++;
-	}
-	free(asset);
-}
+// 	i = 0;
+// 	while (i < amount)
+// 	{
+// 		if (asset[i]->pos)
+// 			ft_exit_pos(asset[i]->pos);
+// 		if (asset[i]->texture)
+// 			mlx_delete_texture(asset[i]->texture);
+// 		free(asset[i]);
+// 		i++;
+// 	}
+// 	free(asset);
+// }
 
 void	ft_exit_game(t_game *game)
 {
@@ -94,12 +94,33 @@ void	ft_exit_exit(t_exit *exit)
 	if(exit)
 		free(exit);
 }
+void	ft_exit_item(t_item **item)
+{
+	int i;
+
+	i = 0;
+	if(item)
+	{
+		while(item[i])
+		{
+			if(item[i]->pos)
+				free(item[i]->pos);
+			if(item[i]->texture)
+				mlx_delete_texture(item[i]->texture);
+			if(item[i])
+				free(item[i]);
+			i++;
+		}
+		free(item);
+	}
+}
 
 void	call_exit(t_game *game)
 {
 	call_exit_map(game->map);
 	ft_exit_player(game->player);
 	ft_exit_exit(game->exit);
+	ft_exit_item(game->item);
 	// ft_exit_asset(game->enemy, game->enemy_total);
 	// ft_exit_asset(game->item, game->item_total);
 	ft_exit_game(game);

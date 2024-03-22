@@ -6,18 +6,67 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 15:27:56 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 16:00:09 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_exit *ft_initialize_exit()
+t_item	**ft_initialize_item(t_game *game)
+{
+	t_item	**item;
+	int		i;
+
+	item = NULL;
+	i = 0;
+	item = ft_calloc(game->item_total, sizeof(t_item*));
+	while (i < game->item_total)
+	{
+		item[i] = ft_calloc(1, sizeof(t_item));
+		i++;
+	}
+	return(item);
+}
+
+t_item	**ft_initialize_asset(int amount)
+{
+	int		i;
+	int		j;
+	t_item	**asset;
+
+	i = 0;
+	j = 0;
+	asset = NULL;
+	asset = ft_calloc(1, sizeof(t_item *));
+	if (asset)
+	{
+		while (i < amount)
+		{
+			asset[i] = ft_calloc(1, sizeof(t_item));
+			if (!asset[i])
+			{
+				while (j < i)
+				{
+					if (asset[j])
+						free(asset[j]);
+					j++;
+				}
+				if (asset)
+					free(asset);
+				return (NULL);
+			}
+			i++;
+		}
+	}
+	return (asset);
+}
+
+t_exit	*ft_initialize_exit()
 {
 	t_exit	*exit;
 
 	exit = NULL;
-	exit = ft_calloc(sizeof(t_asset), 1);
+	exit = ft_calloc(sizeof(t_exit), 1);
 	if (exit)
 	{
 		exit->pos = NULL;
@@ -39,6 +88,7 @@ t_player	*ft_initialize_player()
 	}
 	return (player);
 }
+
 mlx_t	*ft_init_window(t_game *game)
 {
 	game->map->width = ft_strlen(game->map->map_as_arr[0]) * PIXEL;
@@ -48,51 +98,7 @@ mlx_t	*ft_init_window(t_game *game)
 		return (NULL);
 	return(game->game_window);
 }
-// t_asset	**ft_initialize_asset(int amount)
-// {
-// 	int		i;
-// 	int		j;
-// 	t_asset	**asset;
 
-// 	i = 0;
-// 	j = 0;
-// 	asset = ft_calloc(sizeof(t_asset*) , amount);
-// 	if (asset)
-// 	{
-// 		while (i < amount)
-// 		{
-// 			asset[i] = ft_calloc(sizeof(t_asset), 1);
-// 			if (!asset[i])
-// 			{
-// 				while (j < i)
-// 				{
-// 					if (asset[j])
-// 						free(asset[j]);
-// 					j++;
-// 				}
-// 				if (asset)
-// 					free(asset);
-// 				return (NULL);
-// 			}
-// 			i++;
-// 		}
-// 	}
-// 	return (asset);
-// }
-
-
-// t_pos	*ft_initialize_pos(void)
-// {
-// 	t_pos	*pos;
-
-// 	pos = NULL;
-// 	pos = ft_calloc(sizeof(t_pos), 1);
-// 	if(!pos)
-// 		return(NULL);
-// 	pos->y = 0;
-// 	pos->x = 0;
-// 	return (pos);
-// }
 
 // void ft_init_pos_asset(t_game *game, t_asset **asset, int amount)
 // {

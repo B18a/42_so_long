@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:09:56 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 15:12:32 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 15:30:20 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ typedef struct s_pos
 	int	y;
 }		t_pos;
 
-typedef struct s_asset
-{
-	mlx_texture_t	*texture;
-	mlx_image_t		*image;
-	t_pos			*pos;
-	struct s_asset	*next;
-}					t_asset;
+// typedef struct s_asset
+// {
+// 	mlx_texture_t	*texture;
+// 	mlx_image_t		*image;
+// 	t_pos			*pos;
+// 	struct s_asset	*next;
+// }					t_asset;
 
 typedef	struct	s_map
 {
@@ -44,9 +44,7 @@ typedef	struct	s_map
 	char		**map_as_arr;
 	int			width;
 	int			height;
-
 }				t_map;
-
 
 typedef struct s_exit
 {
@@ -82,13 +80,14 @@ typedef struct s_game
 	t_exit		*exit;
 	t_player	*player;
 	int			item_total;
-	t_asset		*item;
+	t_item		**item;
+	// t_asset		*item;
 	// t_asset		**item;
 	// t_asset		*item_begin;
 
 /**************************************/
-	t_asset		**enemy;
-	int			enemy_total;
+	// t_asset		**enemy;
+	// int			enemy_total;
 }				t_game;
 
 
