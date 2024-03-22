@@ -24,6 +24,9 @@
 		"tuple": "c",
 		"type_traits": "c",
 		"vector": "c",
-		"__config": "c"
+		"__config": "c",
+		"structs.h": "c",
+		"ft_printf.h": "c",
+		"libft.h": "c"
 	}
 }

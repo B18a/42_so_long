@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:20:19 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 12:53:57 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/22 15:06:49 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_asset	*ft_lst_asset_new(void)
 }
 
 
-t_asset	*ft_initialize_item(t_game *game, int amount)
+t_asset	*ft_initialize_item(int amount)
 {
 	int		i;
 	t_asset	*begin;
@@ -66,6 +66,7 @@ t_asset	*ft_initialize_item(t_game *game, int amount)
 	begin = new;
 	while (i < amount)
 	{
+		new->pos = NULL;
 		new->next = ft_lst_asset_new();
 		new = new->next;
 		i++;

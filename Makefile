@@ -6,12 +6,11 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/22 12:41:29 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/22 15:20:06 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= so_long
-NAME2		= so_long2
 CC			= cc
 REMOVE		= rm -rf
 OBJ_DIR		= ./obj
@@ -33,7 +32,8 @@ FUNCTIONS	=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/map_string_check.c \
 				$(SRC_DIR)/map_arr_check.c \
 				$(SRC_DIR)/ft_exit.c \
-				$(SRC_DIR)/ft_initialize.c \
+				$(SRC_DIR)/ft_init_main.c \
+				$(SRC_DIR)/ft_init_helper.c \
 				$(SRC_DIR)/load_textures.c \
 				$(SRC_DIR)/load_textures2.c \
 				$(SRC_DIR)/ft_hook.c \
@@ -41,6 +41,8 @@ FUNCTIONS	=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/unused_at_end.c \
 				$(SRC_DIR)/unique.c \
 				$(SRC_DIR)/ft_arr_cpy.c \
+				$(SRC_DIR)/ft_lst_item.c \
+				$(SRC_DIR)/helper.c \
 
 # INTERNAL OBJECT
 OBJECTS		= $(addprefix $(OBJ_DIR)/, $(notdir $(FUNCTIONS:.c=.o)))
