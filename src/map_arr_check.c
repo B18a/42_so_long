@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:00:45 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 14:27:01 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 14:43:19 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	map_check_wall(char **map_as_arr)
 
 	i = 0;
 	height = -1;
+	if (!map_as_arr || !map_as_arr[0][0] || !map_as_arr[0])
+		return (1);
 	len = ft_strlen(map_as_arr[0]);
 	while (map_as_arr[height + 1])
 		height++;
@@ -59,22 +61,22 @@ int	map_flood_fill(char **map, t_pos size, t_pos pos)
 {
 	if (pos.x < 0 || pos.x >= size.x || pos.y < 0 || pos.y >= size.y)
 	{
-		printf("				Out of Map at [%i][%i]\n",pos.x, pos.y);
+		// printf("				Out of Map at [%i][%i]\n",pos.x, pos.y);
 		return (1);
 	}
 	if (map[pos.x][pos.y] == '1')
 	{
-		printf("				Wall at [%i][%i]\n",pos.x, pos.y);
+		// printf("				Wall at [%i][%i]\n",pos.x, pos.y);
 		return (1);
 	}
 	if (map[pos.x][pos.y] == 'V')
 	{
-		printf("				Visited at [%i][%i]\n",pos.x, pos.y);
+		// printf("				Visited at [%i][%i]\n",pos.x, pos.y);
 		return (1);
 	}
 	if (map[pos.x][pos.y] == 'E')
 	{
-		printf("				Exit at [%i][%i]\n",pos.x, pos.y);
+		// printf("				Exit at [%i][%i]\n",pos.x, pos.y);
 		return (0);
 	}
 	map[pos.x][pos.y] = 'V';
@@ -110,7 +112,6 @@ int	map_arr_check(char **map_as_arr)
 	size.y = ft_strlen(map_as_arr[0]);
 	size.x = get_height(map_as_arr);
 	pos_player = get_pos_unique(map_as_arr, 'P');
-	printf("pos[%i][%i]\n",pos_player->y,pos_player->x);
 	status += map_flood_fill(temp, size, (t_pos){pos_player->x, pos_player->y});
 	free(pos_player);
 	free_map_in_arr(temp);

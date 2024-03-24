@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 14:33:10 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 14:48:55 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	main(int argc, char **argv)
 	map = parsing_input(argv[1]);
 	if (!map)
 		return (call_exit_map(map), 0);
-	game = ft_initialize_game(map);
+	game = ft_initialize(map);
 	if (!game)
 		return (call_exit(game), 0);
 	load_textures(game);

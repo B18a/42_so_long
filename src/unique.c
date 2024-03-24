@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:11:58 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 14:29:25 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 14:40:13 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ t_pos	*get_pos_unique(char **map_as_arr, char c)
 	{
 		while (map_as_arr[y][x])
 		{
-			printf("pos[%i][%i]\n",y,x);
 			if (map_as_arr[y][x] == c)
 				return (pos->x = x, pos->y = y, pos);
 			x++;
