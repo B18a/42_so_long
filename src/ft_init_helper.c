@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 17:46:17 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 11:22:54 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_item	**ft_initialize_item(t_game *game)
 		item[i]->pos->x = 0;
 		item[i]->texture = NULL;
 		item[i]->image = NULL;
+		item[i]->collected = 0;
 		i++;
 	}
 	return(item);
@@ -61,7 +62,6 @@ t_player	*ft_initialize_player()
 		player->texture = NULL;
 		player->image = NULL;
 		player->moves = 0;
-		player->item = 0;
 	}
 	return (player);
 }

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 10:57:02 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 11:43:46 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 // exit functions to free all memory properly
 void		call_exit(t_game *game);
 void		ft_exit_game(t_game *game);
-// void		ft_exit_asset(t_asset **asset, int amount);
 void		ft_exit_pos(t_pos *pos);
 void		ft_exit_player(t_player *player);
 void		ft_exit_exit(t_exit *exit);
@@ -52,7 +51,6 @@ void		ft_init_pos_items(t_game *game);
 
 
 
-// t_asset 	**ft_initialize_asset(int amount);
 void		start_game(t_game *game);
 void		update_display_moves(t_game *game, int32_t posX, int32_t posY);
 void		update_display_item(t_game *game, int32_t posX, int32_t posY);
@@ -75,21 +73,20 @@ int			ft_load_textures_player(t_game *game);
 int			ft_load_textures_exit(t_game *game);
 int			ft_load_textures_item(t_game *game);
 
-// int			ft_load_textures_enemy(t_game *game, const char* paths_asset[]);
-// int			ft_load_textures_asset(t_game *game, t_asset **asset, const char path[]);
 
 // hook function
 void		my_keyhook(mlx_key_data_t keydata, void *param);
 
 // check functions
-void		check_collision(t_game *game);
-void		check_collect(t_game *game);
-void		check_exit(t_game *game);
+void	check_for_item(t_game *game, char c,int posY, int posX);
+// void	check_for_exit(t_game *game);
 
+// update display
+void	update_display_item(t_game *game, int32_t posX, int32_t posY);
+void	update_display_moves(t_game *game, int32_t posX, int32_t posY);
 
 
 // start
-
 // parsing
 t_map		*parsing_input(char *map_input);
 char		*map_to_string(char *path_map);
@@ -97,9 +94,15 @@ int			map_string_check(char *map_in_string);
 int			map_arr_check(char **map_as_arr);
 int			get_height(char **map_as_arr);
 
+// moves
+int	check_move_up(t_game *game);
+int	check_move_down(t_game *game);
+int	check_move_left(t_game *game);
+int	check_move_right(t_game *game);
+
 
 // debug functions
-void 		print_2d_arr(char **map_in_arr);
+void		print_2d_arr(char **map_in_arr);
 
 // new libft functions
 char	**ft_arr_cpy(char **map_as_arr);

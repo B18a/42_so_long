@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/22 15:20:06 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/24 11:44:31 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,9 @@ FUNCTIONS	=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/unused_at_end.c \
 				$(SRC_DIR)/unique.c \
 				$(SRC_DIR)/ft_arr_cpy.c \
-				$(SRC_DIR)/ft_lst_item.c \
 				$(SRC_DIR)/helper.c \
+				$(SRC_DIR)/moves.c \
+				$(SRC_DIR)/update_display.c \
 
 # INTERNAL OBJECT
 OBJECTS		= $(addprefix $(OBJ_DIR)/, $(notdir $(FUNCTIONS:.c=.o)))
