@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 11:30:18 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 11:04:40 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,9 +146,9 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	}
 
 	// check_enemy(game);
-	// check_collect(game);
+	check_collect(game);
 	// check_exit(game);
-	update_display_moves(game, 10, 100);
-	update_display_item(game, 50, 100);
+	update_display_moves(game, MOVES_POS_X, MOVES_POS_Y);
+	update_display_item(game, ITEM_POS_X, ITEM_POS_Y);
 
 }
