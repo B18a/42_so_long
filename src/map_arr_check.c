@@ -3,7 +3,7 @@
 #include "../include/so_long.h"
 
 
-static int	map_check_rectangle(char **map_as_arr)
+int	map_check_rectangle(char **map_as_arr)
 {
 	int i;
 
@@ -15,7 +15,7 @@ static int	map_check_rectangle(char **map_as_arr)
 	return(0);
 }
 
-static int	map_check_wall(char **map_as_arr)
+int	map_check_wall(char **map_as_arr)
 {
 	int i;
 	int height;
@@ -45,7 +45,7 @@ static int	map_check_wall(char **map_as_arr)
 	return(0);
 }
 
-static int map_flood_fill(char **map, t_pos size, t_pos pos)
+int map_flood_fill(char **map, t_pos size, t_pos pos)
 {
 	if (pos.x < 0 || pos.x >= size.x || pos.y < 0 || pos.y >= size.y)
 	{

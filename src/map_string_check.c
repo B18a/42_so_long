@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:16:20 by andreasjehl       #+#    #+#             */
-/*   Updated: 2024/03/24 12:05:05 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 13:13:42 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int	ft_map_check_chars(char *map_in_string)
 	while(map_in_string[i])
 	{
 		if(forbidden_char(map_in_string[i]))
+		{
+			printf("Something wrong in map, forbidden character: %c \n", map_in_string[i]);
 			return(1);
+		}
 		i++;
 	}
 	return(0);

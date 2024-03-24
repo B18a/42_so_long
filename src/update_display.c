@@ -6,17 +6,16 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 11:43:14 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 12:11:59 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 13:32:10 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	update_display_exit(t_game *game)
+void	update_display_exit(t_game *game)
 {
 	game->exit->image_closed->instances->enabled = 0;
 	game->exit->image_open->instances->enabled = 1;
-	return(0);
 }
 
 void	update_display_item(t_game *game, int32_t posX, int32_t posY)
