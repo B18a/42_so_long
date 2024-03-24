@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:09:56 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 11:38:01 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 11:54:19 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ typedef	struct	s_map
 
 typedef struct s_exit
 {
-	mlx_texture_t	*texture;
-	mlx_image_t		*image;
+	mlx_texture_t	*texture_closed;
+	mlx_texture_t	*texture_open;
+	mlx_image_t		*image_closed;
+	mlx_image_t		*image_open;
 	t_pos			*pos;
 }				t_exit;
 

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:16:20 by andreasjehl       #+#    #+#             */
-/*   Updated: 2024/03/21 15:17:50 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 12:05:05 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int forbidden_char(char c)
 {
-	// printf("CHAR IS %c\n",c);
 	if(c == '0' || c == '1' || c == 'P' || c == 'C' || c == 'E' || c == '\n')
 		return(0);
 	else

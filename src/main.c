@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 11:00:26 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 12:19:23 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void start_game(t_game *game)
 	{
 		mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 		mlx_key_hook(game->game_window, &my_keyhook, game);
-		update_display_moves(game, MOVES_POS_X, MOVES_POS_Y);
-		update_display_item(game, ITEM_POS_X, ITEM_POS_Y);
 		mlx_loop(game->game_window);
 		mlx_terminate(game->game_window);
 	}
@@ -71,7 +69,6 @@ void	load_textures(t_game *game)
 	ft_load_textures_exit(game);
 	ft_load_textures_item(game);
 	ft_load_textures_player(game);
-	// ft_load_textures_asset(game, game->item,path);
 }
 
 int	main(int argc, char**argv)
@@ -95,14 +92,7 @@ int	main(int argc, char**argv)
 	if(!game)
 		return(call_exit(game), 0);
 	load_textures(game);
-
-	// ft_init_pos_asset(game, game->enemy , game->enemy_total);
-	// /**************************************/
-
-	// // int	ft_load_textures_unique(t_game *game, mlx_image_t *image ,t_pos pos, const char *path);
-
-
-	print_2d_arr(map->map_as_arr);
+						// print_2d_arr(map->map_as_arr);
 	start_game(game);
 	call_exit(game);
 

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:50:38 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 15:27:07 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 12:02:43 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,18 @@ int	ft_load_textures_player(t_game *game)
 
 int	ft_load_textures_exit(t_game *game)
 {
-	game->exit->texture = mlx_load_png(PATH_EXIT);
-	game->exit->image = mlx_texture_to_image(game->game_window, game->exit->texture);
-	if(!game->exit->image)
+	game->exit->texture_closed = mlx_load_png(PATH_EXIT_CLOSED);
+	game->exit->image_closed = mlx_texture_to_image(game->game_window, game->exit->texture_closed);
+	if(!game->exit->image_closed)
 		return (call_exit(game), 0);
-	if(mlx_image_to_window(game->game_window, game->exit->image, game->exit->pos->x * PIXEL, game->exit->pos->y * PIXEL))
+	if(mlx_image_to_window(game->game_window, game->exit->image_closed, game->exit->pos->x * PIXEL, game->exit->pos->y * PIXEL))
 		return (call_exit(game), 0);
+	game->exit->texture_open = mlx_load_png(PATH_EXIT_OPEN);
+	game->exit->image_open = mlx_texture_to_image(game->game_window, game->exit->texture_open);
+	if(!game->exit->image_open)
+		return (call_exit(game), 0);
+	if(mlx_image_to_window(game->game_window, game->exit->image_open, game->exit->pos->x * PIXEL, game->exit->pos->y * PIXEL))
+		return (call_exit(game), 0);
+	game->exit->image_open->instances->enabled = 0;
 	return(0);
 }

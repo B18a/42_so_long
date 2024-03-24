@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:10:55 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 11:02:19 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 11:53:30 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@
 # define PATH_PLAYER	"./assets/knight.png"
 # define PATH_FLOOR		"./assets/floor_1.png"
 # define PATH_OBSTACLE		"./assets/wall_1.png"
-# define PATH_EXIT		"./assets/door_closed.png"
+# define PATH_EXIT_CLOSED	"./assets/door_closed.png"
+# define PATH_EXIT_OPEN		"./assets/door_fullyopen.png"
 # define PATH_ITEM		"./assets/key_silver.png"
 
 

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 11:43:46 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 12:23:24 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void		my_keyhook(mlx_key_data_t keydata, void *param);
 
 // check functions
 void	check_for_item(t_game *game, char c,int posY, int posX);
-// void	check_for_exit(t_game *game);
+void		check_for_exit(t_game *game, char c,int posY, int posX);
 
 // update display
 void	update_display_item(t_game *game, int32_t posX, int32_t posY);

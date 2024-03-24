@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 11:22:54 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 11:54:46 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ t_exit	*ft_initialize_exit()
 	exit = ft_calloc(sizeof(t_exit), 1);
 	if (exit)
 	{
-		exit->texture = NULL;
-		exit->image = NULL;
+		exit->texture_closed = NULL;
+		exit->image_closed = NULL;
+		exit->texture_open = NULL;
+		exit->image_open = NULL;
 		exit->pos = NULL;
 	}
 	return (exit);

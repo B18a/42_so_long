@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:11:58 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 18:26:38 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 12:05:30 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_pos	search_next(char **map_as_arr, int y, int x)
 	{
 		while(map_as_arr[y][x])
 		{
-			printf("[%i][%i]\n",y,x);
 			if(map_as_arr[y][x] == 'C')
 				return((t_pos){x,y});
 			x++;
@@ -35,18 +34,15 @@ void	ft_init_pos_items(t_game *game)
 	t_pos	temp;
 
 	i = 0;
-	printf("START POS [%i][%i]\n",game->item[i]->pos->y,game->item[i]->pos->x);
 	temp = search_next(game->map->map_as_arr, game->item[i]->pos->x, game->item[i]->pos->y);
 	game->item[i]->pos->y = temp.y;
 	game->item[i]->pos->x = temp.x;
 	i++;
 	while(i < game->item_total)
 	{
-		printf("START POS [%i][%i]\n",game->item[i - 1]->pos->y,game->item[i - 1]->pos->x + 1);
 		temp = search_next(game->map->map_as_arr, game->item[i - 1]->pos->y, game->item[i - 1]->pos->x + 1);
 		game->item[i]->pos->y = temp.y;
 		game->item[i]->pos->x = temp.x;
-		printf("FOUND POS [%i][%i]\n",game->item[i]->pos->y,game->item[i]->pos->x);
 		i++;
 	}
 }

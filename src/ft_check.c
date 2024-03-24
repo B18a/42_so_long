@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 22:02:40 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 11:42:01 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 12:23:52 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,14 @@ void	check_for_item(t_game *game, char c,int posY, int posX)
 	}
 	return;
 }
-// void		check_exit(t_game *game)
-// {
-// 	t_borders	a;
-// 	t_borders	b;
 
-// 	a.minX = game->player->image->instances[0].x;
-// 	a.maxX = game->player->image->instances[0].x + game->player->image->width;
-// 	a.minY = game->player->image->instances[0].y;
-// 	a.maxY = game->player->image->instances[0].y + game->player->image->height;
-// 	b.minX = game->exit->image->instances[0].x;
-// 	b.maxX = game->exit->image->instances[0].x + game->exit->image->width;
-// 	b.minY = game->exit->image->instances[0].y;
-// 	b.maxY = game->exit->image->instances[0].y + game->exit->image->height;
-// 	if((a.maxX >= b.minX) && (a.minX <= b.maxX) && (a.maxY >= b.minY) && (a.minY <= b.maxY))
-// 	{
-// 		if(game->item_total == game->item_collect)
-// 		{
-// 			mlx_delete_image(game->game_window, game->exit->image);
-// 			mlx_close_window(game->game_window);
-// 			printf("FINISHED\n");
-// 		}
-// 	}
-// }
+void	check_for_exit(t_game *game, char c,int posY, int posX)
+{
+	if(!(c == 'E'))
+		return;
+	if(game->exit->pos->y == posY && game->exit->pos->x == posX && game->exit->image_open->enabled)
+	{
+		mlx_terminate(game->game_window);
+	}
+	return;
+}
