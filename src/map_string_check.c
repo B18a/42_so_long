@@ -6,78 +6,79 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:16:20 by andreasjehl       #+#    #+#             */
-/*   Updated: 2024/03/24 13:13:42 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 13:48:05 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int forbidden_char(char c)
+int	forbidden_char(char c)
 {
-	if(c == '0' || c == '1' || c == 'P' || c == 'C' || c == 'E' || c == '\n')
-		return(0);
+	if (c == '0' || c == '1' || c == 'P' || c == 'C' || c == 'E' || c == '\n')
+		return (0);
 	else
-		return(1);
+		return (1);
 }
 
 int	ft_map_check_chars(char *map_in_string)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(map_in_string[i])
+	while (map_in_string[i])
 	{
-		if(forbidden_char(map_in_string[i]))
+		if (forbidden_char(map_in_string[i]))
 		{
-			printf("Something wrong in map, forbidden character: %c \n", map_in_string[i]);
-			return(1);
+			printf("Something wrong in map, forbidden character: %c \n",
+				map_in_string[i]);
+			return (1);
 		}
 		i++;
 	}
-	return(0);
+	return (0);
 }
 int	ft_check_unique_char(char *map_as_string, char character)
 {
-	int i;
-	int check;
+	int	i;
+	int	check;
 
 	i = 0;
 	check = 0;
-	while(map_as_string[i])
+	while (map_as_string[i])
 	{
-		if(map_as_string[i] == character)
+		if (map_as_string[i] == character)
 			check++;
 		i++;
 	}
-	if(check != 1)
+	if (check != 1)
 	{
 		printf("Something wrong in map, amount of %c is wrong\n", character);
-		return(1);
+		return (1);
 	}
-	return(0);
+	return (0);
 }
 int	ft_check_multiple_char(char *map_as_string, char character)
 {
-	int i;
-	int check;
+	int	i;
+	int	check;
 
 	i = 0;
 	check = 0;
-	while(map_as_string[i])
+	while (map_as_string[i])
 	{
-		if(map_as_string[i] == character)
+		if (map_as_string[i] == character)
 			check++;
 		i++;
 	}
-	if(check <= 0)
+	if (check <= 0)
 	{
 		printf("Something wrong in map, amount of %c is wrong\n", character);
-		return(1);
+		return (1);
 	}
-	return(0);
+	return (0);
 }
 
-int map_string_check(char *map_as_string)
+int	map_string_check(char *map_as_string)
 {
 	int status;
 
@@ -86,5 +87,5 @@ int map_string_check(char *map_as_string)
 	status += ft_check_unique_char(map_as_string, 'P');
 	status += ft_check_unique_char(map_as_string, 'E');
 	status += ft_check_multiple_char(map_as_string, 'C');
-	return(status);
+	return (status);
 }

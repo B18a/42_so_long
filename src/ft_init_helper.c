@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 11:54:46 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 13:47:42 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_item	**ft_initialize_item(t_game *game)
 	{
 		item[i] = malloc(1 * sizeof(t_item));
 		item[i]->pos = NULL;
-		item[i]->pos = ft_calloc(1,sizeof(t_pos));
+		item[i]->pos = ft_calloc(1, sizeof(t_pos));
 		item[i]->pos->y = 0;
 		item[i]->pos->x = 0;
 		item[i]->texture = NULL;
@@ -32,10 +32,10 @@ t_item	**ft_initialize_item(t_game *game)
 		item[i]->collected = 0;
 		i++;
 	}
-	return(item);
+	return (item);
 }
 
-t_exit	*ft_initialize_exit()
+t_exit	*ft_initialize_exit(void)
 {
 	t_exit	*exit;
 
@@ -52,7 +52,7 @@ t_exit	*ft_initialize_exit()
 	return (exit);
 }
 
-t_player	*ft_initialize_player()
+t_player	*ft_initialize_player(void)
 {
 	t_player	*player;
 
@@ -72,8 +72,9 @@ mlx_t	*ft_init_window(t_game *game)
 {
 	game->map->width = ft_strlen(game->map->map_as_arr[0]) * PIXEL;
 	game->map->height = get_height(game->map->map_as_arr) * PIXEL;
-	game->game_window = mlx_init(game->map->width, game->map->height, NAME_WINDOW, true);
-	if(!game->game_window)
+	game->game_window = mlx_init(game->map->width, game->map->height,
+			NAME_WINDOW, true);
+	if (!game->game_window)
 		return (NULL);
-	return(game->game_window);
+	return (game->game_window);
 }

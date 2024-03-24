@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 14:20:06 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/22 10:56:09 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 13:48:10 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*map_to_string(char *path_map)
 	map_in_line_temp = NULL;
 	map_in_line_joined = ft_strdup("");
 	fd = open(path_map, O_RDONLY);
-	if(fd < 0)
+	if (fd < 0)
 	{
 		printf("Opening File failed\n");
 		return (NULL);
@@ -36,7 +36,7 @@ char	*map_to_string(char *path_map)
 		map_in_line_joined = map_in_line_temp;
 	}
 	close(fd);
-	return(map_in_line_joined);
+	return (map_in_line_joined);
 }
 
 char	*read_map(char *map)
@@ -51,7 +51,7 @@ char	*read_map(char *map)
 		return (NULL);
 	while (1)
 	{
-		line = get_next_line (fd);
+		line = get_next_line(fd);
 		if (line)
 		{
 			line_joined = ft_strjoin(line_joined, line);
@@ -60,15 +60,15 @@ char	*read_map(char *map)
 		else
 			break ;
 	}
-	close (fd);
+	close(fd);
 	return (line_joined);
 }
 
 int	check_file_type(char *str)
 {
-	while(str && *str != '.')
+	while (str && *str != '.')
 		str++;
-	if(ft_strncmp(str,".ber",4))
-		return(1);
-	return(0);
+	if (ft_strncmp(str, ".ber", 4))
+		return (1);
+	return (0);
 }
