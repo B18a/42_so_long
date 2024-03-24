@@ -6,37 +6,28 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:09:56 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 11:54:19 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 13:50:37 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
 # include "so_long.h"
 
-// typedef struct s_borders
-// {
-// 	int	minX;
-// 	int	maxX;
-// 	int	minY;
-// 	int	maxY;
-// }		t_borders;
-
 typedef struct s_pos
 {
-	int	x;
-	int	y;
-}		t_pos;
+	int				x;
+	int				y;
+}					t_pos;
 
-typedef	struct	s_map
+typedef struct s_map
 {
-	char		*map_as_string;
-	char		**map_as_arr;
-	int			width;
-	int			height;
-}				t_map;
+	char			*map_as_string;
+	char			**map_as_arr;
+	int				width;
+	int				height;
+}					t_map;
 
 typedef struct s_exit
 {
@@ -45,7 +36,7 @@ typedef struct s_exit
 	mlx_image_t		*image_closed;
 	mlx_image_t		*image_open;
 	t_pos			*pos;
-}				t_exit;
+}					t_exit;
 
 typedef struct s_player
 {
@@ -63,25 +54,23 @@ typedef struct s_item
 	mlx_image_t		*image;
 	t_pos			*pos;
 	int				collected;
-}				t_item;
+}					t_item;
 
 typedef struct s_game
 {
-	t_map		*map;
-	mlx_t		*game_window;
-	mlx_image_t	*game_image;
-	t_exit		*exit;
-	t_player	*player;
-	mlx_image_t	*item_image;
-	int			item_total;
-	int			item_collect;
-	t_item		**item;
+	t_map			*map;
+	mlx_t			*game_window;
+	mlx_image_t		*game_image;
+	t_exit			*exit;
+	t_player		*player;
+	mlx_image_t		*item_image;
+	int				item_total;
+	int				item_collect;
+	t_item			**item;
 
-
-/**************************************/
+	/**************************************/
 	// t_asset		**enemy;
 	// int			enemy_total;
-}				t_game;
-
+}					t_game;
 
 #endif

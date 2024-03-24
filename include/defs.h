@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:10:55 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 11:53:30 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 13:50:23 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "so_long.h"
 
-# define PIXEL	16
+# define PIXEL 16
 # define PLAYER_STEP 16
 
 # define MOVES_POS_X 100
@@ -24,18 +24,16 @@
 # define ITEM_POS_X 50
 # define ITEM_POS_Y 0
 
-# define NAME_WINDOW	"SO_LONG"
-# define PATH_PLAYER	"./assets/knight.png"
-# define PATH_FLOOR		"./assets/floor_1.png"
-# define PATH_OBSTACLE		"./assets/wall_1.png"
-# define PATH_EXIT_CLOSED	"./assets/door_closed.png"
-# define PATH_EXIT_OPEN		"./assets/door_fullyopen.png"
-# define PATH_ITEM		"./assets/key_silver.png"
+# define NAME_WINDOW "SO_LONG"
+# define PATH_PLAYER "./assets/knight.png"
+# define PATH_FLOOR "./assets/floor_1.png"
+# define PATH_OBSTACLE "./assets/wall_1.png"
+# define PATH_EXIT_CLOSED "./assets/door_closed.png"
+# define PATH_EXIT_OPEN "./assets/door_fullyopen.png"
+# define PATH_ITEM "./assets/key_silver.png"
 
-
-
-# define PATH_ENEMY	"./assets/enemy.png"
-# define PATH_PLAYER_UP		"./assets/Link_Down.png"
-# define PATH_PLAYER_DOWN	"./assets/Link_Up.png"
+# define PATH_ENEMY "./assets/enemy.png"
+# define PATH_PLAYER_UP "./assets/Link_Down.png"
+# define PATH_PLAYER_DOWN "./assets/Link_Up.png"
 
 #endif

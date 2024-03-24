@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 11:43:14 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 13:48:16 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 14:07:38 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ void	update_display_item(t_game *game, int32_t posX, int32_t posY)
 	if (game->item_total == game->item_collect)
 		update_display_exit(game);
 }
+
 void	update_display_moves(t_game *game, int32_t posX, int32_t posY)
 {
-	char *str;
+	char	*str;
 
 	str = ft_itoa(game->player->moves);
 	mlx_delete_image(game->game_window, game->player->move_image);

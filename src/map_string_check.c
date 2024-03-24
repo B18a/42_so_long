@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:16:20 by andreasjehl       #+#    #+#             */
-/*   Updated: 2024/03/24 13:48:05 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 14:16:47 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	ft_map_check_chars(char *map_in_string)
 	}
 	return (0);
 }
+
 int	ft_check_unique_char(char *map_as_string, char character)
 {
 	int	i;
@@ -57,6 +58,7 @@ int	ft_check_unique_char(char *map_as_string, char character)
 	}
 	return (0);
 }
+
 int	ft_check_multiple_char(char *map_as_string, char character)
 {
 	int	i;
@@ -80,7 +82,7 @@ int	ft_check_multiple_char(char *map_as_string, char character)
 
 int	map_string_check(char *map_as_string)
 {
-	int status;
+	int	status;
 
 	status = 0;
 	status += ft_map_check_chars(map_as_string);

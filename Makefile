@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/24 13:33:42 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/24 14:07:12 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ FUNCTIONS	=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/helper.c \
 				$(SRC_DIR)/moves.c \
 				$(SRC_DIR)/update_display.c \
+				$(SRC_DIR)/exit_map.c \
 
 # INTERNAL OBJECT
 OBJECTS		= $(addprefix $(OBJ_DIR)/, $(notdir $(FUNCTIONS:.c=.o)))

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 14:20:06 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 13:48:10 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 14:34:15 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char	*map_to_string(char *path_map)
 	if (fd < 0)
 	{
 		printf("Opening File failed\n");
+		if(map_in_line_joined)
+			free(map_in_line_joined);
 		return (NULL);
 	}
 	while ((map_in_line = get_next_line(fd)))

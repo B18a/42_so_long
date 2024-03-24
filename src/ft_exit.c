@@ -6,51 +6,11 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 13:47:16 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 13:54:40 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-void	call_exit_map(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	if (map)
-	{
-		if (map->map_as_string)
-		{
-			free(map->map_as_string);
-		}
-		if (map->map_as_arr)
-		{
-			while (map->map_as_arr[i])
-			{
-				free(map->map_as_arr[i]);
-				i++;
-			}
-			free(map->map_as_arr);
-		}
-		free(map);
-	}
-}
-
-void	free_map_in_arr(char **map_in_arr)
-{
-	int	i;
-
-	i = 0;
-	if (map_in_arr)
-	{
-		while (map_in_arr[i])
-		{
-			free(map_in_arr[i]);
-			i++;
-		}
-		free(map_in_arr);
-	}
-}
 
 void	ft_exit_pos(t_pos *pos)
 {
@@ -66,12 +26,6 @@ void	ft_exit_player(t_player *player)
 		mlx_delete_texture(player->texture);
 	if (player)
 		free(player);
-}
-
-void	ft_exit_game(t_game *game)
-{
-	if (game)
-		free(game);
 }
 
 void	ft_exit_exit(t_exit *exit)
@@ -95,8 +49,6 @@ void	ft_exit_item(t_game *game)
 	{
 		if (game->item[i]->pos)
 			free(game->item[i]->pos);
-		// if(game->item[i]->texture)
-		// 	mlx_delete_texture(game->item[i]->texture);
 		free(game->item[i]);
 		i++;
 	}
@@ -110,5 +62,6 @@ void	call_exit(t_game *game)
 	ft_exit_player(game->player);
 	ft_exit_exit(game->exit);
 	ft_exit_item(game);
-	ft_exit_game(game);
+	if (game)
+		free(game);
 }

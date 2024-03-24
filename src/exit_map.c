@@ -1,42 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unused_at_end.c                                    :+:      :+:    :+:   */
+/*   exit_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 10:54:21 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 14:08:18 by ajehle           ###   ########.fr       */
+/*   Created: 2024/03/24 13:53:48 by ajehle            #+#    #+#             */
+/*   Updated: 2024/03/24 13:54:33 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	ft_show_address(t_game *game)
-{
-	printf("game		%p\n", (void *)&game);
-	printf("game.image	%p\n", (void *)&game->game_image);
-	printf("game.window	%p\n", (void *)&game->game_window);
-}
-
-void	print_2d_arr(char **map_in_arr)
+void	call_exit_map(t_map *map)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	printf("	[0][1][2][3][4][5][7][8][9][10]\n");
-	while (map_in_arr[i])
+	if (map)
 	{
-		printf("[%i]	", i);
-		while (map_in_arr[i][j])
+		if (map->map_as_string)
 		{
-			printf(" %c ", map_in_arr[i][j]);
-			j++;
+			free(map->map_as_string);
 		}
-		printf("\n");
-		j = 0;
-		i++;
+		if (map->map_as_arr)
+		{
+			while (map->map_as_arr[i])
+			{
+				free(map->map_as_arr[i]);
+				i++;
+			}
+			free(map->map_as_arr);
+		}
+		free(map);
+	}
+}
+
+void	free_map_in_arr(char **map_in_arr)
+{
+	int	i;
+
+	i = 0;
+	if (map_in_arr)
+	{
+		while (map_in_arr[i])
+		{
+			free(map_in_arr[i]);
+			i++;
+		}
+		free(map_in_arr);
 	}
 }
