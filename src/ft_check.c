@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 22:02:40 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 12:23:52 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/24 13:03:05 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ void	check_for_exit(t_game *game, char c,int posY, int posX)
 {
 	if(!(c == 'E'))
 		return;
-	if(game->exit->pos->y == posY && game->exit->pos->x == posX && game->exit->image_open->enabled)
+	if(game->exit->pos->y == posY && game->exit->pos->x == posX && game->exit->image_open->enabled &&
+			game->exit->image_open->instances->enabled)
 	{
-		mlx_terminate(game->game_window);
+		mlx_close_window(game->game_window);
 	}
 	return;
 }
