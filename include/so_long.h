@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 14:48:50 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 12:06:28 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,14 @@ void		my_keyhook(mlx_key_data_t keydata, void *param);
 void		update_display(t_game *game, int pos_y, int pos_x);
 
 // init_helper
-t_item		**ft_initialize_item(t_game *game);
 t_exit		*ft_initialize_exit(void);
 t_player	*ft_initialize_player(void);
 mlx_t		*ft_init_window(t_game *game);
 t_game		*ft_initialize_game(t_map *map);
+
+// init_item
+t_item		**ft_initialize_item(t_game *game);
+
 
 // init_main
 t_game		*ft_initialize(t_map *map);
@@ -62,18 +65,24 @@ int			get_item_total(char *map_as_string);
 
 // load_textures
 int			ft_load_textures_item(t_game *game);
-
-// load_textures2
-void		ft_load_textures_floor(t_game *game, char **map_as_arr);
-void		ft_load_textures_obstacle(t_game *game, char **map_as_arr);
+int			ft_load_textures_obstacle(t_game *game, char **map_as_arr);
 int			ft_load_textures_player(t_game *game);
 int			ft_load_textures_exit(t_game *game);
+
+// load_textures_helper
+int			ft_load_textures_floor_helper(t_game *game, char **map_as_arr, mlx_image_t *img);
+int			ft_load_textures_floor(t_game *game, char **map_as_arr);
+
+
+int			ft_load_textures_obstacle(t_game *game, char **map_as_arr);
+int			ft_load_textures_obstacle_helper(t_game *game, char **map_as_arr, mlx_image_t *img);
+
 
 // main
 
 void		start_game(t_game *game);
 t_map		*parsing_input(char *map_input);
-void		load_textures(t_game *game);
+int			load_textures(t_game *game);
 
 // map_arr_check
 int			map_check_rectangle(char **map_as_arr);
@@ -109,7 +118,7 @@ int			ft_load_textures_unique(t_game *game, mlx_image_t *image, t_pos pos,
 
 // update_display
 void		update_display_exit(t_game *game);
-void		update_display_item(t_game *game, int32_t posX, int32_t posY);
-void		update_display_moves(t_game *game, int32_t posX, int32_t posY);
+int			update_display_item(t_game *game, int32_t posX, int32_t posY);
+int			update_display_moves(t_game *game, int32_t posX, int32_t posY);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:42:24 by ajehle            #+#    #+#             */
-/*   Updated: 2024/02/15 12:35:06 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 09:58:23 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char	*ft_itoa(int n)
 	int		lengc;
 
 	lengc = count_leng(n) + check_pre(n);
+	ptr = NULL;
 	ptr = (char *)ft_calloc(sizeof(char), (lengc + 1));
 	if (!ptr)
 		return (NULL);

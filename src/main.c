@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 08:56:32 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 11:13:46 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,21 @@ t_map	*parsing_input(char *map_input)
 	return (map);
 }
 
-void	load_textures(t_game *game)
+int	load_textures(t_game *game)
 {
-	ft_load_textures_floor(game, game->map->map_as_arr);
-	ft_load_textures_obstacle(game, game->map->map_as_arr);
-	ft_load_textures_exit(game);
-	ft_load_textures_item(game);
-	ft_load_textures_player(game);
-	update_display_moves(game, MOVES_POS_X, MOVES_POS_Y);
-	update_display_item(game, ITEM_POS_X, ITEM_POS_Y);
+	int	i;
+
+	i = 0;
+	i += ft_load_textures_floor(game, game->map->map_as_arr);
+	i += ft_load_textures_obstacle(game, game->map->map_as_arr);
+	i += ft_load_textures_exit(game);
+	i += ft_load_textures_item(game);
+	i += ft_load_textures_player(game);
+	i += update_display_moves(game, MOVES_POS_X, MOVES_POS_Y);
+	i += update_display_item(game, ITEM_POS_X, ITEM_POS_Y);
+	if (i)
+		return (call_exit(game), 0);
+	return (i);
 }
 
 int	main(int argc, char **argv)
@@ -72,7 +78,7 @@ int	main(int argc, char **argv)
 	game = NULL;
 	if (argc != 2)
 	{
-		printf("Input incorrect \n");
+		ft_printf("Input incorrect \n");
 		return (0);
 	}
 	map = parsing_input(argv[1]);

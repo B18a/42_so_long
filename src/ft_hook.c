@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 08:50:56 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 11:57:16 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ void	update_display(t_game *game, int pos_y, int pos_x)
 {
 	check_for_item(game, 'C', (pos_y / PIXEL), (pos_x / PIXEL));
 	check_for_exit(game, 'E', (pos_y / PIXEL), (pos_x / PIXEL));
-	update_display_moves(game, MOVES_POS_X, MOVES_POS_Y);
-	update_display_item(game, ITEM_POS_X, ITEM_POS_Y);
+	if (update_display_moves(game, MOVES_POS_X, MOVES_POS_Y))
+		call_exit(game);
+	if (update_display_item(game, ITEM_POS_X, ITEM_POS_Y))
+		call_exit(game);
 }
 
 void	my_keyhook(mlx_key_data_t keydata, void *param)

@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/25 08:48:19 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/25 12:06:08 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,10 @@ FUNCTIONS	=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_exit.c \
 				$(SRC_DIR)/ft_init_main.c \
 				$(SRC_DIR)/ft_init_helper.c \
+				$(SRC_DIR)/ft_init_item.c \
 				$(SRC_DIR)/load_textures.c \
-				$(SRC_DIR)/load_textures2.c \
+				$(SRC_DIR)/load_textures_floor.c \
+				$(SRC_DIR)/load_textures_obstacles.c \
 				$(SRC_DIR)/ft_hook.c \
 				$(SRC_DIR)/ft_check.c \
 				$(SRC_DIR)/unused_at_end.c \

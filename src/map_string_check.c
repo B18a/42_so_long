@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:16:20 by andreasjehl       #+#    #+#             */
-/*   Updated: 2024/03/24 14:16:47 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 09:03:00 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_map_check_chars(char *map_in_string)
 	{
 		if (forbidden_char(map_in_string[i]))
 		{
-			printf("Something wrong in map, forbidden character: %c \n",
+			ft_printf("Something wrong in map, forbidden character: %c \n",
 				map_in_string[i]);
 			return (1);
 		}
@@ -53,7 +53,7 @@ int	ft_check_unique_char(char *map_as_string, char character)
 	}
 	if (check != 1)
 	{
-		printf("Something wrong in map, amount of %c is wrong\n", character);
+		ft_printf("Something wrong in map, amount of %c is wrong\n", character);
 		return (1);
 	}
 	return (0);
@@ -74,7 +74,7 @@ int	ft_check_multiple_char(char *map_as_string, char character)
 	}
 	if (check <= 0)
 	{
-		printf("Something wrong in map, amount of %c is wrong\n", character);
+		ft_printf("Something wrong in map, amount of %c is wrong\n", character);
 		return (1);
 	}
 	return (0);

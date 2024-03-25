@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:11:58 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 14:40:13 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 09:56:37 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	ft_load_textures_unique(t_game *game, mlx_image_t *image, t_pos pos,
 	if (!image)
 		return (call_exit(game), 0);
 	if (mlx_image_to_window(game->game_window, image, pos.x * PIXEL, pos.y
-			* PIXEL))
+			* PIXEL) == -1)
 		return (call_exit(game), 0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:00:45 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 08:59:05 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 11:13:25 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	map_check_wall(char **map_as_arr)
 int	map_flood_fill(char **map, t_pos size, t_pos pos)
 {
 	if (pos.x < 0 || pos.x >= size.x || pos.y < 0 || pos.y >= size.y)
-
 		return (1);
 	if (map[pos.x][pos.y] == '1')
 		return (1);
@@ -101,7 +100,9 @@ int	map_arr_check(char **map_as_arr)
 	size.y = ft_strlen(map_as_arr[0]);
 	size.x = get_height(map_as_arr);
 	pos_player = get_pos_unique(map_as_arr, 'P');
+	ft_printf("status %i\n", status);
 	status += map_flood_fill(temp, size, (t_pos){pos_player->x, pos_player->y});
+	ft_printf("status %i\n", status);
 	free(pos_player);
 	free_map_in_arr(temp);
 	return (status);
