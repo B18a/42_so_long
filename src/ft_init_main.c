@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 12:04:24 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 12:24:21 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_game	*ft_initialize(t_map *map)
 {
 	t_game	*game;
 
-	game = NULL;
 	game = ft_initialize_game(map);
 	if (!game)
 		return (NULL);
@@ -34,7 +33,7 @@ t_game	*ft_initialize(t_map *map)
 		return (NULL);
 	game->item_total = get_item_total(map->map_as_string);
 	game->item = ft_initialize_item(game);
-	if(!game->item)
+	if (!game->item)
 		return (NULL);
 	ft_init_pos_items(game);
 	if (!ft_init_window(game))
