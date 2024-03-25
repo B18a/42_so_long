@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:00:45 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 13:16:01 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 13:18:26 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	map_check_rectangle(char **map_as_arr)
 
 int	map_flood_fill(char **map, t_pos size, t_pos pos)
 {
-		ft_printf("pos[%i][%i]\n",pos.y,pos.x);
 	if (pos.x < 0 || pos.x >= size.x || pos.y < 0 || pos.y >= size.y)
 		return (0);
 	if (map[pos.x][pos.y] == '1')
