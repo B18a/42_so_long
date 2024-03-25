@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:10:55 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 11:10:45 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 17:25:15 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 # define PIXEL 16
 # define PLAYER_STEP 16
 
-# define MOVES_POS_X 100
+# define MOVES_POS_X PIXEL
 # define MOVES_POS_Y 0
 
-# define ITEM_POS_X 50
+# define ITEM_POS_X 0
 # define ITEM_POS_Y 0
 
 # define NAME_WINDOW "SO_LONG"

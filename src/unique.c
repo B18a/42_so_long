@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:11:58 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 13:54:46 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 17:17:45 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_pos	search_next(char **map_as_arr, int y, int x)
 	{
 		while (map_as_arr[y][x])
 		{
+			ft_printf("[%i][%i]:%c\n", y,x, map_as_arr[y][x]);
 			if (map_as_arr[y][x] == 'C')
 				return ((t_pos){x, y});
 			x++;
@@ -28,8 +29,29 @@ t_pos	search_next(char **map_as_arr, int y, int x)
 	return ((t_pos){0, 0});
 }
 
-void	ft_init_pos_items(t_game *game)
+int	item_flood_fill(t_game *game, t_pos *pos)
 {
+	t_pos	size;
+	char	**temp;
+
+	temp = ft_arr_cpy(game->map->map_as_arr);
+	if (!temp)
+		return (1);
+
+	size.x = ft_strlen(game->map->map_as_arr[0]);
+	size.y = get_height(game->map->map_as_arr);
+	if(map_flood_fill(temp, size, *pos))
+	{
+		free_map_in_arr(temp);
+		return(1);
+	}
+	free_map_in_arr(temp);
+	return(0);
+}
+
+int	init_pos_items(t_game *game)
+{
+	print_2d_arr(game->map->map_as_arr);
 	int		i;
 	t_pos	temp;
 
@@ -39,14 +61,20 @@ void	ft_init_pos_items(t_game *game)
 	game->item[i]->pos->y = temp.y;
 	game->item[i]->pos->x = temp.x;
 	i++;
+	ft_printf("POS[%i][%i]\n", temp.y, temp.x);
 	while (i < game->item_total)
 	{
 		temp = search_next(game->map->map_as_arr, game->item[i - 1]->pos->y,
 				game->item[i - 1]->pos->x + 1);
 		game->item[i]->pos->y = temp.y;
 		game->item[i]->pos->x = temp.x;
+		print_2d_arr(game->map->map_as_arr);
+		ft_printf("POS[%i][%i]\n", temp.y, temp.x);
+		if (!item_flood_fill(game, game->item[i]->pos))
+			return (0);
 		i++;
 	}
+	return (1);
 }
 
 t_pos	*get_pos_unique(char **map_as_arr, char c)
@@ -56,20 +84,19 @@ t_pos	*get_pos_unique(char **map_as_arr, char c)
 	int		y;
 
 	pos = NULL;
-	x = 0;
 	y = 0;
 	pos = ft_calloc(1, sizeof(t_pos));
 	if (!pos)
 		return (NULL);
 	while (map_as_arr[y])
 	{
+		x = 0;
 		while (map_as_arr[y][x])
 		{
 			if (map_as_arr[y][x] == c)
 				return (pos->x = x, pos->y = y, pos);
 			x++;
 		}
-		x = 0;
 		y++;
 	}
 	return (pos);
