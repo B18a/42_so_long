@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_arr_check.c                                    :+:      :+:    :+:   */
+/*   check_map_arr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:00:45 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 11:13:25 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 12:27:42 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,38 +21,6 @@ int	map_check_rectangle(char **map_as_arr)
 		&& (ft_strlen(map_as_arr[0]) == ft_strlen(map_as_arr[i])))
 		i++;
 	if (map_as_arr[i] && (ft_strlen(map_as_arr[0]) != ft_strlen(map_as_arr[i])))
-		return (1);
-	return (0);
-}
-
-int	map_check_wall(char **map_as_arr)
-{
-	int	i;
-	int	height;
-	int	len;
-
-	i = 0;
-	height = -1;
-	if (!map_as_arr || !map_as_arr[0][0] || !map_as_arr[0])
-		return (1);
-	len = ft_strlen(map_as_arr[0]);
-	while (map_as_arr[height + 1])
-		height++;
-	while (map_as_arr[0][i] && i < len && map_as_arr[0][i] == '1')
-		i++;
-	if (map_as_arr[0][i] && i < len && map_as_arr[0][i] != '1')
-		return (1);
-	i = 1;
-	while (i <= height)
-	{
-		if (map_as_arr[i][0] != '1' || map_as_arr[i][len - 1] != '1')
-			return (1);
-		i++;
-	}
-	i = 0;
-	while (map_as_arr[height][i] && i < len && map_as_arr[height][i] == '1')
-		i++;
-	if (map_as_arr[height][i] && i < len && map_as_arr[height][i] != '1')
 		return (1);
 	return (0);
 }
