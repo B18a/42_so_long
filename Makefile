@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/25 12:27:15 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/25 12:37:50 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,27 +27,27 @@ vpath %.c $(SRC_DIR)
 vpath %.h $(INC_DIR)
 
 # INTERNAL FUNCTIONS
-FUNCTIONS	=	$(SRC_DIR)/main.c \
-				$(SRC_DIR)/parsing.c \
-				$(SRC_DIR)/check_map_string.c \
+FUNCTIONS	=	$(SRC_DIR)/check_map_string.c \
 				$(SRC_DIR)/check_map_arr.c \
-				$(SRC_DIR)/ft_exit.c \
-				$(SRC_DIR)/ft_init_main.c \
-				$(SRC_DIR)/ft_init_helper.c \
-				$(SRC_DIR)/ft_init_item.c \
-				$(SRC_DIR)/load_textures.c \
-				$(SRC_DIR)/load_textures_floor.c \
-				$(SRC_DIR)/load_textures_obstacles.c \
-				$(SRC_DIR)/ft_hook.c \
-				$(SRC_DIR)/ft_check.c \
-				$(SRC_DIR)/unused_at_end.c \
-				$(SRC_DIR)/unique.c \
+				$(SRC_DIR)/check_wall.c \
+				$(SRC_DIR)/check.c \
+				$(SRC_DIR)/exit_map.c \
+				$(SRC_DIR)/exit.c \
 				$(SRC_DIR)/ft_arr_cpy.c \
 				$(SRC_DIR)/helper.c \
+				$(SRC_DIR)/hook.c \
+				$(SRC_DIR)/init_helper.c \
+				$(SRC_DIR)/init_item.c \
+				$(SRC_DIR)/init_main.c \
+				$(SRC_DIR)/load_textures_floor.c \
+				$(SRC_DIR)/load_textures_obstacles.c \
+				$(SRC_DIR)/load_textures.c \
+				$(SRC_DIR)/unused_at_end.c \
+				$(SRC_DIR)/main.c \
 				$(SRC_DIR)/moves.c \
+				$(SRC_DIR)/parsing.c \
+				$(SRC_DIR)/unique.c \
 				$(SRC_DIR)/update_display.c \
-				$(SRC_DIR)/exit_map.c \
-				$(SRC_DIR)/check_wall.c \
 
 # INTERNAL OBJECT
 OBJECTS		= $(addprefix $(OBJ_DIR)/, $(notdir $(FUNCTIONS:.c=.o)))
