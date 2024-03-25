@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_main.c                                     :+:      :+:    :+:   */
+/*   init_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 12:24:21 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 15:59:23 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,23 @@ t_game	*ft_initialize(t_map *map)
 		return (NULL);
 	game->player = ft_initialize_player();
 	if (!game->player)
-		return (NULL);
+		return (call_exit(game), NULL);
 	game->player->pos = get_pos_unique(map->map_as_arr, 'P');
 	if (!game->player->pos)
-		return (NULL);
+		return (call_exit(game), NULL);
 	game->exit = ft_initialize_exit();
 	if (!game->exit)
-		return (NULL);
+		return (call_exit(game), NULL);
 	game->exit->pos = get_pos_unique(map->map_as_arr, 'E');
 	if (!game->exit->pos)
-		return (NULL);
+		return (call_exit(game), NULL);
 	game->item_total = get_item_total(map->map_as_string);
 	game->item = ft_initialize_item(game);
 	if (!game->item)
-		return (NULL);
-	ft_init_pos_items(game);
+		return (call_exit(game), NULL);
+	if (ft_init_pos_items(game) == 0)
+		return (call_exit(game), NULL);
 	if (!ft_init_window(game))
-		return (NULL);
+		return (call_exit(game), NULL);
 	return (game);
 }

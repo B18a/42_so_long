@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 12:06:28 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 16:54:53 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,14 +111,18 @@ int			check_file_type(char *str);
 
 // unique
 t_pos		search_next(char **map_as_arr, int y, int x);
-void		ft_init_pos_items(t_game *game);
+int			init_pos_items(t_game *game);
 t_pos		*get_pos_unique(char **map_as_arr, char c);
 int			ft_load_textures_unique(t_game *game, mlx_image_t *image, t_pos pos,
 				const char *path);
+int			item_exit_check(t_game *game, t_pos *pos);
 
 // update_display
 void		update_display_exit(t_game *game);
 int			update_display_item(t_game *game, int32_t posX, int32_t posY);
 int			update_display_moves(t_game *game, int32_t posX, int32_t posY);
+
+// unused at the end
+void	print_2d_arr(char **map_in_arr);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:09:56 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 13:50:37 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 16:39:28 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct s_player
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
 	t_pos			*pos;
-
 	mlx_image_t		*move_image;
 	int				moves;
 }					t_player;

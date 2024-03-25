@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_string_check.c                                 :+:      :+:    :+:   */
+/*   check_map_string.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:16:20 by andreasjehl       #+#    #+#             */
-/*   Updated: 2024/03/25 09:03:00 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 14:06:36 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	ft_map_check_chars(char *map_in_string)
 	i = 0;
 	while (map_in_string[i])
 	{
-		if (forbidden_char(map_in_string[i]))
+		if (forbidden_char(map_in_string[i]) || map_in_string[0] == '\n'
+			|| ((map_in_string[i] == '\n') && (map_in_string[i + 1] == '\n')))
 		{
 			ft_printf("Something wrong in map, forbidden character: %c \n",
 				map_in_string[i]);
