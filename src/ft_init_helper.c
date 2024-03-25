@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 15:04:01 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 08:46:47 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,29 @@ t_item	**ft_initialize_item(t_game *game)
 	item = NULL;
 	i = 0;
 	item = malloc((game->item_total + 1) * sizeof(t_item *));
-	if(!item)
-		return(NULL);
+	if (!item)
+		return (NULL);
 	while (i < game->item_total)
 	{
 		item[i] = NULL;
 		item[i] = malloc(1 * sizeof(t_item));
-		if(!item[i])
+		if (!item[i])
 		{
-			while(i > 0)
+			while (i > 0)
 			{
 				i--;
-				if(item[i])
+				if (item[i])
 				{
-					if(item[i]->pos)
+					if (item[i]->pos)
 						free(item[i]->pos);
 					free(item[i]);
 				}
 			}
-			return(NULL);
+			return (NULL);
 		}
-	}
 		item[i]->pos = NULL;
 		item[i]->pos = ft_calloc(1, sizeof(t_pos));
-		if(!item[i]->pos)
+		if (!item[i]->pos)
 		{
 			while (i >= 0)
 			{
@@ -69,16 +68,17 @@ t_item	**ft_initialize_item(t_game *game)
 				i--;
 			}
 			free(item);
-			return NULL;
+			return (NULL);
 		}
-		if(!item[i]->pos)
-		item[i]->pos->y = 0;
+		if (!item[i]->pos)
+			item[i]->pos->y = 0;
 		item[i]->pos->x = 0;
 		item[i]->texture = NULL;
 		item[i]->image = NULL;
 		item[i]->collected = 0;
 		i++;
-		return (item);
+	}
+	return (item);
 }
 
 t_exit	*ft_initialize_exit(void)
@@ -87,8 +87,8 @@ t_exit	*ft_initialize_exit(void)
 
 	exit = NULL;
 	exit = ft_calloc(sizeof(t_exit), 1);
-	if(!exit)
-		return(NULL);
+	if (!exit)
+		return (NULL);
 	if (exit)
 	{
 		exit->texture_closed = NULL;

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 14:48:55 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 08:56:32 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,17 @@ t_map	*parsing_input(char *map_input)
 	if (!map)
 		return (NULL);
 	if (check_file_type(map_input))
-	{
-		// printf("Filetype incorrect \n");
-		return (call_exit_map(map), NULL);
-	}
+		return (ft_printf("Filetype incorrect \n"), call_exit_map(map), NULL);
 	map->map_as_string = map_to_string(map_input);
-	if(!map->map_as_string)
+	if (!map->map_as_string)
 		return (call_exit_map(map), NULL);
 	if (map_string_check(map->map_as_string) > 0)
-	{
-		// printf("map_string_check \n");
-		return (call_exit_map(map), NULL);
-	}
+		return (ft_printf("map_string_check \n"), call_exit_map(map), NULL);
 	map->map_as_arr = ft_split(map->map_as_string, '\n');
 	if (!(map->map_as_arr))
 		return (map);
 	if (map_arr_check(map->map_as_arr) > 0)
-	{
-		// printf("map_arr_check \n");
-		return (call_exit_map(map), NULL);
-	}
+		return (ft_printf("map_arr_check \n"), call_exit_map(map), NULL);
 	return (map);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 14:00:11 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/25 08:50:56 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 		if ((pos_y - PLAYER_STEP >= PIXEL))
 			check_move_up(game);
 	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
-		if ((pos_y + PLAYER_STEP <= (int)(game->map->height - game->player->image->height) - 1))
+		if ((pos_y + PLAYER_STEP <= (int)(game->map->height
+				- game->player->image->height) - 1))
 			check_move_down(game);
 	if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
 		if (pos_x - PLAYER_STEP >= PIXEL)
 			check_move_left(game);
 	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
-		if (pos_x + PLAYER_STEP <= (int)(game->map->width - game->player->image->width) - 1)
+		if (pos_x + PLAYER_STEP <= (int)(game->map->width
+			- game->player->image->width) - 1)
 			check_move_right(game);
 	update_display(game, pos_y, pos_x);
 }
