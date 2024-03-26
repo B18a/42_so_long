@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 16:54:53 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 10:39:22 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+
+// animation
+void		animation_player(void *param);
 
 // ft_arr_cpy
 char		**ft_arr_cpy(char **map_as_arr);
@@ -56,7 +60,6 @@ t_game		*ft_initialize_game(t_map *map);
 // init_item
 t_item		**ft_initialize_item(t_game *game);
 
-
 // init_main
 t_game		*ft_initialize(t_map *map);
 
@@ -72,14 +75,10 @@ int			ft_load_textures_exit(t_game *game);
 // load_textures_helper
 int			ft_load_textures_floor_helper(t_game *game, char **map_as_arr, mlx_image_t *img);
 int			ft_load_textures_floor(t_game *game, char **map_as_arr);
-
-
 int			ft_load_textures_obstacle(t_game *game, char **map_as_arr);
 int			ft_load_textures_obstacle_helper(t_game *game, char **map_as_arr, mlx_image_t *img);
 
-
 // main
-
 void		start_game(t_game *game);
 t_map		*parsing_input(char *map_input);
 int			load_textures(t_game *game);

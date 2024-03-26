@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/25 12:37:50 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/26 10:40:21 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ vpath %.c $(SRC_DIR)
 vpath %.h $(INC_DIR)
 
 # INTERNAL FUNCTIONS
-FUNCTIONS	=	$(SRC_DIR)/check_map_string.c \
+FUNCTIONS	=	$(SRC_DIR)/animation.c \
+				$(SRC_DIR)/check_map_string.c \
 				$(SRC_DIR)/check_map_arr.c \
 				$(SRC_DIR)/check_wall.c \
 				$(SRC_DIR)/check.c \
