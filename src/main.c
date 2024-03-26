@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 15:34:45 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 10:26:29 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,44 @@ void	check_leaks(void)
 	system("leaks so_long");
 }
 
+
+void	test(void *param)
+{
+	t_game *game = (t_game *)param;
+	game->frame += 1;
+	if(game->frame == FRAME * 1)
+	{
+		game->player->image->instances[0].enabled = 1;
+		game->player->image1->instances[0].enabled = 0;
+		game->player->image2->instances[0].enabled = 0;
+	}
+	if(game->frame == FRAME * 2)
+	{
+		game->player->image->instances[0].enabled = 0;
+		game->player->image1->instances[0].enabled = 1;
+		game->player->image2->instances[0].enabled = 0;
+	}
+	if(game->frame == FRAME * 3)
+	{
+		game->player->image->instances[0].enabled = 0;
+		game->player->image1->instances[0].enabled = 0;
+		game->player->image2->instances[0].enabled = 1;
+		game->frame = 0;
+	}
+}
+
 void	start_game(t_game *game)
 {
+	game->player->image1->instances[0].enabled = 0;
+	game->player->image2->instances[0].enabled = 0;
+
 	if (game)
 	{
 		mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 		mlx_key_hook(game->game_window, &my_keyhook, game);
+
+		mlx_loop_hook(game->game_window,test,game);
+
 		mlx_loop(game->game_window);
 		mlx_terminate(game->game_window);
 	}

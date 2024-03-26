@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_helper.c                                   :+:      :+:    :+:   */
+/*   init_helper.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 12:05:49 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 10:21:06 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ t_game	*ft_initialize_game(t_map *map)
 	game->item = NULL;
 	game->item_collect = 0;
 	game->item_image = NULL;
+	game->item_total = 0;
+	game->item_total = get_item_total(map->map_as_string);
+	game->frame = 0;
 	return (game);
 }
 
@@ -59,6 +62,10 @@ t_player	*ft_initialize_player(void)
 		player->pos = NULL;
 		player->texture = NULL;
 		player->image = NULL;
+		player->texture1 = NULL;
+		player->image1 = NULL;
+		player->texture2 = NULL;
+		player->image2 = NULL;
 		player->moves = 0;
 	}
 	return (player);

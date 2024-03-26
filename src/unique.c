@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:11:58 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 17:17:45 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 09:24:41 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_pos	search_next(char **map_as_arr, int y, int x)
 	{
 		while (map_as_arr[y][x])
 		{
-			ft_printf("[%i][%i]:%c\n", y,x, map_as_arr[y][x]);
 			if (map_as_arr[y][x] == 'C')
 				return ((t_pos){x, y});
 			x++;
@@ -51,7 +50,6 @@ int	item_flood_fill(t_game *game, t_pos *pos)
 
 int	init_pos_items(t_game *game)
 {
-	print_2d_arr(game->map->map_as_arr);
 	int		i;
 	t_pos	temp;
 
@@ -61,15 +59,12 @@ int	init_pos_items(t_game *game)
 	game->item[i]->pos->y = temp.y;
 	game->item[i]->pos->x = temp.x;
 	i++;
-	ft_printf("POS[%i][%i]\n", temp.y, temp.x);
 	while (i < game->item_total)
 	{
 		temp = search_next(game->map->map_as_arr, game->item[i - 1]->pos->y,
 				game->item[i - 1]->pos->x + 1);
 		game->item[i]->pos->y = temp.y;
 		game->item[i]->pos->x = temp.x;
-		print_2d_arr(game->map->map_as_arr);
-		ft_printf("POS[%i][%i]\n", temp.y, temp.x);
 		if (!item_flood_fill(game, game->item[i]->pos))
 			return (0);
 		i++;

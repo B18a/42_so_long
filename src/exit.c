@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 15:20:41 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 09:40:48 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ void	ft_exit_player(t_player *player)
 			ft_exit_pos(player->pos);
 		if (player->texture)
 			mlx_delete_texture(player->texture);
+		if (player->texture1)
+			mlx_delete_texture(player->texture1);
+		if (player->texture2)
+			mlx_delete_texture(player->texture2);
 		free(player);
 	}
 }

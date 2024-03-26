@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:10:55 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 17:25:15 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 10:36:41 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "so_long.h"
 
-# define PIXEL 16
-# define PLAYER_STEP 16
+# define PIXEL 32
+# define PLAYER_STEP 32
 
 # define MOVES_POS_X PIXEL
 # define MOVES_POS_Y 0
@@ -24,18 +24,17 @@
 # define ITEM_POS_X 0
 # define ITEM_POS_Y 0
 
-# define NAME_WINDOW "SO_LONG"
-# define PATH_PLAYER "./assets/knight.png"
-# define PATH_FLOOR "./assets/floor_1.png"
-# define PATH_OBSTACLE "./assets/wall_1.png"
-# define PATH_EXIT_CLOSED "./assets/floor_2.png"
-# define PATH_EXIT_OPEN "./assets/stair_nextlevel.png"
-// # define PATH_EXIT_CLOSED "./assets/door_closed.png"
-// # define PATH_EXIT_OPEN "./assets/door_fullyopen.png"
-# define PATH_ITEM "./assets/key_silver.png"
+# define FRAME 20
 
-# define PATH_ENEMY "./assets/enemy.png"
-# define PATH_PLAYER_UP "./assets/Link_Down.png"
-# define PATH_PLAYER_DOWN "./assets/Link_Up.png"
+# define NAME_WINDOW "SO_LONG"
+# define PATH_PLAYER "./assets/32x32/knight.png"
+# define PATH_PLAYER1 "./assets/32x32/knight1.png"
+# define PATH_PLAYER2 "./assets/32x32/knight2.png"
+# define PATH_FLOOR "./assets/32x32/floor_1.png"
+# define PATH_OBSTACLE "./assets/32x32/wall_1.png"
+# define PATH_EXIT_CLOSED "./assets/32x32/floor_2.png"
+# define PATH_EXIT_OPEN "./assets/32x32/stair_nextlevel.png"
+# define PATH_ITEM "./assets/32x32/key_silver.png"
+# define PATH_ENEMY "./assets/32x32/goblin.png"
 
 #endif

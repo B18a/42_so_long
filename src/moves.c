@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 11:39:57 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/24 14:16:27 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 09:57:18 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	check_move_up(t_game *game)
 	if (c != '1')
 	{
 		game->player->image->instances[0].y -= PLAYER_STEP;
+		game->player->image1->instances[0].y -= PLAYER_STEP;
+		game->player->image2->instances[0].y -= PLAYER_STEP;
 		game->player->moves += 1;
 		return (0);
 	}
@@ -42,6 +44,8 @@ int	check_move_down(t_game *game)
 	if (c != '1')
 	{
 		game->player->image->instances[0].y += PLAYER_STEP;
+		game->player->image1->instances[0].y += PLAYER_STEP;
+		game->player->image2->instances[0].y += PLAYER_STEP;
 		game->player->moves += 1;
 		return (0);
 	}
@@ -60,6 +64,8 @@ int	check_move_left(t_game *game)
 	if (c != '1')
 	{
 		game->player->image->instances[0].x -= PLAYER_STEP;
+		game->player->image1->instances[0].x -= PLAYER_STEP;
+		game->player->image2->instances[0].x -= PLAYER_STEP;
 		game->player->moves += 1;
 		return (0);
 	}
@@ -78,6 +84,8 @@ int	check_move_right(t_game *game)
 	if (c != '1')
 	{
 		game->player->image->instances[0].x += PLAYER_STEP;
+		game->player->image1->instances[0].x += PLAYER_STEP;
+		game->player->image2->instances[0].x += PLAYER_STEP;
 		game->player->moves += 1;
 		return (0);
 	}
