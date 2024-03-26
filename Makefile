@@ -6,29 +6,29 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/26 10:40:21 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/26 12:51:35 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= so_long
 CC			= cc
 REMOVE		= rm -rf
-OBJ_DIR		= ./obj
 SRC_DIR		= src
+OBJ_DIR		= ./obj
+B_SRC_DIR	= bonus
+B_OBJ_DIR	= ./obj_bonus
 INC_DIR		= include
 MLX42_DIR	= ./MLX42
 CFLAGS		= -Wall -Werror -Wextra -I $(INC_DIR)
 LIBXFLAGS	=  -framework Cocoa -framework OpenGL -framework IOKit
 MLX_INCLUDE	= MLX42/build/libmlx42.a -Iinclude -lglfw
-#MLX_LINUX	= MLX42/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 
 # looking for files in subdirectories
 vpath %.c $(SRC_DIR)
 vpath %.h $(INC_DIR)
 
 # INTERNAL FUNCTIONS
-FUNCTIONS	=	$(SRC_DIR)/animation.c \
-				$(SRC_DIR)/check_map_string.c \
+FUNCTIONS	=	$(SRC_DIR)/check_map_string.c \
 				$(SRC_DIR)/check_map_arr.c \
 				$(SRC_DIR)/check_wall.c \
 				$(SRC_DIR)/check.c \
@@ -50,44 +50,43 @@ FUNCTIONS	=	$(SRC_DIR)/animation.c \
 				$(SRC_DIR)/unique.c \
 				$(SRC_DIR)/update_display.c \
 
-# INTERNAL OBJECT
-OBJECTS		= $(addprefix $(OBJ_DIR)/, $(notdir $(FUNCTIONS:.c=.o)))
+# BONUS INTERNAL FUNCTIONS
+B_FUNCTIONS			= $(B_SRC_DIR)/animation.c \
 
-# EXTERNAL LIBRARYS START
+# INTERNAL OBJECT
+OBJECTS				= $(addprefix $(OBJ_DIR)/, $(notdir $(FUNCTIONS:.c=.o)))
+
+# BONUS INTERNAL OBJECT
+B_OBJECTS			= $(addprefix $(B_OBJ_DIR)/, $(notdir $(B_FUNCTIONS:.c=.o)))
+
+# --- EXTERNAL LIBRARYS START --- #
 # FT_PRINTF Resources
-FT_PRINTF_DIR	:= libs/ft_printf
-FT_PRINTF		:= $(FT_PRINTF_DIR)/libftprintf.a
+FT_PRINTF_DIR		= libs/ft_printf
+FT_PRINTF			= $(FT_PRINTF_DIR)/libftprintf.a
 
 # FT_LIBFT Resources
-FT_LIBFT_DIR	:= libs/libft
-FT_LIBFT		:= $(FT_LIBFT_DIR)/libft.a
+FT_LIBFT_DIR		= libs/libft
+FT_LIBFT			= $(FT_LIBFT_DIR)/libft.a
 
 # GET_NEXT_LINE Resources
-GET_NEXT_LINE_DIR	:= libs/get_next_line
-GET_NEXT_LINE		:= $(GET_NEXT_LINE_DIR)/libget_next_line.a
+GET_NEXT_LINE_DIR	= libs/get_next_line
+GET_NEXT_LINE		= $(GET_NEXT_LINE_DIR)/libget_next_line.a
 
 # EXTERNAL LIBRARY
-LIB_FT_PRINTF		:= -L$(FT_PRINTF_DIR) -lftprintf
-LIB_FT_LIBFT		:= -L$(FT_LIBFT_DIR) -lft
-LIB_GET_NEXT_LINE	:= -L$(GET_NEXT_LINE_DIR) -lget_next_line
+LIB_FT_PRINTF		= -L$(FT_PRINTF_DIR) -lftprintf
+LIB_FT_LIBFT		= -L$(FT_LIBFT_DIR) -lft
+LIB_GET_NEXT_LINE	= -L$(GET_NEXT_LINE_DIR) -lget_next_line
 
 # ALL LIBS
-LIBS			:= $(LIB_FT_PRINTF) $(LIB_FT_LIBFT) $(LIB_GET_NEXT_LINE)
-LIBS_NAME		:= $(FT_PRINTF) $(FT_LIBFT) $(GET_NEXT_LINE)
-LIBS_DIR		:= $(FT_PRINTF_DIR) $(FT_LIBFT_DIR) $(GET_NEXT_LINE_DIR)
-# EXTERNAL LIBRARYS END
+LIBS				= $(LIB_FT_PRINTF) $(LIB_FT_LIBFT) $(LIB_GET_NEXT_LINE)
+LIBS_NAME			= $(FT_PRINTF) $(FT_LIBFT) $(GET_NEXT_LINE)
+# --- EXTERNAL LIBRARYS END --- #
 
 all : mlx_clone $(NAME)
 
-#linux : mlx_clone $(NAME2)
-
-# LINUX RULE
-#$(NAME2) : $(OBJECTS)
-#	$(CC) $(CFLAGS) $(OBJECTS) $(MLX_LINUX) -o $(NAME)
-
 # INTERNAL RULE
-$(NAME) : $(LIBS_NAME) $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LIBS) $(MLX_INCLUDE) $(LIBXFLAGS) -o $(NAME)
+$(NAME) : $(LIBS_NAME) $(OBJECTS) $(B_OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) $(B_OBJECTS) $(LIBS) $(MLX_INCLUDE) $(LIBXFLAGS) -o $(NAME)
 
 # EXTERNAL LIBRARYS RULE (1 for each lib)
 $(FT_PRINTF) :
@@ -102,7 +101,14 @@ $(GET_NEXT_LINE) :
 $(OBJ_DIR) :
 	mkdir $(OBJ_DIR)
 
+# BONUS DIRECTORY
+$(B_OBJ_DIR) :
+	mkdir $(B_OBJ_DIR)
+
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(B_OBJ_DIR)/%.o: $(B_SRC_DIR)/%.c | $(B_OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 mlx_clone :
@@ -119,6 +125,7 @@ clean :
 	$(MAKE) -C $(GET_NEXT_LINE_DIR) clean
 	$(REMOVE) $(OBJECTS)
 	$(REMOVE) $(OBJ_DIR)
+	$(REMOVE) $(B_OBJ_DIR)
 #	$(REMOVE) $(MLX42_DIR)
 
 fclean : clean
@@ -129,4 +136,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all mlx_clone linux clean fclean re
+.PHONY : all mlx_clone clean fclean re
