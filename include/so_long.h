@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 15:47:06 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 15:51:05 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 
 // animation
 void		animation_player(void *param);
+
+// move enemy
+void		move_enemy(void *param);
 
 // ft_arr_cpy
 char		**ft_arr_cpy(char **map_as_arr);
@@ -64,6 +67,7 @@ t_item		**ft_initialize_item(t_game *game);
 t_enemy		*ft_initialize_enemy(void);
 int			get_enemy_pos(t_game *game, t_map *map);
 void		ft_exit_enemy(t_enemy *enemy);
+int			random_nbr_range(int min, int max);
 
 // init_main
 t_game		*ft_initialize(t_map *map);

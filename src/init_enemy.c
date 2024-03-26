@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 15:11:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 15:44:07 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 15:50:55 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_exit_enemy(t_enemy *enemy)
 	}
 }
 
-static int	random_nbr_range(int min, int max)
+int	random_nbr_range(int min, int max)
 {
 	int	nbr;
 
@@ -64,7 +64,7 @@ int	get_enemy_pos(t_game *game, t_map *map)
 	{
 		game->enemy->pos->y = random_nbr_range(1 ,10);
 		game->enemy->pos->x = random_nbr_range(1 ,10);
-		
+
 		ft_printf("Random nbr is [%i][%i]\n", game->enemy->pos->y,game->enemy->pos->x);
 	}
 	return (0);

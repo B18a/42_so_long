@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/26 15:11:27 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/26 15:54:47 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,8 +52,8 @@ FUNCTIONS	=	$(SRC_DIR)/check_map_string.c \
 				$(SRC_DIR)/update_display.c \
 
 # BONUS INTERNAL FUNCTIONS
-B_FUNCTIONS			= $(B_SRC_DIR)/animation.c \
-
+B_FUNCTIONS			=	$(B_SRC_DIR)/animation.c \
+						$(B_SRC_DIR)/move_enemy.c \
 # INTERNAL OBJECT
 OBJECTS				= $(addprefix $(OBJ_DIR)/, $(notdir $(FUNCTIONS:.c=.o)))
 
