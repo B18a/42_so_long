@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 15:11:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 15:50:55 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 16:36:16 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,12 @@ int	random_nbr_range(int min, int max)
 	int	nbr;
 
 	nbr = 0;
-	srand(time(NULL));
-	while(1)
+	while (1)
 	{
 		nbr = arc4random_uniform(max);
 		nbr = min + nbr % (max - min + 1);
-		if(nbr <= max && nbr >= min)
-			break;
+		if (nbr <= max && nbr >= min)
+			break ;
 	}
 	return (nbr);
 }
@@ -62,10 +61,10 @@ int	get_enemy_pos(t_game *game, t_map *map)
 		return (0);
 	if (get_height(map->map_as_arr) > 10 && ft_strlen(map->map_as_arr[0]) > 10)
 	{
-		game->enemy->pos->y = random_nbr_range(1 ,10);
-		game->enemy->pos->x = random_nbr_range(1 ,10);
-
-		ft_printf("Random nbr is [%i][%i]\n", game->enemy->pos->y,game->enemy->pos->x);
+		game->enemy->pos->y = random_nbr_range(1, 10);
+		game->enemy->pos->x = random_nbr_range(1, 10);
+		ft_printf("Random nbr is [%i][%i]\n", game->enemy->pos->y,
+			game->enemy->pos->x);
 	}
 	return (0);
 }

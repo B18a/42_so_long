@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 15:51:05 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 16:43:11 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ void		animation_player(void *param);
 
 // move enemy
 void		move_enemy(void *param);
+
+// check collision
+void		check_collision(void *param);
 
 // ft_arr_cpy
 char		**ft_arr_cpy(char **map_as_arr);
