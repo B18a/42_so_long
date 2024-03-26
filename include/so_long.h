@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 10:39:22 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 10:52:20 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-
 
 // animation
 void		animation_player(void *param);
@@ -73,10 +72,12 @@ int			ft_load_textures_player(t_game *game);
 int			ft_load_textures_exit(t_game *game);
 
 // load_textures_helper
-int			ft_load_textures_floor_helper(t_game *game, char **map_as_arr, mlx_image_t *img);
+int			ft_load_textures_floor_helper(t_game *game, char **map_as_arr,
+				mlx_image_t *img);
 int			ft_load_textures_floor(t_game *game, char **map_as_arr);
 int			ft_load_textures_obstacle(t_game *game, char **map_as_arr);
-int			ft_load_textures_obstacle_helper(t_game *game, char **map_as_arr, mlx_image_t *img);
+int			ft_load_textures_obstacle_helper(t_game *game, char **map_as_arr,
+				mlx_image_t *img);
 
 // main
 void		start_game(t_game *game);
@@ -122,6 +123,6 @@ int			update_display_item(t_game *game, int32_t posX, int32_t posY);
 int			update_display_moves(t_game *game, int32_t posX, int32_t posY);
 
 // unused at the end
-void	print_2d_arr(char **map_in_arr);
+void		print_2d_arr(char **map_in_arr);
 
 #endif

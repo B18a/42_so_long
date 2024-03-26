@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 14:20:06 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 08:56:53 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 11:35:36 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*map_to_string(char *path_map)
 	{
 		if (map_in_line_joined)
 			free(map_in_line_joined);
-		return (ft_printf("Opening File failed\n"), NULL);
+		return (ft_printf("Error\nOpening File failed\n"), NULL);
 	}
 	map_in_line = get_next_line(fd);
 	while (map_in_line)

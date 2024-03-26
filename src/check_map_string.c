@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:16:20 by andreasjehl       #+#    #+#             */
-/*   Updated: 2024/03/25 14:06:36 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 11:40:26 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int	ft_map_check_chars(char *map_in_string)
 		if (forbidden_char(map_in_string[i]) || map_in_string[0] == '\n'
 			|| ((map_in_string[i] == '\n') && (map_in_string[i + 1] == '\n')))
 		{
-			ft_printf("Something wrong in map, forbidden character: %c \n",
-				map_in_string[i]);
+			ft_printf("Error\nForbidden character:%c \n", map_in_string[i]);
 			return (1);
 		}
 		i++;
@@ -54,7 +53,8 @@ int	ft_check_unique_char(char *map_as_string, char character)
 	}
 	if (check != 1)
 	{
-		ft_printf("Something wrong in map, amount of %c is wrong\n", character);
+		ft_printf("Error\nSomething wrong in map, amount of %c is wrong\n",
+			character);
 		return (1);
 	}
 	return (0);
@@ -75,7 +75,8 @@ int	ft_check_multiple_char(char *map_as_string, char character)
 	}
 	if (check <= 0)
 	{
-		ft_printf("Something wrong in map, amount of %c is wrong\n", character);
+		ft_printf("Error\nSomething wrong in map, amount of %c is wrong\n",
+			character);
 		return (1);
 	}
 	return (0);

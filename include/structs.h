@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:09:56 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 10:20:31 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 10:52:33 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ typedef struct s_game
 	t_item			**item;
 	int				frame;
 
-	/**************************************/
 	// t_asset		**enemy;
 	// int			enemy_total;
 }					t_game;

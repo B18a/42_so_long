@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:11:58 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 09:24:41 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 11:39:45 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,15 @@ int	item_flood_fill(t_game *game, t_pos *pos)
 	temp = ft_arr_cpy(game->map->map_as_arr);
 	if (!temp)
 		return (1);
-
 	size.x = ft_strlen(game->map->map_as_arr[0]);
 	size.y = get_height(game->map->map_as_arr);
-	if(map_flood_fill(temp, size, *pos))
+	if (map_flood_fill(temp, size, *pos))
 	{
 		free_map_in_arr(temp);
-		return(1);
+		return (1);
 	}
 	free_map_in_arr(temp);
-	return(0);
+	return (0);
 }
 
 int	init_pos_items(t_game *game)
