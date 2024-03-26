@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:14:01 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 10:52:20 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 15:47:06 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <time.h>
 # include <unistd.h>
 
 // animation
@@ -59,6 +60,11 @@ t_game		*ft_initialize_game(t_map *map);
 // init_item
 t_item		**ft_initialize_item(t_game *game);
 
+// init_enemy
+t_enemy		*ft_initialize_enemy(void);
+int			get_enemy_pos(t_game *game, t_map *map);
+void		ft_exit_enemy(t_enemy *enemy);
+
 // init_main
 t_game		*ft_initialize(t_map *map);
 
@@ -70,6 +76,7 @@ int			ft_load_textures_item(t_game *game);
 int			ft_load_textures_obstacle(t_game *game, char **map_as_arr);
 int			ft_load_textures_player(t_game *game);
 int			ft_load_textures_exit(t_game *game);
+int			ft_load_textures_enemy(t_game *game);
 
 // load_textures_helper
 int			ft_load_textures_floor_helper(t_game *game, char **map_as_arr,

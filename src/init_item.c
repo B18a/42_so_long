@@ -6,13 +6,13 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:05:31 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/25 15:32:25 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 15:11:06 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	free_item(t_item *item)
+static void	free_item(t_item *item)
 {
 	if (item)
 	{
@@ -22,7 +22,7 @@ void	free_item(t_item *item)
 	}
 }
 
-void	preset_item(t_item *item)
+static void	preset_item(t_item *item)
 {
 	item->pos->y = 0;
 	item->pos->x = 0;
@@ -31,7 +31,7 @@ void	preset_item(t_item *item)
 	item->collected = 0;
 }
 
-int	allocating_item(t_game *game, t_item **item)
+static int	allocating_item(t_game *game, t_item **item)
 {
 	int	i;
 
@@ -58,7 +58,7 @@ int	allocating_item(t_game *game, t_item **item)
 	return (1);
 }
 
-int	allocating_item_pos(t_game *game, t_item **item)
+static int	allocating_item_pos(t_game *game, t_item **item)
 {
 	int	i;
 

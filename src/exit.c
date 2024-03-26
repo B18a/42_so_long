@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:47:22 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 13:01:26 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 15:37:03 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	call_exit(t_game *game)
 {
 	call_exit_map(game->map);
 	ft_exit_player(game->player);
+	ft_exit_enemy(game->enemy);
 	ft_exit_exit(game->exit);
 	ft_exit_item(game);
 	if (game)

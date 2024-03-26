@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/26 12:58:14 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/26 15:11:27 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ FUNCTIONS	=	$(SRC_DIR)/check_map_string.c \
 				$(SRC_DIR)/ft_arr_cpy.c \
 				$(SRC_DIR)/helper.c \
 				$(SRC_DIR)/hook.c \
+				$(SRC_DIR)/init_enemy.c \
 				$(SRC_DIR)/init_helper.c \
 				$(SRC_DIR)/init_item.c \
 				$(SRC_DIR)/init_main.c \

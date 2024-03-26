@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:09:56 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 10:52:33 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 14:55:31 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,13 @@ typedef struct s_player
 	int				moves;
 }					t_player;
 
+typedef struct s_enemy
+{
+	mlx_texture_t	*texture;
+	mlx_image_t		*image;
+	t_pos			*pos;
+}					t_enemy;
+
 typedef struct s_item
 {
 	mlx_texture_t	*texture;
@@ -71,9 +78,7 @@ typedef struct s_game
 	int				item_collect;
 	t_item			**item;
 	int				frame;
-
-	// t_asset		**enemy;
-	// int			enemy_total;
+	t_enemy			*enemy;
 }					t_game;
 
 #endif

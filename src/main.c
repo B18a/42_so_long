@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 13:10:40 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 15:45:24 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	load_textures(t_game *game)
 	i += ft_load_textures_exit(game);
 	i += ft_load_textures_item(game);
 	i += ft_load_textures_player(game);
+	i += ft_load_textures_enemy(game);
 	i += update_display_moves(game, MOVES_POS_X, MOVES_POS_Y);
 	i += update_display_item(game, ITEM_POS_X, ITEM_POS_Y);
 	if (i)
