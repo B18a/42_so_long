@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 22:43:28 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 10:01:22 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 13:10:30 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_load_textures_player(t_game *game)
 	game->player->texture2 = mlx_load_png(PATH_PLAYER2);
 	if (!game->player->texture || !game->player->texture1
 		|| !game->player->texture2)
-		return (call_exit(game), 0);
+		return (1);
 	game->player->image = mlx_texture_to_image(game->game_window,
 			game->player->texture);
 	game->player->image1 = mlx_texture_to_image(game->game_window,
@@ -54,16 +54,16 @@ int	ft_load_textures_player(t_game *game)
 	game->player->image2 = mlx_texture_to_image(game->game_window,
 			game->player->texture2);
 	if (!game->player->image || !game->player->image1 || !game->player->image2)
-		return (call_exit(game), 0);
+		return (1);
 	if (mlx_image_to_window(game->game_window, game->player->image,
 			game->player->pos->x * PIXEL, game->player->pos->y * PIXEL) == -1)
-		return (call_exit(game), 0);
+		return (1);
 	if (mlx_image_to_window(game->game_window, game->player->image1,
 			game->player->pos->x * PIXEL, game->player->pos->y * PIXEL) == -1)
-		return (call_exit(game), 0);
+		return (1);
 	if (mlx_image_to_window(game->game_window, game->player->image2,
 			game->player->pos->x * PIXEL, game->player->pos->y * PIXEL) == -1)
-		return (call_exit(game), 0);
+		return (1);
 	return (0);
 }
 

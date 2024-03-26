@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:09:33 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 11:40:01 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/26 13:10:40 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	load_textures(t_game *game)
 	i += update_display_moves(game, MOVES_POS_X, MOVES_POS_Y);
 	i += update_display_item(game, ITEM_POS_X, ITEM_POS_Y);
 	if (i)
-		return (call_exit(game), 0);
+		return (call_exit(game), 1);
 	return (i);
 }
 
@@ -81,17 +81,15 @@ int	main(int argc, char **argv)
 	map = NULL;
 	game = NULL;
 	if (argc != 2)
-	{
-		ft_printf("Error\nInput incorrect \n");
-		return (0);
-	}
+		return (ft_printf("Error\nInput incorrect \n"), 0);
 	map = parsing_input(argv[1]);
 	if (!map)
 		return (call_exit_map(map), 0);
 	game = ft_initialize(map);
 	if (!game)
 		return (0);
-	load_textures(game);
+	if (load_textures(game))
+		return (ft_printf("Error\nLoading textures \n"), 0);
 	start_game(game);
 	call_exit(game);
 	return (0);
