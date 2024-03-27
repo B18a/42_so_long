@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:51:44 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 15:40:57 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/27 10:15:31 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	start_enemy(t_game *game, t_map *map)
 	game->enemy = ft_initialize_enemy();
 	if (!game->enemy)
 		return (1);
-	if(get_enemy_pos(game, map))
+	if (get_enemy_pos(game, map))
 		return (1);
 	return (0);
 }

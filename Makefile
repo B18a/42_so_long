@@ -6,7 +6,7 @@
 #    By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 15:31:09 by ajehle            #+#    #+#              #
-#    Updated: 2024/03/26 16:37:50 by ajehle           ###   ########.fr        #
+#    Updated: 2024/03/27 10:14:33 by ajehle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -128,7 +128,7 @@ clean :
 	$(REMOVE) $(OBJECTS)
 	$(REMOVE) $(OBJ_DIR)
 	$(REMOVE) $(B_OBJ_DIR)
-#	$(REMOVE) $(MLX42_DIR)
+	$(REMOVE) $(MLX42_DIR)
 
 fclean : clean
 	$(MAKE) -C $(FT_LIBFT_DIR) fclean
@@ -136,6 +136,6 @@ fclean : clean
 	$(MAKE) -C $(GET_NEXT_LINE_DIR) fclean
 	$(REMOVE) $(NAME)
 
-re : fclean all
+re : clean all
 
 .PHONY : all mlx_clone clean fclean re

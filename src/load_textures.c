@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 22:43:28 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 15:46:46 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/27 10:15:37 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int	ft_load_textures_player(t_game *game)
 int	ft_load_textures_enemy(t_game *game)
 {
 	game->enemy->texture = mlx_load_png(PATH_ENEMY);
-		if (!game->enemy->texture)
-			return (1);
+	if (!game->enemy->texture)
+		return (1);
 	game->enemy->image = mlx_texture_to_image(game->game_window,
 			game->enemy->texture);
 	if (!game->enemy->image)
@@ -79,7 +79,6 @@ int	ft_load_textures_enemy(t_game *game)
 	if (mlx_image_to_window(game->game_window, game->enemy->image,
 			game->enemy->pos->x * PIXEL, game->enemy->pos->y * PIXEL) == -1)
 		return (1);
-
 	return (0);
 }
 

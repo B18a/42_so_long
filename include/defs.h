@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:10:55 by ajehle            #+#    #+#             */
-/*   Updated: 2024/03/26 15:53:12 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/03/27 10:11:18 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@
 # define PATH_EXIT_CLOSED "./assets/32x32/floor_2.png"
 # define PATH_EXIT_OPEN "./assets/32x32/stair_nextlevel.png"
 # define PATH_ITEM "./assets/32x32/key_silver.png"
-# define PATH_ENEMY "./assets/32x32/goblin.png"
+# define PATH_ENEMY "./assets/32x32/ghost.png"
 
 #endif
