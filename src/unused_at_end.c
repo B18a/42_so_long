@@ -14,9 +14,9 @@
 
 void	ft_show_address(t_game *game)
 {
-	printf("game		%p\n", (void *)&game);
-	printf("game.image	%p\n", (void *)&game->game_image);
-	printf("game.window	%p\n", (void *)&game->game_window);
+	ft_printf("game		%p\n", (void *)&game);
+	ft_printf("game.image	%p\n", (void *)&game->game_image);
+	ft_printf("game.window	%p\n", (void *)&game->game_window);
 }
 
 void	print_2d_arr(char **map_in_arr)
@@ -26,16 +26,16 @@ void	print_2d_arr(char **map_in_arr)
 
 	i = 0;
 	j = 0;
-	printf("	[0][1][2][3][4][5][6][7][8][9][10]\n");
+	ft_printf("	[0][1][2][3][4][5][6][7][8][9][10]\n");
 	while (map_in_arr[i])
 	{
-		printf("[%i]	", i);
+		ft_printf("[%i]	", i);
 		while (map_in_arr[i][j])
 		{
-			printf(" %c ", map_in_arr[i][j]);
+			ft_printf(" %c ", map_in_arr[i][j]);
 			j++;
 		}
-		printf("\n");
+		ft_printf("\n");
 		j = 0;
 		i++;
 	}
