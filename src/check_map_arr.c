@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:00:45 by ajehle            #+#    #+#             */
-/*   Updated: 2024/05/17 12:13:11 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/09/14 11:09:04 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	map_flood_fill(char **map, t_pos size, t_pos pos)
 {
 	// usleep(10000);
 	// print_2d_arr(map);
-	printf("SIZE|%i||%i| pos|%i||%i|\n", size.x, size.y, pos.x, pos.y);
+	// printf("SIZE|%i||%i| pos|%i||%i|\n", size.x, size.y, pos.x, pos.y);
 	// if (pos.x <= 0 || pos.x >= size.x || pos.y <= 0 || pos.y >= size.y)
 	// 	return (0);
 	if (map[pos.y][pos.x] == '1')

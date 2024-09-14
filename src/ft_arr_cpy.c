@@ -6,7 +6,7 @@
 /*   By: ajehle <ajehle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 12:29:16 by ajehle            #+#    #+#             */
-/*   Updated: 2024/05/17 12:03:15 by ajehle           ###   ########.fr       */
+/*   Updated: 2024/09/14 11:09:31 by ajehle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ char	**ft_arr_cpy(char **map_as_arr)
 	while (map_as_arr[i])
 	{
 		cpy[i] = ft_calloc(ft_strlen(map_as_arr[i]) + 1, sizeof(char));
-		sleep(2);
+		// sleep(2);
 		if (!cpy[i])
 			return (free_map_in_arr(cpy), NULL);
 		ft_memcpy(cpy[i], map_as_arr[i], ft_strlen(map_as_arr[i]) + 1);
-		printf("|%s|\n",cpy[i]);
+		// printf("|%s|\n",cpy[i]);
 		i++;
 	}
 	return (cpy);
