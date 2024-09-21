@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/B18a/42-project-badges/blob/main/badges/so_longee.png">
+  <img src="https://github.com/B18a/42-project-badges/blob/main/badges/so_longe.png">
 </p>
 
 <h1 align="center">
