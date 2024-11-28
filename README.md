@@ -6,9 +6,7 @@
   Project - so_long
 </h1>
 
-<p align="center">
-  <img src="https://github.com/B18a/42_so_long/blob/main/Screenshot.png">
-</p>
+https://github.com/user-attachments/assets/e6dcf868-7bd7-48e9-b4b0-2deec9db1f40
 
 The "So Long And Thanks for All the Fish" project is a small 2D game designed to help developers enhance their skills with textures, sprites, and basic gameplay mechanics. Players must navigate a map, collecting items and avoiding walls, using keyboard controls to move their character. The game requires a specific map format and must adhere to strict coding standards in C, utilizing the MiniLibX library for graphics. While a bonus section encourages creative additions, the mandatory part must function perfectly for any bonus features to be considered. The project emphasizes learning window management, event handling, and memory management.
 
